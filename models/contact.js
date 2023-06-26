@@ -9,15 +9,13 @@ const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: [true, 'Set name for the contact!'],
-    },
+    name: { type: String, required: [true, 'Set name for the contact!'] },
     email: String,
     phone: {
       type: String,
       match: [phoneRegex, 'Phone schema: (123) 456-7890'],
       required: true,
+      unique: true,
     },
     favorite: { type: Boolean, default: false },
     group: {

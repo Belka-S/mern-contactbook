@@ -5,17 +5,24 @@ const { mongooseError } = require('../helpers');
 
 // Validation
 const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    name: { type: String, required: [true, 'Set name for the contact!'] },
-    email: String,
+    name: {
+      type: String,
+      required: [true, 'Set name for the contact!'],
+      minlength: [3, 'Name must be at least 3 characters long!'],
+    },
+    email: {
+      type: String,
+      match: [emailRegex, 'Email schema: anpch@example.com'],
+    },
     phone: {
       type: String,
       match: [phoneRegex, 'Phone schema: (123) 456-7890'],
       required: true,
-      unique: true,
     },
     favorite: { type: Boolean, default: false },
     group: {
@@ -23,13 +30,14 @@ const contactSchema = new Schema(
       enum: groupList,
       required: [true, `Set group: ${groupList.join(' / ')}`],
     },
+    owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { versionKey: false, timestamps: true },
 );
 
 const addSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email(),
+  name: Joi.string().min(3).required(),
+  email: Joi.string().pattern(emailRegex),
   phone: Joi.string().pattern(phoneRegex),
   favorite: Joi.boolean(),
   group: Joi.string()
@@ -37,10 +45,9 @@ const addSchema = Joi.object({
     .required(),
 });
 
-const updateFavoriteSchema = Joi.object({ favorite: Joi.boolean().required() });
+contactSchema.post('save', mongooseError); // Change error status
 
-// Change error status
-contactSchema.post('save', mongooseError);
+const updateFavoriteSchema = Joi.object({ favorite: Joi.boolean().required() });
 
 const schemas = { addSchema, updateFavoriteSchema };
 

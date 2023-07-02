@@ -40,12 +40,12 @@ const userSchema = new Schema(
 
 const registerSchema = Joi.object({
   name: Joi.string().min(3).required(),
-  email: Joi.string().pattern(emailRegex).required(),
+  email: Joi.string().pattern(emailRegex).message('Invalid email!').required(),
   password: Joi.string().min(6).required(),
 });
 
 const loginSchema = Joi.object({
-  email: Joi.string().pattern(emailRegex).required(),
+  email: Joi.string().pattern(emailRegex).message('Invalid email!').required(),
   password: Joi.string().min(6).required(),
 });
 

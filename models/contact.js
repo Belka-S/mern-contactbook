@@ -30,7 +30,7 @@ const contactSchema = new Schema(
       enum: groupList,
       required: [true, `Set group: ${groupList.join(' / ')}`],
     },
-    owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    owner: { type: Schema.Types.ObjectId, ref: 'user', required: true },
   },
   { versionKey: false, timestamps: true },
 );

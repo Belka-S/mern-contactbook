@@ -59,6 +59,6 @@ userSchema.post('save', mongooseError); // Change error status
 
 const schemas = { registerSchema, loginSchema, updateSubscriptionSchema };
 
-const User = model('User', userSchema);
+const User = model('user', userSchema);
 
 module.exports = { User, schemas };

@@ -7,7 +7,7 @@ const { schemas } = require('../../models/contact');
 
 const router = express.Router();
 
-// Closed Route
+// Private Routes
 router.use(authenticate);
 
 // GET

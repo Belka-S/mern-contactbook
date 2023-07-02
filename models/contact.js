@@ -37,8 +37,8 @@ const contactSchema = new Schema(
 
 const addSchema = Joi.object({
   name: Joi.string().min(3).required(),
-  email: Joi.string().pattern(emailRegex),
-  phone: Joi.string().pattern(phoneRegex),
+  email: Joi.string().pattern(emailRegex).message('Invalid email!'),
+  phone: Joi.string().pattern(phoneRegex).message('Invalid phone!'),
   favorite: Joi.boolean(),
   group: Joi.string()
     .valid(...groupList)

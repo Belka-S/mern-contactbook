@@ -7,32 +7,28 @@ const { schemas } = require('../../models/contact');
 
 const router = express.Router();
 
+// Closed Route
+router.use(authenticate);
+
 // GET
-router.get('/', authenticate, ctrlWrapper(contacts.getAll));
-router.get('/:id', authenticate, isValidId, ctrlWrapper(contacts.getById));
+router.get('/', ctrlWrapper(contacts.getAll));
+router.get('/:id', isValidId, ctrlWrapper(contacts.getById));
 
 // POST
-router.post('/', authenticate, validateBody(schemas.addSchema), ctrlWrapper(contacts.add));
+router.post('/', validateBody(schemas.addSchema), ctrlWrapper(contacts.add));
 
 // PUT
-router.put(
-  '/:id',
-  authenticate,
-  isValidId,
-  validateBody(schemas.addSchema),
-  ctrlWrapper(contacts.updateById),
-);
+router.put('/:id', isValidId, validateBody(schemas.addSchema), ctrlWrapper(contacts.updateById));
 
 // PATCH
 router.patch(
   '/:id/favorite',
-  authenticate,
   isValidId,
   validateBody(schemas.updateFavoriteSchema),
   ctrlWrapper(contacts.updateFavoriteById),
 );
 
 // DELETE
-router.delete('/:id', isValidId, authenticate, ctrlWrapper(contacts.removeById));
+router.delete('/:id', isValidId, ctrlWrapper(contacts.removeById));
 
 module.exports = router;

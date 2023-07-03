@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
-const { mongooseError } = require('../helpers');
+const { mongooseError, joiHandler } = require('../helpers');
 
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const subscriptionList = ['starter', 'pro', 'business'];
@@ -40,12 +40,12 @@ const userSchema = new Schema(
 
 const registerSchema = Joi.object({
   name: Joi.string().min(3).required(),
-  email: Joi.string().pattern(emailRegex).message('Invalid email!').required(),
+  email: Joi.string().pattern(emailRegex).required().error(joiHandler.emailError),
   password: Joi.string().min(6).required(),
 });
 
 const loginSchema = Joi.object({
-  email: Joi.string().pattern(emailRegex).message('Invalid email!').required(),
+  email: Joi.string().email(emailRegex).required().error(joiHandler.emailError),
   password: Joi.string().min(6).required(),
 });
 

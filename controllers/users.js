@@ -1,4 +1,5 @@
 const path = require('path');
+const sharp = require('sharp');
 const fs = require('fs/promises');
 
 const { User } = require('../models/user');
@@ -23,20 +24,21 @@ const updateSubscriptionById = async (req, res) => {
   res.json({ status: 'success', code: 200, data: { result } });
 };
 
-// Change user avatar
+// Update avatar
 const updateAvatar = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
   const fileName = `${req.user._id}_${originalname}`;
   const resultUpload = path.join(__dirname, '..', 'public', 'avatars', fileName);
+
   try {
-    await fs.rename(tempUpload, resultUpload);
+    await sharp(tempUpload).resize(200, 200, { fit: sharp.fit.cover }).toFile(resultUpload);
+    await fs.unlink(tempUpload);
     const avatarUrl = path.join('public', 'avatars', fileName);
     const result = await User.findByIdAndUpdate(req.user._id, { avatarUrl }, { new: true });
     if (!result) throw HttpError(404, 'User not found');
     res.json({ status: 'success', code: 200, data: { result } });
   } catch (error) {
-    await fs.unlink(tempUpload);
-    throw error;
+    return error;
   }
 };
 

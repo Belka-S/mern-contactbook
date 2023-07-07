@@ -18,10 +18,10 @@
 
     form.addEventListener('submit', e => {
       event.preventDefault();
-      const { upload } = e.target.elements
-      // console.log(upload.files[0]);
+      const { avatar } = e.target.elements
+      console.log(avatar.files[0]);
       const data = new FormData();
-      form.append('avatar', upload.files[0]);
+      form.append('avatar', avatar.files[0]);
     });
   </script>
 </body>

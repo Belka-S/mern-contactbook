@@ -1,8 +1,8 @@
 {
-  "name": "react-goit-phonebook",
+  "name": "mern-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://belka-s.github.io/react-goit-phonebook/",
+  "homepage": "https://belka-s.github.io/mern-phonebook/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",

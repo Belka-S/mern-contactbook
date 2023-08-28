@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/415.8581617f.chunk.js","mappings":"gKAIA,UAFa,kBAAM,SAAC,IAAD,CAASA,UAAU,yBAAzB,C","sources":["pages/Home.jsx"],"sourcesContent":["import { Section } from 'components/Section/Section';\n\nconst Home = () => <Section mainTitle=\"Welcome to PhoneBook!\" />;\n\nexport default Home;\n"],"names":["mainTitle"],"sourceRoot":""}

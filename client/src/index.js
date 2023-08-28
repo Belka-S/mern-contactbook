@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <GlobalStyle />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/react-goit-phonebook">
+        <BrowserRouter basename="/mern-phonebook">
           <App />
         </BrowserRouter>
       </PersistGate>

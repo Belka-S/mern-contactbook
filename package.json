@@ -1,57 +1,13 @@
 {
-  "name": "react-goit-phonebook",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://belka-s.github.io/react-goit-phonebook/",
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.4.0",
-    "formik": "^2.2.9",
-    "localforage": "^1.10.0",
-    "match-sorter": "^6.3.1",
-    "modern-normalize": "^1.1.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-hot-toast": "^2.4.1",
-    "react-loader-spinner": "^5.3.4",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.2",
-    "react-scripts": "5.0.1",
-    "redux-persist": "^6.0.0",
-    "sort-by": "^1.2.0",
-    "styled-components": "^5.3.9",
-    "typeface-montserrat": "^1.1.13",
-    "typeface-roboto": "^1.1.13",
-    "web-vitals": "^2.1.3",
-    "yup": "^1.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+ "name": "mern-phonebook",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "scripts": {
+  "start": "npm start --prefix client & npm start --prefix server",
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "keywords": [],
+ "author": "BS",
+ "license": "ISC"
 }

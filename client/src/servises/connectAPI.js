@@ -1,8 +1,13 @@
 import axios from 'axios';
 
-const { REACT_APP_BACK_URL_DEV } = process.env;
+const { REACT_APP_BACK_URL_DEV, REACT_APP_BACK_URL_PROD } = process.env;
 
-axios.defaults.baseURL = `${REACT_APP_BACK_URL_DEV}/api`;
+console.log(process.env.NODE_ENV);
+
+axios.defaults.baseURL =
+  process.env.NODE_ENV === 'development'
+    ? `${REACT_APP_BACK_URL_DEV}/api`
+    : `${REACT_APP_BACK_URL_PROD}/api`;
 
 // Authorization
 const token = {

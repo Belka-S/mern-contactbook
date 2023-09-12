@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const { REACT_APP_BACK_URL_DEV, REACT_APP_BACK_URL_PROD } = process.env;
 
-console.log(process.env.NODE_ENV);
-
 axios.defaults.baseURL =
   process.env.NODE_ENV === 'development'
     ? `${REACT_APP_BACK_URL_DEV}/api`

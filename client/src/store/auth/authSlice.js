@@ -43,7 +43,6 @@ const handleAuthSucsess = (state, action) => {
 };
 
 const handleLogoutSucsess = state => {
-  console.log(initialState);
   return initialState;
 };
 

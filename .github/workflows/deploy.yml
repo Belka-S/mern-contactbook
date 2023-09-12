@@ -25,6 +25,8 @@ jobs:
 
    - name: Build project
      run: npm run build
+     env:
+      REACT_APP_BACK_URL_PROD: ${{vars.REACT_APP_BACK_URL_PROD}}
      working-directory: './client'
 
    - name: Upload production-ready build files

@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
-const { mongooseError, joiError } = require('../helpers');
+const { mongooseError, joiError } = require('../utils');
 
 // Validation
 // const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;

@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
-const { mongooseError, joiError } = require('../helpers');
+const { mongooseError, joiError } = require('../utils');
 
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const subscriptionList = ['starter', 'pro', 'business'];

@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const router = require('./routes');
-const { logFile } = require('./helpers');
+const { logFile } = require('./utils');
 
 const app = express();
 

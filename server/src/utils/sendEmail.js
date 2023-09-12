@@ -32,20 +32,4 @@ const sendEmail = async (to, verificationCode) => {
   }
 };
 
-const sendFeedback = (req, res, next) => {
-  const { email, name, text } = req.body;
-
-  const emailOptions = {
-    from: '"Support" <it.dev@meta.ua>',
-    to: 'trademsnet@gmail.com',
-    subject: `Feedback by ${name}`,
-    text: `${text}, From: ${name}, ${email}`,
-  };
-
-  transporter
-    .sendMail(emailOptions)
-    .then(info => res.render('done'))
-    .catch(err => next(err));
-};
-
-module.exports = { sendEmail, sendFeedback };
+module.exports = { sendEmail };

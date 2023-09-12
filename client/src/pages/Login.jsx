@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
 import { INPUT_NAME } from 'servises/constants';
-import { loginThunk } from 'redux/Auth/authOperations';
+import { loginThunk } from 'store/auth/authOperations';
 import { Toast, notify } from 'components/Toast/Toast';
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const navigate = useNavigate();
-  const isBtnNotActive = email.length < 5 || password.length < 8;
+  const isBtnNotActive = email.length < 4 || password.length < 6;
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -59,7 +59,7 @@ const Login = () => {
             value={password}
             onChange={handleChange}
             required
-            minLength={8}
+            minLength={6}
           />
         </label>
         <button

@@ -5,7 +5,7 @@ import { Section } from 'components/Section/Section';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { selectIsLoading } from 'redux/seletors';
+import { selectIsLoading } from 'store/seletors';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);

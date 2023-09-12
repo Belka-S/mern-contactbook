@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Section } from 'components/Section/Section';
 import { INPUT_NAME } from 'servises/constants';
-import { registerThunk } from 'redux/Auth/authOperations';
+import { registerThunk } from 'store/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { Toast, notify } from 'components/Toast/Toast';
 
@@ -12,7 +12,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { error } = useAuth();
-  const isBtnNotActive = username.length < 5 || password.length < 8;
+  const isBtnNotActive = username.length < 4 || password.length < 6;
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -51,7 +51,7 @@ const Register = () => {
             value={username}
             onChange={handleChange}
             required
-            minLength={5}
+            minLength={4}
           />
         </label>
         <label style={{ marginRight: '30px' }}>
@@ -72,7 +72,7 @@ const Register = () => {
             value={password}
             onChange={handleChange}
             required
-            minLength={8}
+            minLength={6}
           />
         </label>
         <button

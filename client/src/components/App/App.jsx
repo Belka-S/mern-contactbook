@@ -3,16 +3,16 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Section } from 'components/Section/Section';
 import { AppBar } from 'components/AppBar/AppBar';
-import { refreshThunk } from 'redux/Auth/authOperations';
+import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { OvalLoader } from 'components/Loader/OvalLoader';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRote } from './PrivateRoute';
 
+const Home = lazy(() => import('pages/Home'));
 const Register = lazy(() => import('pages/Register'));
 const Login = lazy(() => import('pages/Login'));
 const Contacts = lazy(() => import('pages/Contacts'));
-const Home = lazy(() => import('pages/Home'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,9 +28,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<AppBar />}>
             <Route index element={<Home />} />
-            <Route path="/contacts" element={privateRoute(Contacts)} />
-            <Route path="/login" element={restrictedRoute(Login)} />
             <Route path="/register" element={restrictedRoute(Register)} />
+            <Route path="/login" element={restrictedRoute(Login)} />
+            <Route path="/contacts" element={privateRoute(Contacts)} />
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
         </Routes>

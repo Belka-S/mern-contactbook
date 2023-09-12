@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import * as operations from 'redux/Auth/authOperations';
+import * as operations from 'store/auth/authOperations';
 
 const thunkArr = [
   operations.registerThunk,
@@ -36,13 +36,16 @@ const authSlice = createSlice({
 export const authReducer = authSlice.reducer;
 
 const handleAuthSucsess = (state, action) => {
-  state.user = action.payload.user;
+  state.user = action.payload.name;
   state.token = action.payload.token;
   state.isLoggedIn = true;
   state.error = false;
 };
 
-const handleLogoutSucsess = state => initialState;
+const handleLogoutSucsess = state => {
+  console.log(initialState);
+  return initialState;
+};
 
 const handleRefreshSucsess = (state, action) => {
   state.user = action.payload;

@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { Header, NaviLink, Div } from './AppBar.styled';
-import { logoutThunk } from 'redux/Auth/authOperations';
+import { logoutThunk } from 'store/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { OvalLoader } from 'components/Loader/OvalLoader';
 

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mern-phonebook/static/css/main.c3d5249d.css",
-    "main.js": "/mern-phonebook/static/js/main.c03f2987.js",
+    "main.js": "/mern-phonebook/static/js/main.1538b142.js",
     "static/js/415.c59f89e6.chunk.js": "/mern-phonebook/static/js/415.c59f89e6.chunk.js",
     "static/js/285.d824bcd7.chunk.js": "/mern-phonebook/static/js/285.d824bcd7.chunk.js",
     "static/js/38.63f4c8ee.chunk.js": "/mern-phonebook/static/js/38.63f4c8ee.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/568.2921a720.chunk.js": "/mern-phonebook/static/js/568.2921a720.chunk.js",
     "index.html": "/mern-phonebook/index.html",
     "main.c3d5249d.css.map": "/mern-phonebook/static/css/main.c3d5249d.css.map",
-    "main.c03f2987.js.map": "/mern-phonebook/static/js/main.c03f2987.js.map",
+    "main.1538b142.js.map": "/mern-phonebook/static/js/main.1538b142.js.map",
     "415.c59f89e6.chunk.js.map": "/mern-phonebook/static/js/415.c59f89e6.chunk.js.map",
     "285.d824bcd7.chunk.js.map": "/mern-phonebook/static/js/285.d824bcd7.chunk.js.map",
     "38.63f4c8ee.chunk.js.map": "/mern-phonebook/static/js/38.63f4c8ee.chunk.js.map",
@@ -20,6 +20,6 @@
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.c03f2987.js"
+    "static/js/main.1538b142.js"
   ]
 }

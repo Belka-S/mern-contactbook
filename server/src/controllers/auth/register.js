@@ -1,8 +1,9 @@
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const { nanoid } = require('nanoid');
-const { HttpError, sendEmail } = require('../../utils');
+
 const { User } = require('../../models/user');
+const { HttpError, sendEmail } = require('../../utils');
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -25,6 +26,8 @@ const register = async (req, res) => {
     avatarUrl,
     verificationCode,
   });
+  if (!newUser) throw HttpError(403);
+
   res.status(201).json({ name: newUser.name, email: newUser.email, avatarUrl: newUser.avatarUrl });
 };
 

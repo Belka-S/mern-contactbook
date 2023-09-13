@@ -11,7 +11,7 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) throw HttpError(401);
-  // if (user.verified) throw HttpError(401);
+  // if (!user.verified) throw HttpError(401);
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw HttpError(401);
@@ -19,8 +19,9 @@ const login = async (req, res) => {
   const payload = { id: user._id };
   const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '23h' });
   const newUser = await User.findByIdAndUpdate(user._id, { token }, { new: true });
+  if (!newUser) throw HttpError(403);
 
-  res.json({ name: newUser.name, token: newUser.token });
+  res.status(200).json({ name: newUser.name, token: newUser.token });
 };
 
 module.exports = login;

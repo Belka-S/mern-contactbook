@@ -1,4 +1,5 @@
 const { Contact } = require('../../models/contact');
+const { HttpError } = require('../../utils');
 
 const getAll = async (req, res) => {
   const owner = req.user._id;
@@ -10,8 +11,11 @@ const getAll = async (req, res) => {
     'owner',
     'name email',
   );
+  if (!contacts) throw HttpError(403);
+
   const total = await Contact.countDocuments({ owner, ...query });
-  res.json({ status: `success, ${total} contacts`, code: 200, result: contacts });
+
+  res.status(200).json({ status: `success`, code: 200, result: contacts });
 };
 
 module.exports = getAll;

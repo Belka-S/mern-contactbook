@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
-import { INPUT_NAME } from 'servises/constants';
+import { INPUT_NAME } from 'utils/constants/constants';
 import { loginThunk } from 'store/auth/authOperations';
 import { Toast, notify } from 'components/Toast/Toast';
 

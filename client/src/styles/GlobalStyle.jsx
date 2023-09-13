@@ -1,4 +1,5 @@
 import 'modern-normalize';
+
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -103,6 +104,4 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
-
 `;

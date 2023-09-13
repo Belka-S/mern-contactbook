@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { store, persistor } from 'store/store';
-import { App } from 'components/App/App';
+import { App } from 'components/App';
 
 const { PUBLIC_URL } = process.env;
 

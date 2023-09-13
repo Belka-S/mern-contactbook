@@ -2,20 +2,20 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { Header, NaviLink, Div } from './AppBar.styled';
+import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'utils/hooks/useAuth';
 import { OvalLoader } from 'components/Loader/OvalLoader';
 
-export const AppBar = () => {
+export const Header = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <>
-      <Header>
+      <StyledHeader>
         <MainNav />
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </Header>
+      </StyledHeader>
 
       <Suspense fallback={<OvalLoader />}>
         <Outlet />
@@ -26,15 +26,15 @@ export const AppBar = () => {
 
 const MainNav = () => (
   <nav>
-    <NaviLink to="/">Home</NaviLink>
-    <NaviLink to="/contacts">Contacts</NaviLink>
+    <NavLink to="/">Home</NavLink>
+    <NavLink to="/contacts">Contacts</NavLink>
   </nav>
 );
 
 const AuthNav = () => (
   <nav>
-    <NaviLink to="/register">Register</NaviLink>
-    <NaviLink to="/login">Log in</NaviLink>
+    <NavLink to="/register">Register</NavLink>
+    <NavLink to="/login">Log in</NavLink>
   </nav>
 );
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Section } from 'components/Section/Section';
-import { INPUT_NAME } from 'servises/constants';
+import { INPUT_NAME } from 'utils/constants/constants';
 import { registerThunk } from 'store/auth/authOperations';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'utils/hooks/useAuth';
 import { Toast, notify } from 'components/Toast/Toast';
 
 const Register = () => {

@@ -2,7 +2,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const sharp = require('sharp');
 
-const { User } = require('../../models/user');
+const { User } = require('../../models/User');
 const { HttpError } = require('../../utils');
 
 const updateAvatar = async (req, res) => {
@@ -17,7 +17,7 @@ const updateAvatar = async (req, res) => {
 
     const user = await User.findByIdAndUpdate(req.user._id, { avatarUrl }, { new: true });
     if (!user) throw HttpError(403);
-    
+
     res.status(200).json({ status: 'success', code: 200, result: user });
   } catch (error) {
     return error;

@@ -1,8 +1,7 @@
-const { Contact } = require('../../models/contact');
+const { Contact } = require('../../models/Contact');
 const { HttpError } = require('../../utils');
 
 const add = async (req, res) => {
-  console.log('req: ', req.body);
   const { _id: owner } = req.user;
   const newContact = await Contact.create({ ...req.body, owner });
   if (!newContact) throw HttpError(403);

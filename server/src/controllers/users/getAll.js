@@ -1,4 +1,4 @@
-const { User } = require('../../models/user');
+const { User } = require('../../models/User');
 const { HttpError } = require('../../utils');
 
 const getAll = async (req, res) => {

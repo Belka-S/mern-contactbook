@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const { nanoid } = require('nanoid');
 
-const { User } = require('../../models/user');
+const { User } = require('../../models/User');
 const { HttpError, sendEmail } = require('../../utils');
 
 const register = async (req, res) => {

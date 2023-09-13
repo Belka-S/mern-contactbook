@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { User } = require('../../models/user');
+const { User } = require('../../models/User');
 const { HttpError } = require('../../utils');
 
 const { ACCESS_SECRET_KEY } = process.env;
@@ -11,7 +11,7 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) throw HttpError(401);
-  // if (!user.verified) throw HttpError(401);
+  // if (!user.verifiedEmail) throw HttpError(401);
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw HttpError(401);

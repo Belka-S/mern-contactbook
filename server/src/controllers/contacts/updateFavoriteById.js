@@ -1,6 +1,6 @@
 const { HttpError } = require('../../utils');
 
-const { Contact } = require('../../models/contact');
+const { Contact } = require('../../models/Contact');
 
 const updateFavoriteById = async (req, res) => {
   const { id } = req.params;

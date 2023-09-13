@@ -1,55 +1,31 @@
 const { Schema, model } = require('mongoose');
-const Joi = require('joi');
 
-const { mongooseError, joiError } = require('../utils');
+const { mongooseError, regExp } = require('../utils');
 
-// Validation
-// const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
-// const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const required = [true, 'Required field!'];
+const length = lgth => [lgth, `Must be at least ${lgth} characters long!`];
+const regex = field => [regExp[field], `Invalid ${field}!`];
+
 const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: [true, 'Set name for the contact!'],
-      minlength: [3, 'Name must be at least 3 characters long!'],
-    },
-    // email: {
-    //   type: String,
-    //   match: [emailRegex, 'Email schema: anpch@example.com'],
-    // },
-    phone: {
-      type: String,
-      // match: [phoneRegex, 'Phone schema: (123) 456-7890'],
-      required: true,
-    },
-    // favorite: { type: Boolean, default: false },
-    // group: {
-    //   type: String,
-    //   enum: groupList,
-    //   required: [true, `Set group: ${groupList.join(' / ')}`],
-    // },
+    name: { type: String, minlength: length(4), required },
+    phone: { type: String, match: regex('phone'), required },
+    email: { type: String, match: regex('email'), default: '' },
+    whatsapp: { type: String, match: regex('phone'), default: '' },
+    viber: { type: String, match: regex('phone'), default: '' },
+    telegram: { type: String, match: regex('telegram'), default: '' },
+    birthday: { type: String, match: regex('date'), default: '' },
+    group: { type: String, enum: groupList, default: 'private' },
+    favorite: { type: Boolean, default: false },
     owner: { type: Schema.Types.ObjectId, ref: 'user', required: true },
   },
   { versionKey: false, timestamps: true },
 );
 
-const addSchema = Joi.object({
-  name: Joi.string().min(3).required(),
-  phone: Joi.string().required(),
-  // phone: Joi.string().pattern(phoneRegex).error(joiError.emailError).required(),
-  // email: Joi.string().pattern(emailRegex).error(joiError.emailError),
-  // favorite: Joi.boolean(),
-  // group: Joi.string().valid(...groupList).required(),
-});
-
-const updateFavoriteSchema = Joi.object({ favorite: Joi.boolean().required() });
-
 contactSchema.post('save', mongooseError); // Change error status
-
-const schemas = { addSchema, updateFavoriteSchema };
 
 const Contact = model('contact', contactSchema);
 
-module.exports = { Contact, schemas };
+module.exports = { Contact, groupList };

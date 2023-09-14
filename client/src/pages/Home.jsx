@@ -4,9 +4,7 @@ import { Section } from 'components/Section/Section';
 
 const Home = () => (
   <Section mainTitle="PhoneBook">
-    <NavLink to="/register">Register</NavLink>
-    {' | '}
-    <NavLink to="/login">Log in</NavLink>
+    <NavLink to="/signin">Log in</NavLink>
   </Section>
 );
 

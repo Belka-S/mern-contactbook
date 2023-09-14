@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import { Section } from 'components/Section/Section';
 import { INPUT_NAME } from 'utils/constants/constants';
 import { loginThunk } from 'store/auth/authOperations';
 import { Toast, notify } from 'components/Toast/Toast';
 
-const Login = () => {
+const Signin = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
+
   const isBtnNotActive = email.length < 4 || password.length < 6;
 
   const handleChange = e => {
@@ -31,7 +32,6 @@ const Login = () => {
 
     dispatch(loginThunk({ email, password }))
       .unwrap()
-      // .then(() => navigate('/'))
       .catch(error => notify('Error happend! Try once again.'));
 
     setEmail('');
@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <Section title="Login">
+    <Section title="Sign in">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
           E-mail:
@@ -71,9 +71,11 @@ const Login = () => {
         </button>
       </form>
 
+      <Link to="/signup">Sign up</Link>
+
       <Toast />
     </Section>
   );
 };
 
-export default Login;
+export default Signin;

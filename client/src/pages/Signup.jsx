@@ -5,8 +5,9 @@ import { INPUT_NAME } from 'utils/constants/constants';
 import { registerThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import { Toast, notify } from 'components/Toast/Toast';
+import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Signup = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -41,7 +42,7 @@ const Register = () => {
   };
 
   return (
-    <Section title="Register">
+    <Section title="Sign up">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
           Username:
@@ -84,9 +85,11 @@ const Register = () => {
         </button>
       </form>
 
+      <Link to="/signin">Sign in</Link>
+
       <Toast />
     </Section>
   );
 };
 
-export default Register;
+export default Signup;

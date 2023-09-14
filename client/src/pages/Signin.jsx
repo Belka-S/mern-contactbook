@@ -1,24 +1,21 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { Section } from 'components/Section/Section';
 import { INPUT_NAME } from 'utils/constants/constants';
-import { registerThunk } from 'store/auth/authOperations';
-import { useAuth } from 'utils/hooks/useAuth';
+import { loginThunk } from 'store/auth/authOperations';
 import { Toast, notify } from 'components/Toast/Toast';
 
-const Register = () => {
+const Signin = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { error } = useAuth();
-  const isBtnNotActive = username.length < 4 || password.length < 6;
+
+  const isBtnNotActive = email.length < 4 || password.length < 6;
 
   const handleChange = e => {
     switch (e.target.name) {
-      case INPUT_NAME.USERNAME:
-        setUsername(e.target.value);
-        break;
       case INPUT_NAME.EMAIL:
         setEmail(e.target.value);
         break;
@@ -33,27 +30,17 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(registerThunk({ name: username, email, password }));
-    error && notify('Error happend! Try once again.');
-    setUsername('');
+    dispatch(loginThunk({ email, password }))
+      .unwrap()
+      .catch(error => notify('Error happend! Try once again.'));
+
     setEmail('');
     setPassword('');
   };
 
   return (
-    <Section title="Register">
+    <Section title="Sign in">
       <form onSubmit={handleSubmit} autoComplete="off">
-        <label style={{ marginRight: '30px' }}>
-          Username:
-          <input
-            type="text"
-            name={INPUT_NAME.USERNAME}
-            value={username}
-            onChange={handleChange}
-            required
-            minLength={4}
-          />
-        </label>
         <label style={{ marginRight: '30px' }}>
           E-mail:
           <input
@@ -80,13 +67,15 @@ const Register = () => {
           disabled={isBtnNotActive}
           style={{ padding: '0 20px' }}
         >
-          Register
+          Log in
         </button>
       </form>
+
+      <Link to="/signup">Sign up</Link>
 
       <Toast />
     </Section>
   );
 };
 
-export default Register;
+export default Signin;

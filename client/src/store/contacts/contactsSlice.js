@@ -8,15 +8,15 @@ const thunkArr = [
 ];
 const fn = type => thunkArr.map(el => el[type]);
 
-// Contacts items
+// contacts
 const handleFetchContacts = (_, action) => {
-  return action.payload.result;
+  return action.payload.result.contacts;
 };
 const handleAddContact = (state, action) => {
-  state.push(action.payload.result);
+  state.push(action.payload.result.contact);
 };
 const handleDeleteContact = (state, action) => {
-  return state.filter(el => el._id !== action.payload.result._id);
+  return state.filter(el => el._id !== action.payload.result.contact._id);
 };
 
 // fulfilled
@@ -31,7 +31,7 @@ const contactsItemsSlice = createSlice({
   },
 });
 
-// isLoading
+// loading
 const contactsIsLoadingSlice = createSlice({
   name: 'isLoading',
   initialState: false,
@@ -43,7 +43,7 @@ const contactsIsLoadingSlice = createSlice({
   },
 });
 
-// Error
+// error
 const contactsErrorSlice = createSlice({
   name: 'error',
   initialState: null,

@@ -19,13 +19,13 @@ const token = {
 
 export const register = async credentials => {
   const { data } = await axios.post('/auth/register', credentials);
-  token.set(data.token);
+  token.set(data.result.user.token);
   return data;
 };
 
 export const logIn = async credentials => {
   const { data } = await axios.post('/auth/login', credentials);
-  token.set(data.token);
+  token.set(data.result.user.token);
   return data;
 };
 

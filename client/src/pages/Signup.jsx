@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
 import { INPUT_NAME } from 'utils/constants/constants';
-import { loginThunk } from 'store/auth/authOperations';
+import { registerThunk } from 'store/auth/authOperations';
+import { useAuth } from 'utils/hooks/useAuth';
 import { Toast, notify } from 'components/Toast/Toast';
+import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
   const dispatch = useDispatch();
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
-  const isBtnNotActive = email.length < 4 || password.length < 6;
+  const { error } = useAuth();
+  const isBtnNotActive = username.length < 4 || password.length < 6;
 
   const handleChange = e => {
     switch (e.target.name) {
+      case INPUT_NAME.USERNAME:
+        setUsername(e.target.value);
+        break;
       case INPUT_NAME.EMAIL:
         setEmail(e.target.value);
         break;
@@ -29,18 +34,27 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(loginThunk({ email, password }))
-      .unwrap()
-      // .then(() => navigate('/'))
-      .catch(error => notify('Error happend! Try once again.'));
-
+    dispatch(registerThunk({ name: username, email, password }));
+    error && notify('Error happend! Try once again.');
+    setUsername('');
     setEmail('');
     setPassword('');
   };
 
   return (
-    <Section title="Login">
+    <Section title="Sign up">
       <form onSubmit={handleSubmit} autoComplete="off">
+        <label style={{ marginRight: '30px' }}>
+          Name:
+          <input
+            type="text"
+            name={INPUT_NAME.USERNAME}
+            value={username}
+            onChange={handleChange}
+            required
+            minLength={4}
+          />
+        </label>
         <label style={{ marginRight: '30px' }}>
           E-mail:
           <input
@@ -67,13 +81,15 @@ const Login = () => {
           disabled={isBtnNotActive}
           style={{ padding: '0 20px' }}
         >
-          Log in
+          Register
         </button>
       </form>
+
+      <Link to="/signin">Sign in</Link>
 
       <Toast />
     </Section>
   );
 };
 
-export default Login;
+export default Signup;

@@ -13,7 +13,7 @@ import { authReducer } from './auth/authSlice';
 const rootPersistConfig = {
   key: 'phoneBook',
   storage,
-  whitelist: ['token'],
+  whitelist: ['user'],
 };
 
 const rootReducer = combineReducers({

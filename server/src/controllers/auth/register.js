@@ -1,9 +1,11 @@
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
-const { nanoid } = require('nanoid');
+const jwt = require('jsonwebtoken');
 
 const { User } = require('../../models/User');
 const { HttpError, sendEmail } = require('../../utils');
+
+const { ACCESS_SECRET_KEY } = process.env;
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -16,19 +18,23 @@ const register = async (req, res) => {
   }
   const hashPassword = await bcrypt.hash(password, 10);
   const avatarUrl = gravatar.url(email);
-  const verificationCode = nanoid();
+  const verificationCode = (Math.random() * 100000).toFixed(0);
 
-  await sendEmail(email, verificationCode);
+  // await sendEmail(email, verificationCode);
 
-  const newUser = await User.create({
+  const user = await User.create({
     ...req.body,
     password: hashPassword,
     avatarUrl,
     verificationCode,
   });
+
+  const payload = { id: user._id };
+  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '23h' });
+  const newUser = await User.findByIdAndUpdate(user._id, { token }, { new: true });
   if (!newUser) throw HttpError(403);
 
-  res.status(201).json({ name: newUser.name, email: newUser.email, avatarUrl: newUser.avatarUrl });
+  res.status(201).json({ status: 'success', code: 201, result: { user: newUser } });
 };
 
 module.exports = register;

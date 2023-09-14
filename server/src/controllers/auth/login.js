@@ -21,7 +21,7 @@ const login = async (req, res) => {
   const newUser = await User.findByIdAndUpdate(user._id, { token }, { new: true });
   if (!newUser) throw HttpError(403);
 
-  res.status(200).json({ name: newUser.name, token: newUser.token });
+  res.status(200).json({ status: 'success', code: 201, result: { user: newUser } });
 };
 
 module.exports = login;

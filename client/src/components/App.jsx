@@ -2,17 +2,19 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Section } from 'components/Section/Section';
-import { Header } from 'layouts/Header/Header';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import { OvalLoader } from 'components/Loader/OvalLoader';
-import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRote } from './PrivateRoute';
+
+import PublicRoutes from 'routes/PublicRoutes';
+import PrivateRoutes from 'routes/PrivateRoutes';
 
 import Home from 'pages/Home';
-const Register = lazy(() => import('pages/Register'));
-const Login = lazy(() => import('pages/Login'));
+const Signup = lazy(() => import('pages/Signup'));
+const Signin = lazy(() => import('pages/Signin'));
+const SharedLayuot = lazy(() => import('layouts/SharedLayuot/SharedLayuot'));
 const Contacts = lazy(() => import('pages/Contacts'));
+const Profile = lazy(() => import('pages/Profile'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -24,27 +26,24 @@ export const App = () => {
 
   return (
     <Section>
-      {!isRefreshing ? (
+      {isRefreshing ? (
+        <OvalLoader />
+      ) : (
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/" element={<Header />}>
-            <Route path="/register" element={restrictedRoute(Register)} />
-            <Route path="/login" element={restrictedRoute(Login)} />
-            <Route path="/contacts" element={privateRoute(Contacts)} />
+          <Route element={<PublicRoutes />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+          </Route>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/" element={<SharedLayuot />}>
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      ) : (
-        <OvalLoader />
       )}
     </Section>
   );
 };
-
-const privateRoute = component => (
-  <PrivateRote component={component} redirectTo="/login" />
-);
-
-const restrictedRoute = component => (
-  <RestrictedRoute component={component} redirectTo="/contacts" />
-);

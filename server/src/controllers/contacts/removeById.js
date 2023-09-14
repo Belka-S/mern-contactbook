@@ -7,7 +7,7 @@ const removeById = async (req, res) => {
   const deletedContact = await Contact.findByIdAndDelete(id);
   if (!deletedContact) throw HttpError(403);
 
-  res.status(200).json({ status: 'success', code: 200, result: deletedContact });
+  res.status(200).json({ status: 'success', code: 200, result: { contact: deletedContact } });
 };
 
 module.exports = removeById;

@@ -7,7 +7,7 @@ const getById = async (req, res) => {
   const contact = await Contact.findById(id);
   if (!contact) throw HttpError(403);
 
-  res.status(200).json({ status: 'success', code: 200, result: contact });
+  res.status(200).json({ status: 'success', code: 200, result: { contact } });
 };
 
 module.exports = getById;

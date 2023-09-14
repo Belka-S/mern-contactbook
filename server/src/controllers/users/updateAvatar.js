@@ -18,7 +18,7 @@ const updateAvatar = async (req, res) => {
     const user = await User.findByIdAndUpdate(req.user._id, { avatarUrl }, { new: true });
     if (!user) throw HttpError(403);
 
-    res.status(200).json({ status: 'success', code: 200, result: user });
+    res.status(200).json({ status: 'success', code: 200, result: { user } });
   } catch (error) {
     return error;
   }

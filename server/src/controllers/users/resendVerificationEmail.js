@@ -10,7 +10,9 @@ const resendVerificationEmail = async (req, res) => {
   const newUser = await sendEmail(email, user.verificationCode);
   if (!newUser) throw HttpError(403);
 
-  res.status(200).json({ message: `Email sent to ${email}` });
+  res
+    .status(200)
+    .json({ status: 'success', code: 200, result: { message: `Email sent to ${email}` } });
 };
 
 module.exports = resendVerificationEmail;

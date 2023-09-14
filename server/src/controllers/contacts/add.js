@@ -6,7 +6,7 @@ const add = async (req, res) => {
   const newContact = await Contact.create({ ...req.body, owner });
   if (!newContact) throw HttpError(403);
 
-  res.status(201).json({ status: 'success', code: 201, result: newContact });
+  res.status(201).json({ status: 'success', code: 201, result: { contact: newContact } });
 };
 
 module.exports = add;

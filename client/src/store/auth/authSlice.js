@@ -9,8 +9,8 @@ const thunkArr = [
 const fn = type => thunkArr.map(el => el[type]);
 
 const initialState = {
-  user: { username: null, email: null },
-  token: null,
+  user: { username: null, email: null, token: null },
+
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
@@ -36,9 +36,10 @@ const authSlice = createSlice({
 export const authReducer = authSlice.reducer;
 
 const handleAuthSucsess = (state, action) => {
-  state.user = action.payload.name;
-  state.token = action.payload.token;
-  state.isLoggedIn = true;
+  const { user } = action.payload.result;
+
+  state.user = user;
+  state.isLoggedIn = user.token ? true : false;
   state.error = false;
 };
 
@@ -47,7 +48,9 @@ const handleLogoutSucsess = state => {
 };
 
 const handleRefreshSucsess = (state, action) => {
-  state.user = action.payload;
+  const { user } = action.payload.result;
+
+  state.user = user;
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.error = false;

@@ -45,7 +45,7 @@ const Signup = () => {
     <Section title="Sign up">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
-          Username:
+          Name:
           <input
             type="text"
             name={INPUT_NAME.USERNAME}

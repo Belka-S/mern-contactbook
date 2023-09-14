@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
   );
   if (!contacts) throw HttpError(403);
 
-  res.status(200).json({ status: `success`, code: 200, result: contacts });
+  res.status(200).json({ status: 'success', code: 200, result: { contacts } });
 };
 
 module.exports = getAll;

@@ -1,6 +1,6 @@
 const { HttpError } = require('../../utils');
 
-const { Contact } = require('../../models/Contact');
+const { Contact } = require('../../models');
 
 const getById = async (req, res) => {
   const { id } = req.params;

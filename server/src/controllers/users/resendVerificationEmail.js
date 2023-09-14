@@ -1,4 +1,4 @@
-const { User } = require('../../models/User');
+const { User } = require('../../models');
 const { HttpError, sendEmail } = require('../../utils');
 
 const resendVerificationEmail = async (req, res) => {

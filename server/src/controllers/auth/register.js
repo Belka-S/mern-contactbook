@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 
-const { User } = require('../../models/User');
+const { User } = require('../../models');
 const { HttpError, sendEmail } = require('../../utils');
 
 const { ACCESS_SECRET_KEY } = process.env;

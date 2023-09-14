@@ -18,12 +18,12 @@ const userSchema = new Schema(
     verifiedEmail: { type: Boolean, default: false, required },
     verificationCode: { type: String, default: null },
   },
-
   { versionKey: false, timestamps: true },
 );
 
-userSchema.post('save', mongooseError); // Change error status
+// Change error status
+userSchema.post('save', mongooseError);
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 module.exports = { User };

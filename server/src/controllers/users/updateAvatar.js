@@ -2,7 +2,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const sharp = require('sharp');
 
-const { User } = require('../../models/User');
+const { User } = require('../../models');
 const { HttpError } = require('../../utils');
 
 const updateAvatar = async (req, res) => {

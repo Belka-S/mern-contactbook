@@ -19,13 +19,14 @@ const contactSchema = new Schema(
     birthday: { type: String, match: regex('date'), default: '' },
     group: { type: String, enum: groupList, default: 'private' },
     favorite: { type: Boolean, default: false },
-    owner: { type: Schema.Types.ObjectId, ref: 'user', required: true },
+    owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { versionKey: false, timestamps: true },
 );
 
-contactSchema.post('save', mongooseError); // Change error status
+// Change error status
+contactSchema.post('save', mongooseError);
 
-const Contact = model('contact', contactSchema);
+const Contact = model('Contact', contactSchema);
 
-module.exports = { Contact, groupList };
+module.exports = { Contact };

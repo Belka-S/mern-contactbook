@@ -1,4 +1,4 @@
-const { User } = require('../../models/User');
+const { User } = require('../../models');
 const { HttpError } = require('../../utils');
 
 const verifyEmail = async (req, res) => {

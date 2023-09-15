@@ -4,8 +4,9 @@ const sharp = require('sharp');
 
 const { User } = require('../../models');
 const { HttpError } = require('../../utils');
+const { ctrlWrapper } = require('../../decorators');
 
-const updateAvatar = async (req, res) => {
+const updateAvatar = ctrlWrapper(async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
   const fileName = `${req.user._id}_${originalname}`;
   const resultUpload = path.join(__dirname, '..', 'public', 'avatars', fileName);
@@ -22,6 +23,6 @@ const updateAvatar = async (req, res) => {
   } catch (error) {
     return error;
   }
-};
+});
 
 module.exports = updateAvatar;

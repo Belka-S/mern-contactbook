@@ -4,10 +4,11 @@ const jwt = require('jsonwebtoken');
 
 const { User } = require('../../models');
 const { HttpError, sendEmail } = require('../../utils');
+const { ctrlWrapper } = require('../../decorators');
 
 const { ACCESS_SECRET_KEY } = process.env;
 
-const register = async (req, res) => {
+const register = ctrlWrapper(async (req, res) => {
   const { name, email, password } = req.body;
 
   if (await User.findOne({ name })) {
@@ -35,6 +36,6 @@ const register = async (req, res) => {
   if (!newUser) throw HttpError(403);
 
   res.status(201).json({ status: 'success', code: 201, result: { user: newUser } });
-};
+});
 
 module.exports = register;

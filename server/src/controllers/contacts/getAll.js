@@ -1,7 +1,8 @@
 const { Contact } = require('../../models');
 const { HttpError } = require('../../utils');
+const { ctrlWrapper } = require('../../decorators');
 
-const getAll = async (req, res) => {
+const getAll = ctrlWrapper(async (req, res) => {
   const owner = req.user._id;
   const { page = 1, limit = 5, ...query } = req.query;
   const projection = '-createdAt -updatedAt';
@@ -11,6 +12,6 @@ const getAll = async (req, res) => {
   if (!contacts) throw HttpError(403);
 
   res.status(200).json({ status: 'success', code: 200, result: { contacts } });
-};
+});
 
 module.exports = getAll;

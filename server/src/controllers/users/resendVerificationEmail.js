@@ -1,7 +1,8 @@
 const { User } = require('../../models');
 const { HttpError, sendEmail } = require('../../utils');
+const { ctrlWrapper } = require('../../decorators');
 
-const resendVerificationEmail = async (req, res) => {
+const resendVerificationEmail = ctrlWrapper(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
   if (!user) throw HttpError(401, 'Email not found');
@@ -13,6 +14,6 @@ const resendVerificationEmail = async (req, res) => {
   res
     .status(200)
     .json({ status: 'success', code: 200, result: { message: `Email sent to ${email}` } });
-};
+});
 
 module.exports = resendVerificationEmail;

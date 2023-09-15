@@ -4,12 +4,18 @@ import { useDispatch } from 'react-redux';
 
 import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
+import { cleanContactsThunk } from 'store/contacts/contactsOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import { OvalLoader } from 'components/Loader/OvalLoader';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const { isLoggedIn, userEmail } = useAuth();
+
+  const handleLogOut = () => {
+    dispatch(logoutThunk());
+    dispatch(cleanContactsThunk());
+  };
 
   return (
     <>
@@ -21,7 +27,7 @@ export const Header = () => {
         {isLoggedIn && (
           <Div>
             <p>{userEmail}</p>
-            <button onClick={() => dispatch(logoutThunk())}>Log out</button>
+            <button onClick={handleLogOut}>Log out</button>
           </Div>
         )}
       </StyledHeader>

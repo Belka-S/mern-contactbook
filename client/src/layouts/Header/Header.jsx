@@ -6,7 +6,7 @@ import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
 import { cleanContactsThunk } from 'store/contacts/contactsOperations';
 import { useAuth } from 'utils/hooks/useAuth';
-import { OvalLoader } from 'components/Loader/OvalLoader';
+import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
 export const Header = () => {
   const dispatch = useDispatch();

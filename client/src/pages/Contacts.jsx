@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { OvalLoader } from 'components/Loader/OvalLoader';
+import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
-import { Section } from 'components/Section/Section';
+import { Container } from 'components/common/Container/Container';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
@@ -11,18 +11,18 @@ const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Section mainTitle={'Contacts'}>
+    <>
+      <Container pi="0" mttl="Contacts">
         <Filter /> <br />
         <ContactList />
-      </Section>
+      </Container>
 
-      <Section title={'Phonebook'}>
+      <Container pi="0" ttl="Phonebook">
         <ContactForm />
-      </Section>
+      </Container>
 
       {isLoading && <OvalLoader />}
-    </div>
+    </>
   );
 };
 

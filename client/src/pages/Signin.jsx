@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Section } from 'components/Section/Section';
+import { Container } from 'components/common/Container/Container';
 import { INPUT_NAME } from 'utils/constants/constants';
 import { loginThunk } from 'store/auth/authOperations';
-import { Toast, notify } from 'components/Toast/Toast';
+import { Toast, notify } from 'components/common/Toast/Toast';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Signin = () => {
   };
 
   return (
-    <Section title="Sign in">
+    <Container pt="40px" ttl="Sign in">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
           E-mail:
@@ -74,7 +74,7 @@ const Signin = () => {
       <Link to="/signup">Sign up</Link>
 
       <Toast />
-    </Section>
+    </Container>
   );
 };
 

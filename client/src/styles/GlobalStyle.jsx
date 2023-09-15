@@ -1,9 +1,14 @@
-import 'modern-normalize';
+// --------------- PostCSS Normalize --------------- //
+import '@csstools/normalize.css';
+import 'sanitize.css';
 
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-/* Style */
+/* css import of PostCSS Normalize */
+// @import-normalize;
+
+// --------------- Common elements --------------- //
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,30 +21,10 @@ body {
   letter-spacing: 0.02em;
   line-height: 1.5;
   color: #000000;
-  background-color: #cfdae5;
-
-  padding-left: 20px;
-  padding-right: 20px;
-   @media screen and (min-width: 320px) {
-    // max-width: 300px;
-  }
-  @media screen and (min-width: 768px) {
-    // max-width: 700px;
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-  @media screen and (min-width: 1280px) {
-    // max-width: 1150px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: #d5d7de;
 }
 
-/* Reset */
+// --------------------- Reset --------------------- //
 html {
   box-sizing: border-box;
 }
@@ -80,6 +65,10 @@ img {
   height: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
 button,
 th,
 td {
@@ -90,6 +79,7 @@ table {
   border-collapse: collapse;
 }
 
+// Input reset
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -103,5 +93,4 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: rgb(0, 0, 0);
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   transition: background-color 5000s ease-in-out 0s;
-}
-`;
+}`;

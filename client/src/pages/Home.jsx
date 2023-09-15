@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-import { Section } from 'components/Section/Section';
+import { Container } from 'components/common/Container/Container';
 
 const Home = () => (
-  <Section mainTitle="PhoneBook">
+  <Container pt="40px" mttl="PhoneBook">
     <NavLink to="/signin">Log in</NavLink>
-  </Section>
+  </Container>
 );
 
 export default Home;

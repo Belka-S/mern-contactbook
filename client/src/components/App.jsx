@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { Section } from 'components/Section/Section';
+
+import loadWebFonts from 'styles/Fonts';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
-import { OvalLoader } from 'components/Loader/OvalLoader';
+import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
 import PublicRoutes from 'routes/PublicRoutes';
 import PrivateRoutes from 'routes/PrivateRoutes';
@@ -21,11 +22,15 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
+    loadWebFonts();
+  }, []);
+
+  useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
   return (
-    <Section>
+    <>
       {isRefreshing ? (
         <OvalLoader />
       ) : (
@@ -44,6 +49,6 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       )}
-    </Section>
+    </>
   );
 };

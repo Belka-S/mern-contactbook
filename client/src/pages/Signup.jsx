@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Container } from 'components/common/Container/Container';
 import { INPUT_NAME } from 'utils/constants/constants';
 import { registerThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import { Toast, notify } from 'components/common/Toast/Toast';
-import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const dispatch = useDispatch();

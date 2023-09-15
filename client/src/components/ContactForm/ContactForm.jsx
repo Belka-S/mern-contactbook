@@ -1,10 +1,11 @@
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactThunk } from 'store/contacts/contactsOperations';
+
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
 import { selectContacts } from 'store/seletors';
+import { addContactThunk } from 'store/contacts/contactsOperations';
 
 const ContactSchema = object().shape({
   name: string()

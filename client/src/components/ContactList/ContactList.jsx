@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectFilterValue } from 'store/seletors';
+
 import { List } from './ContactList.styled';
+import { selectContacts, selectFilterValue } from 'store/seletors';
 import { fetchContactsThunk } from 'store/contacts/contactsOperations';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 

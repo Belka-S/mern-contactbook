@@ -1,14 +1,14 @@
-// --------------- PostCSS Normalize --------------- //
+// -------------- PostCSS Normalize -------------- //
 import '@csstools/normalize.css';
 import 'sanitize.css';
 
+// ---------------- Global Styles ---------------- //
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-/* css import of PostCSS Normalize */
-// @import-normalize;
+// @import-normalize; // css import for PostCSS Normalize
 
-// --------------- Common elements --------------- //
+// --------------- Common Elements --------------- //
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -24,7 +24,7 @@ body {
   background-color: #d5d7de;
 }
 
-// --------------------- Reset --------------------- //
+// -------------------- Reset -------------------- //
 html {
   box-sizing: border-box;
 }
@@ -79,7 +79,7 @@ table {
   border-collapse: collapse;
 }
 
-// Input reset
+// --------------- Input reset --------------- //
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

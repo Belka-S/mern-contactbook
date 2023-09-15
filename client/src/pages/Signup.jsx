@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   return (
-    <Container pt="40px" ttl="Sign up">
+    <Container pt="40px" t2="Sign up">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
           Name:

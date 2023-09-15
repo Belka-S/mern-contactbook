@@ -12,12 +12,12 @@ const Contacts = () => {
 
   return (
     <>
-      <Container pi="0" mttl="Contacts">
+      <Container pi="0" t1="Contacts">
         <Filter /> <br />
         <ContactList />
       </Container>
 
-      <Container pi="0" ttl="Phonebook">
+      <Container pi="0" t3="Add Contact">
         <ContactForm />
       </Container>
 

@@ -39,7 +39,7 @@ const Signin = () => {
   };
 
   return (
-    <Container pt="40px" ttl="Sign in">
+    <Container pt="40px" t2="Sign in">
       <form onSubmit={handleSubmit} autoComplete="off">
         <label style={{ marginRight: '30px' }}>
           E-mail:

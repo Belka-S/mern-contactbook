@@ -1,28 +1,33 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
+import { FlexWrapper } from 'components/common/FlexWrapper/FlexWrapper';
 import { Container } from 'components/common/Container/Container';
-import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { selectIsLoading } from 'store/seletors';
+import { selectIsLoading, selectContacts } from 'store/seletors';
 
 const Contacts = () => {
+  const [activeContactId, setActiveContactId] = useState('');
   const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectContacts);
+
+  const activeContact = contacts.find(
+    contact => contact._id === activeContactId
+  );
 
   return (
-    <>
-      <Container pi="0" t1="Contacts">
+    <FlexWrapper>
+      <Container pi="0">
         <Filter /> <br />
-        <ContactList />
+        <ContactList setActiveContactId={setActiveContactId} />
       </Container>
 
-      <Container pi="0" t3="Add Contact">
-        <ContactForm />
-      </Container>
+      <Container t2={activeContact?.name} t3={activeContact?.phone}></Container>
 
       {isLoading && <OvalLoader />}
-    </>
+    </FlexWrapper>
   );
 };
 

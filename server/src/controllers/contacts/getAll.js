@@ -8,7 +8,9 @@ const getAll = ctrlWrapper(async (req, res) => {
   const projection = '-createdAt -updatedAt';
   const skip = (page - 1) * limit;
   // const total = await Contact.countDocuments({ owner, ...query });
-  const contacts = await Contact.find({ owner, ...query }, projection, { skip, limit }); // .populate('owner', 'name email',);
+  const contacts = await Contact.find({ owner, ...query }, projection, { skip, limit })
+    // .populate('owner', 'name email')
+    .sort({ name: 1 });
   if (!contacts) throw HttpError(403);
 
   res.status(200).json({ status: 'success', code: 200, result: { contacts } });

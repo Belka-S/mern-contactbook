@@ -3,7 +3,7 @@ import { BsSearch } from 'react-icons/bs';
 
 import { Div, Button } from './Filter.styled';
 import { selectFilterValue } from 'store/seletors';
-import { setFilterValue } from 'store/contacts/filterSlice';
+import { setFilterValue } from 'store/contacts/contactsSlice';
 
 export const Filter = () => {
   const filterValue = useSelector(selectFilterValue);

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
-import { cleanContactsThunk } from 'store/contacts/contactsOperations';
+import { cleanContacts } from 'store/contacts/contactsSlice';
 import { useAuth } from 'utils/hooks/useAuth';
 import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
@@ -14,7 +14,7 @@ export const Header = () => {
 
   const handleLogOut = () => {
     dispatch(logoutThunk());
-    dispatch(cleanContactsThunk());
+    dispatch(cleanContacts());
   };
 
   return (

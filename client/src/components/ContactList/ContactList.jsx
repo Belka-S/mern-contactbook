@@ -5,8 +5,9 @@ import { List } from './ContactList.styled';
 import { selectContacts, selectFilterValue } from 'store/seletors';
 import { fetchContactsThunk } from 'store/contacts/contactsOperations';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
+import { setActiveContact } from 'store/contacts/contactsSlice';
 
-export const ContactList = ({ setActiveContactId }) => {
+export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filterValue = useSelector(selectFilterValue);
@@ -23,7 +24,10 @@ export const ContactList = ({ setActiveContactId }) => {
     const activeEl = e.target.closest('ul').querySelector('.active');
     activeEl?.classList.remove('active');
     e.target.classList.add('active');
-    setActiveContactId(e.target.dataset.id);
+
+    const { id } = e.target.dataset;
+    const activeContact = contacts.find(el => el._id === id);
+    dispatch(setActiveContact(activeContact));
   };
 
   return (

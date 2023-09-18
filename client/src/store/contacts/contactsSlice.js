@@ -3,7 +3,6 @@ import * as operations from './contactsOperations';
 
 const thunkArr = [
   operations.fetchContactsThunk,
-  operations.cleanContactsThunk,
   operations.addContactThunk,
   operations.deleteContactThunk,
 ];
@@ -12,9 +11,6 @@ const fn = type => thunkArr.map(el => el[type]);
 // contacts
 const handleFetchContacts = (_, action) => {
   return action.payload.result.contacts;
-};
-const handleCleanContacts = (_, action) => {
-  return action.payload;
 };
 const handleAddContact = (state, action) => {
   state.push(action.payload.result.contact);
@@ -27,10 +23,12 @@ const handleDeleteContact = (state, action) => {
 const contactsItemsSlice = createSlice({
   name: 'items',
   initialState: [],
+  reducers: {
+    cleanContacts: state => [],
+  },
   extraReducers: builder => {
     builder
       .addCase(operations.fetchContactsThunk.fulfilled, handleFetchContacts)
-      .addCase(operations.cleanContactsThunk.fulfilled, handleCleanContacts)
       .addCase(operations.addContactThunk.fulfilled, handleAddContact)
       .addCase(operations.deleteContactThunk.fulfilled, handleDeleteContact);
   },
@@ -60,8 +58,32 @@ const contactsErrorSlice = createSlice({
   },
 });
 
+// filter slice
+const contactsFilterSlice = createSlice({
+  name: 'filter',
+  initialState: '',
+  reducers: {
+    setFilterValue: (_, action) => action.payload,
+  },
+});
+
+// active contact slice
+const contactsActiveItemSlice = createSlice({
+  name: 'active',
+  initialState: null,
+  reducers: {
+    setActiveContact: (_, action) => action.payload,
+  },
+});
+
 export const contactsReducer = combineReducers({
   items: contactsItemsSlice.reducer,
   isLoading: contactsIsLoadingSlice.reducer,
   error: contactsErrorSlice.reducer,
+  filter: contactsFilterSlice.reducer,
+  activeItem: contactsActiveItemSlice.reducer,
 });
+
+export const { cleanContacts } = contactsItemsSlice.actions;
+export const { setActiveContact } = contactsActiveItemSlice.actions;
+export const { setFilterValue } = contactsFilterSlice.actions;

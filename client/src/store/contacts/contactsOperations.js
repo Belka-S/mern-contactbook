@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as connectAPI from 'servises/connectAPI';
 
 export const fetchContactsThunk = createAsyncThunk(
-  'contacts/fetchContacts',
+  'items/fetchContacts',
   async (_, thunkAPI) => {
     try {
       return await connectAPI.fetchContacts();
@@ -12,13 +12,8 @@ export const fetchContactsThunk = createAsyncThunk(
   }
 );
 
-export const cleanContactsThunk = createAsyncThunk(
-  'contacts/cleanContacts',
-  (_, __) => []
-);
-
 export const addContactThunk = createAsyncThunk(
-  'contacts/addContact',
+  'items/addContact',
   async (contact, thunkAPI) => {
     try {
       return await connectAPI.addContact(contact);
@@ -29,7 +24,7 @@ export const addContactThunk = createAsyncThunk(
 );
 
 export const deleteContactThunk = createAsyncThunk(
-  'contacts/deleteContact',
+  'items/deleteContact',
   async (id, thunkAPI) => {
     try {
       return await connectAPI.deleteContact(id);

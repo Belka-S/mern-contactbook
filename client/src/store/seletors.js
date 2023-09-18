@@ -4,6 +4,7 @@ export const selectIsLoading = state => state.contacts.isLoading;
 export const selectActiveContact = state => state.contacts.activeItem;
 export const selectFilterValue = state => state.contacts.filter;
 
+export const selectUserId = state => state.auth.user._id;
 export const selectUserName = state => state.auth.user.name;
 export const selectUserEmail = state => state.auth.user.email;
 export const selectToken = state => state.auth.user.token;

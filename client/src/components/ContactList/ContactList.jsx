@@ -1,30 +1,33 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { List } from './ContactList.styled';
-import { selectContacts, selectFilterValue } from 'store/seletors';
 import { fetchContactsThunk } from 'store/contacts/contactsOperations';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import { setActiveContact } from 'store/contacts/contactsSlice';
+import { useContacts } from 'utils/hooks';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filterValue = useSelector(selectFilterValue);
+  const { contacts, activeContact, filterValue, isLoading } = useContacts();
 
   useEffect(() => {
     dispatch(fetchContactsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    let activeEl = document.querySelector('li[data-id].active');
+    activeEl?.classList.remove('active');
+
+    activeEl = document.querySelector(`li[data-id="${activeContact?._id}"]`);
+    activeEl?.classList.add('active');
+  }, [activeContact, isLoading]);
 
   const filtredContacts = contacts.filter(el => {
     return el.name.toLowerCase().includes(filterValue.toLowerCase());
   });
 
   const handleClick = e => {
-    const activeEl = e.target.closest('ul').querySelector('.active');
-    activeEl?.classList.remove('active');
-    e.target.classList.add('active');
-
     const { id } = e.target.dataset;
     const activeContact = contacts.find(el => el._id === id);
     dispatch(setActiveContact(activeContact));

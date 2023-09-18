@@ -9,15 +9,21 @@ import { authReducer } from './auth/authSlice';
 
 // ----------------persistReducer---------------- //
 
-const rootPersistConfig = {
-  key: 'phoneBook',
+const authPersistConfig = {
+  key: 'auth',
   storage,
   whitelist: ['user'],
 };
 
+const contactsPersistConfig = {
+  key: 'contacts',
+  storage,
+  whitelist: ['filter', 'activeItem'],
+};
+
 const rootReducer = combineReducers({
-  auth: persistReducer(rootPersistConfig, authReducer),
-  contacts: contactsReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
+  contacts: persistReducer(contactsPersistConfig, contactsReducer),
 });
 
 // ----------------configureStore---------------- //

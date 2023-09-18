@@ -16,10 +16,14 @@ export const ContactList = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    // remove previous '.active' class
     let activeEl = document.querySelector('li[data-id].active');
     activeEl?.classList.remove('active');
-
+    // set '.active' class
     activeEl = document.querySelector(`li[data-id="${activeContact?._id}"]`);
+    if (!activeEl) {
+      activeEl = document.querySelector('li[data-id]');
+    }
     activeEl?.classList.add('active');
   }, [activeContact, isLoading]);
 

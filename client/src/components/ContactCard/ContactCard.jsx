@@ -2,9 +2,9 @@ import { useAuth, useContacts } from 'utils/hooks';
 
 const ContactCard = () => {
   const { userId } = useAuth();
-  const { activeContact } = useContacts();
+  const { activeContact, isLoading } = useContacts();
 
-  const shouldRender = userId === activeContact?.owner;
+  const shouldRender = !isLoading && userId === activeContact?.owner;
   const off = ['_id', 'name', 'group', 'favorite', 'owner'];
 
   return (

@@ -9,7 +9,7 @@ import { useContacts } from 'utils/hooks';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const { contacts, activeContact, filterValue, isLoading } = useContacts();
+  const { contacts, activeContact, filterValue } = useContacts();
 
   useEffect(() => {
     dispatch(fetchContactsThunk());
@@ -23,9 +23,11 @@ export const ContactList = () => {
     activeEl = document.querySelector(`li[data-id="${activeContact?._id}"]`);
     if (!activeEl) {
       activeEl = document.querySelector('li[data-id]');
+      const activeContact = contacts.find(el => el._id === activeEl.dataset.id);
+      dispatch(setActiveContact(activeContact));
     }
     activeEl?.classList.add('active');
-  }, [activeContact, isLoading]);
+  }, [activeContact, contacts, dispatch]);
 
   const filtredContacts = contacts.filter(el => {
     return el.name.toLowerCase().includes(filterValue.toLowerCase());

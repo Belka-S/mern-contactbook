@@ -28,7 +28,7 @@ export const List = styled.ul`
 
     button {
       margin-left: auto;
-      padding: 0 20px;
+      padding: 0;
       background-color: transparent;
       border-color: transparent;
       font-weight: 700;

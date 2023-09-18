@@ -1,5 +1,24 @@
+import { useAuth, useContacts } from 'utils/hooks';
+
 const ContactCard = () => {
-  return <div>ContactCard</div>;
+  const { userId } = useAuth();
+  const { activeContact } = useContacts();
+
+  const shouldRender = userId === activeContact?.owner;
+  const off = ['_id', 'name', 'group', 'favorite', 'owner'];
+
+  return (
+    <ul>
+      {shouldRender &&
+        Object.keys(activeContact).map(
+          key =>
+            !off.includes(key) &&
+            activeContact[key] && (
+              <li key={key}>{`${key}: ${activeContact[key]}`}</li>
+            )
+        )}
+    </ul>
+  );
 };
 
 export default ContactCard;

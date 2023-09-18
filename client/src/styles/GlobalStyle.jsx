@@ -1,3 +1,5 @@
+// @import-normalize; // css import for PostCSS Normalize
+
 // -------------- PostCSS Normalize -------------- //
 import '@csstools/normalize.css';
 import 'sanitize.css';
@@ -6,7 +8,6 @@ import 'sanitize.css';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-// @import-normalize; // css import for PostCSS Normalize
 
 // --------------- Common Elements --------------- //
 body {

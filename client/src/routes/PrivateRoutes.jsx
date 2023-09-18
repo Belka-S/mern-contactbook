@@ -6,7 +6,6 @@ import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
 const PrivateRoutes = () => {
   const location = useLocation();
-  console.log('location: ', location.pathname);
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (

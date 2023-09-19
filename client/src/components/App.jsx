@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 
-import loadWebFonts from 'styles/fonts';
+import loadWebFonts from 'styles/webFonts';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import { OvalLoader } from 'components/common/Loader/OvalLoader';

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
+import { themes } from 'styles/themes';
 
 export const StyledHeader = styled.header`
   position: sticky;
@@ -27,8 +28,7 @@ export const NavLink = styled(Link)`
   }
 
   &.active {
-    color: white;
-    background-color: tomato;
+    color: ${themes.colors.accent};
   }
 
   /* &:global(.active) { } */

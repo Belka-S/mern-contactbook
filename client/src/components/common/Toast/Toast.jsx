@@ -1,4 +1,5 @@
 import toast, { Toaster } from 'react-hot-toast';
+import { themes } from 'styles/themes';
 
 export const notify = text => toast(text);
 
@@ -14,8 +15,8 @@ export const Toast = () => (
       className: '',
       duration: 2000,
       style: {
-        background: 'tomato',
-        color: '#fff',
+        background: `${themes.colors.failed}`,
+        color: `${themes.colors.white}`,
         fontSize: '20px',
       },
 

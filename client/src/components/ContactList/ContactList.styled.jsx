@@ -19,11 +19,17 @@ export const List = styled.ul`
     gap: 5px;
     cursor: pointer;
 
+    &:hover,
+    &:focus {
+      color: ${themes.colors.hovered};
+    }
+
     &::before {
       counter-increment: section;
       content: counters(section, '.') '.';
     }
 
+    /* temprary */
     button {
       margin-left: auto;
       padding: 0;
@@ -41,5 +47,10 @@ export const List = styled.ul`
   & .active {
     background-color: ${themes.colors.saccess};
     color: ${themes.colors.white};
+
+    &:hover,
+    &:focus {
+      color: ${themes.colors.white};
+    }
   }
 `;

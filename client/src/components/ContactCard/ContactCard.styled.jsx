@@ -2,13 +2,11 @@ import styled from 'styled-components';
 import { themes } from 'styles/themes';
 
 export const Div = styled.div`
+  margin-bottom: 10px;
+  margin-left: 21%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 10px;
-  margin-bottom: 10px;
-  /* justify-content: center; */
-
-  margin-left: 21%;
 
   & a {
     padding: 3px;
@@ -31,7 +29,7 @@ export const Div = styled.div`
     }
 
     & svg {
-      fill: ${themes.colors.hovered};
+      fill: ${themes.colors.accent};
     }
   }
 `;

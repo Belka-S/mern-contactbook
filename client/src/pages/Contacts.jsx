@@ -1,7 +1,7 @@
 import { OvalLoader } from 'components/common/Loader/OvalLoader';
 
 import { useAuth, useContacts } from 'utils/hooks';
-import { FlexWrapper } from 'components/common/FlexWrapper/FlexWrapper';
+import { GrigWrap } from 'components/common/GrigWrap/GrigWrap';
 import { Container } from 'components/common/Container/Container';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
@@ -14,18 +14,18 @@ const Contacts = () => {
   const title = userId === activeContact?.owner ? activeContact?.name : '';
 
   return (
-    <FlexWrapper>
+    <GrigWrap>
       <Container pi="0">
         <Filter /> <br />
         <ContactList />
       </Container>
 
-      <Container t2={title}>
+      <Container pi="0" mt="0 0 10px 21%" t2={title}>
         <ContactCard />
       </Container>
 
       {isLoading && <OvalLoader />}
-    </FlexWrapper>
+    </GrigWrap>
   );
 };
 

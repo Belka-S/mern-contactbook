@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { themes } from 'styles/themes';
 
 const heightSize = '30px';
 const fontSize = '14px';
 
 export const Div = styled.div`
   width: 100%;
+  margin-bottom: 15px;
   position: relative;
   display: inline-block;
 
@@ -12,14 +14,15 @@ export const Div = styled.div`
     width: 100%;
     height: ${heightSize};
     padding-inline: ${heightSize};
-    border: 1px solid #b1b1b1;
+
+    border: 1px solid ${themes.colors.border};
     border-radius: 5px;
     outline: transparent;
     transition: border-color 250ms;
 
     &:hover,
     &:focus {
-      border-color: blue;
+      border-color: ${themes.colors.hovered};
     }
 
     &::placeholder {
@@ -54,17 +57,18 @@ export const Div = styled.div`
 `;
 
 export const Button = styled.button`
+  width: 18px;
+  height: 18px;
+
   position: absolute;
   top: 50%;
   right: calc(${heightSize} * 0.55);
-  width: 20px;
-  height: 20px;
 
   transform: translate(50%, -50%);
   border: 1px solid transparent;
   border-radius: 50%;
-  background-color: gray;
-  color: white;
+  background-color: ${themes.colors.border};
+  color: ${themes.colors.white};
   font-weight: 700;
-  font-size: ${fontSize};
+  font-size: 12px;
 `;

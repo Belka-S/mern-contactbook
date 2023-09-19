@@ -39,15 +39,17 @@ export const Div = styled.div`
     h2 {
       margin-bottom: 20px;
     }
+  }
 
-    h1,
-    h2,
-    h3 {
-      margin-bottom: 5px;
-      font-family: 'Montserrat', sans-serif;
-    }
-    h1 {
-      font-size: 30px;
-    }
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 5px;
+    margin: ${({ mt }) => mt};
+    font-family: 'Montserrat', sans-serif;
+    text-align: ${({ ta }) => ta};
+  }
+  h1 {
+    font-size: 30px;
   }
 `;

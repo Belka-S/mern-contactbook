@@ -2,7 +2,7 @@ import { BsTelephone, BsEnvelope, BsWhatsapp, BsGithub } from 'react-icons/bs';
 import { LiaTelegram, LiaViber, LiaLinkedinIn } from 'react-icons/lia';
 import { PiMapPinFill } from 'react-icons/pi';
 
-import { Div } from './ContactCard.styled';
+import { Div, List } from './ContactCard.styled';
 import { useAuth, useContacts } from 'utils/hooks';
 
 const ContactCard = () => {
@@ -19,15 +19,15 @@ const ContactCard = () => {
     },
     email: {
       href: `mailto:${activeContact?.email}`,
-      icon: <BsEnvelope size="15" />,
+      icon: <BsEnvelope size="14" />,
     },
     whatsapp: {
       href: `https://wa.me/${activeContact?.whatsapp}`,
-      icon: <BsWhatsapp size="15" />,
+      icon: <BsWhatsapp size="14" />,
     },
     telegram: {
-      href: `https://t.me/${activeContact?.telegram}`,
-      icon: <LiaTelegram size="20" />,
+      href: `https://t.me/${activeContact?.telegram.replace('@', '')}`,
+      icon: <LiaTelegram size="16" />,
     },
     viber: {
       href: `viber://chat?number:+${activeContact?.viber}`,
@@ -65,16 +65,20 @@ const ContactCard = () => {
               )
           )}
       </Div>
-      <ul>
+      <List>
         {shouldRender &&
           Object.keys(activeContact).map(
             key =>
               !off.includes(key) &&
               activeContact[key] && (
-                <li key={key}>{`${key}: ${activeContact[key]}`}</li>
+                // <li key={key}>{`${key}: ${activeContact[key]}`}</li>
+                <li key={key}>
+                  <span>{`${key}`}</span>
+                  <span>{`${activeContact[key]}`}</span>
+                </li>
               )
           )}
-      </ul>
+      </List>
     </>
   );
 };

@@ -22,7 +22,7 @@ body {
   letter-spacing: 0.02em;
   line-height: 1.5;
   color: #000000;
-  background-color: #d5d7de;
+  background-color: #e0e2e8;
 }
 
 // -------------------- Reset -------------------- //

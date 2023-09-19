@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 
+import { themes } from 'styles/themes';
+
 export const List = styled.ul`
   width: 100%;
-  padding: 20px 0;
+  padding: 0;
   display: inline-flex;
   flex-direction: column;
 
   font-weight: 500;
   counter-reset: section;
-
-  /* counter-reset: section; */
-  /* list-style-type: none; */
+  list-style-type: none;
 
   li {
-    margin-bottom: 10px;
     display: inline-flex;
     padding: 3px 10px 1px;
-    border-radius: 5px;
 
     gap: 5px;
     cursor: pointer;
@@ -35,12 +33,13 @@ export const List = styled.ul`
 
       &:hover,
       &:focus {
-        color: tomato;
+        color: ${themes.colors.failed};
       }
     }
   }
+
   & .active {
-    background-color: teal;
-    color: white;
+    background-color: ${themes.colors.saccess};
+    color: ${themes.colors.white};
   }
 `;

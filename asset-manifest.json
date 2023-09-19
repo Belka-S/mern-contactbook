@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/mern-phonebook/static/css/main.728901e5.css",
-    "main.js": "/mern-phonebook/static/js/main.41d0572e.js",
+    "main.js": "/mern-phonebook/static/js/main.dd08f29a.js",
     "static/js/593.31216738.chunk.js": "/mern-phonebook/static/js/593.31216738.chunk.js",
     "static/js/526.96a3ee7a.chunk.js": "/mern-phonebook/static/js/526.96a3ee7a.chunk.js",
     "static/js/668.87166317.chunk.js": "/mern-phonebook/static/js/668.87166317.chunk.js",
-    "static/js/157.c4b1b517.chunk.js": "/mern-phonebook/static/js/157.c4b1b517.chunk.js",
+    "static/js/864.cf91b302.chunk.js": "/mern-phonebook/static/js/864.cf91b302.chunk.js",
     "static/js/315.9be8f4f6.chunk.js": "/mern-phonebook/static/js/315.9be8f4f6.chunk.js",
     "static/js/218.af5057d0.chunk.js": "/mern-phonebook/static/js/218.af5057d0.chunk.js",
     "static/js/153.3921175d.chunk.js": "/mern-phonebook/static/js/153.3921175d.chunk.js",
     "index.html": "/mern-phonebook/index.html",
     "main.728901e5.css.map": "/mern-phonebook/static/css/main.728901e5.css.map",
-    "main.41d0572e.js.map": "/mern-phonebook/static/js/main.41d0572e.js.map",
+    "main.dd08f29a.js.map": "/mern-phonebook/static/js/main.dd08f29a.js.map",
     "593.31216738.chunk.js.map": "/mern-phonebook/static/js/593.31216738.chunk.js.map",
     "526.96a3ee7a.chunk.js.map": "/mern-phonebook/static/js/526.96a3ee7a.chunk.js.map",
     "668.87166317.chunk.js.map": "/mern-phonebook/static/js/668.87166317.chunk.js.map",
-    "157.c4b1b517.chunk.js.map": "/mern-phonebook/static/js/157.c4b1b517.chunk.js.map",
+    "864.cf91b302.chunk.js.map": "/mern-phonebook/static/js/864.cf91b302.chunk.js.map",
     "315.9be8f4f6.chunk.js.map": "/mern-phonebook/static/js/315.9be8f4f6.chunk.js.map",
     "218.af5057d0.chunk.js.map": "/mern-phonebook/static/js/218.af5057d0.chunk.js.map",
     "153.3921175d.chunk.js.map": "/mern-phonebook/static/js/153.3921175d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.728901e5.css",
-    "static/js/main.41d0572e.js"
+    "static/js/main.dd08f29a.js"
   ]
 }

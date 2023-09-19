@@ -9,6 +9,10 @@ const telegram = /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$/;
 // telegram + phone
 const telegramPhone =
   /(.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$)|(^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$)/;
+// linkedin
+const linkedin = /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/;
+// github
+const github = /^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$/;
 // dd-mm-yyyy
 const date = /^([0-2^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)((19|20)\d{2}$)/;
 // letters, more than two
@@ -22,6 +26,8 @@ module.exports = {
   phone,
   telegram,
   telegramPhone,
+  linkedin,
+  github,
   date,
   country,
   cryptoRandomUUID,

@@ -25,13 +25,13 @@ const ContactCard = () => {
       href: `https://wa.me/${activeContact?.whatsapp}`,
       icon: <BsWhatsapp size="14" />,
     },
-    telegram: {
-      href: `https://t.me/${activeContact?.telegram.replace('@', '')}`,
-      icon: <LiaTelegram size="16" />,
-    },
     viber: {
       href: `viber://chat?number:+${activeContact?.viber}`,
       icon: <LiaViber size="20" />,
+    },
+    telegram: {
+      href: `https://t.me/${activeContact?.telegram.replace('@', '')}`,
+      icon: <LiaTelegram size="16" />,
     },
     linkedin: {
       href: activeContact?.linkedin,

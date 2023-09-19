@@ -12,9 +12,15 @@ export const Div = styled.div`
     width: 100%;
     height: ${heightSize};
     padding-inline: ${heightSize};
-    border: 1px solid gray;
+    border: 1px solid #b1b1b1;
     border-radius: 5px;
     outline: transparent;
+    transition: border-color 250ms;
+
+    &:hover,
+    &:focus {
+      border-color: blue;
+    }
 
     &::placeholder {
       width: fit-content;
@@ -27,6 +33,7 @@ export const Div = styled.div`
 
     &:focus::placeholder {
       left: 0;
+
       transform: translateX(${heightSize});
     }
 

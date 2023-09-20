@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themes } from 'styles/themes';
 
 export const Div = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-left: 21%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

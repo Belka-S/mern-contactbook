@@ -47,7 +47,7 @@ export const Div = styled.div`
       font-size: 20px;
     }
     @media screen and (width >= 1280px) {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-size: 26px;
     }
   }

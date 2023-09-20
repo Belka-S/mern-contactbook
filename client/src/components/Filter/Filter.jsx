@@ -5,7 +5,7 @@ import { Div, Button } from './Filter.styled';
 import { selectFilterValue } from 'store/seletors';
 import { setFilterValue } from 'store/contacts/contactsSlice';
 
-export const Filter = () => {
+const Filter = () => {
   const filterValue = useSelector(selectFilterValue);
   const dispatch = useDispatch();
 
@@ -26,3 +26,5 @@ export const Filter = () => {
     </Div>
   );
 };
+
+export default Filter;

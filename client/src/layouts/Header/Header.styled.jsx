@@ -17,7 +17,7 @@ export const StyledHeader = styled.header`
 
 export const NavLink = styled(Link)`
   padding: 2px 5px;
-  border-radius: 4px;
+  border-radius: ${themes.borderRadius.s};
   text-decoration: none;
   color: black;
   font-weight: 700;
@@ -36,10 +36,12 @@ export const NavLink = styled(Link)`
 
 export const Div = styled.div`
   display: flex;
+  align-items: center;
+
+  font-size: 16px;
   font-weight: 700;
 
   & button {
-    margin-left: 30px;
-    padding: 0 20px;
+    margin-left: 20px;
   }
 `;

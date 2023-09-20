@@ -1,44 +1,36 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-  margin-left: auto;
-  margin-right: auto;
+  margin: ${({ m = '0 auto' }) => m};
+  margin: ${({ p }) => p};
   width: 100%;
   position: relative;
 
-  line-height: 1.3;
   background-color: transparent;
 
-  padding-inline: ${({ pi = '15px' }) => pi};
+  padding-inline: ${({ pi = '10px' }) => pi};
   padding-top: ${({ pt }) => pt};
   padding-bottom: ${({ pb }) => pb};
 
   @media screen and (min-width: 320px) {
     // width: 300px;
+    max-width: 320px;
   }
 
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
+  @media screen and (width >= 768px) {
     // width: 720px;
+    max-width: 768px;
     padding-inline: ${({ pi = '24px' }) => pi};
     padding-top: ${({ pt }) => pt};
     padding-bottom: ${({ pb }) => pb};
-    h1,
-    h2 {
-      margin-bottom: 10px;
-    }
   }
 
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
+  @media screen and (width >= 1280px) {
     // width: 1200px;
+    max-width: 1280px;
     padding-inline: ${({ pi = '40px' }) => pi};
     padding-top: ${({ pt }) => pt};
     padding-bottom: ${({ pb }) => pb};
-    h1,
-    h2 {
-      margin-bottom: 20px;
-    }
   }
 
   h1,
@@ -48,8 +40,26 @@ export const Div = styled.div`
     margin: ${({ mt }) => mt};
     font-family: 'Montserrat', sans-serif;
     text-align: ${({ ta }) => ta};
+    font-size: 18px;
+
+    @media screen and (width >= 768px) {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    @media screen and (width >= 1280px) {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
   }
+
   h1 {
-    font-size: 30px;
+    font-size: 26px;
+
+    @media screen and (width >= 768px) {
+      font-size: 30px;
+    }
+    @media screen and (width >= 1280px) {
+      font-size: 36px;
+    }
   }
 `;

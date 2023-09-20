@@ -49,6 +49,11 @@ export const themes = Object.freeze({
   toastify: {
     theme: 'light',
   },
+  borderRadius: {
+    s: '5px',
+    m: '10px',
+    l: '15px',
+  },
   modalBackdropcolors: {
     black: 'rgba(23, 24, 32, 0.5)',
     grey: 'rgba(103, 103, 103, 0.5)',

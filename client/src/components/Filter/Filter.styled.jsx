@@ -6,7 +6,6 @@ const fontSize = '14px';
 
 export const Div = styled.div`
   width: 100%;
-  margin-bottom: 15px;
   position: relative;
   display: inline-block;
 
@@ -16,7 +15,7 @@ export const Div = styled.div`
     padding-inline: ${heightSize};
 
     border: 1px solid ${themes.colors.border};
-    border-radius: 5px;
+    border-radius: ${themes.borderRadius.s};
     outline: transparent;
     transition: border-color 250ms;
 
@@ -36,7 +35,6 @@ export const Div = styled.div`
 
     &:focus::placeholder {
       left: 0;
-
       transform: translateX(${heightSize});
     }
 
@@ -45,13 +43,14 @@ export const Div = styled.div`
       top: 50%;
       left: calc(50% - 2.5 * ${fontSize});
       transform: translate(-50%, -50%);
-      transition: left 300ms, transform 300ms;
+      transition: left 300ms, transform 300ms, fill 300ms;
       cursor: text;
     }
 
     &:focus + svg,
     &:not(:placeholder-shown) + svg {
       left: calc(${heightSize} * 0.55);
+      fill: ${themes.colors.accent};
     }
   }
 `;

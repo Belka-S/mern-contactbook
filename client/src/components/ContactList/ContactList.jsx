@@ -3,11 +3,10 @@ import { useDispatch } from 'react-redux';
 
 import { List } from './ContactList.styled';
 import { fetchContactsThunk } from 'store/contacts/contactsOperations';
-import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import { setActiveContact } from 'store/contacts/contactsSlice';
 import { useContacts } from 'utils/hooks';
 
-export const ContactList = () => {
+const ContactList = () => {
   const dispatch = useDispatch();
   const { contacts, activeContact, filterValue } = useContacts();
 
@@ -44,11 +43,10 @@ export const ContactList = () => {
       {filtredContacts.map(contact => (
         <li key={contact._id} data-id={contact._id} onClick={handleClick}>
           {contact.name}
-          <button onClick={() => dispatch(deleteContactThunk(contact._id))}>
-            Delete
-          </button>
         </li>
       ))}
     </List>
   );
 };
+
+export default ContactList;

@@ -4,6 +4,7 @@ import { themes } from 'styles/themes';
 
 export const List = styled.ul`
   width: 100%;
+  margin-top: 10px;
   padding: 0;
   display: inline-flex;
   flex-direction: column;
@@ -14,7 +15,7 @@ export const List = styled.ul`
 
   li {
     display: inline-flex;
-    padding: 3px 10px 1px;
+    padding: 3px 6px 1px;
 
     gap: 5px;
     cursor: pointer;
@@ -28,24 +29,10 @@ export const List = styled.ul`
       counter-increment: section;
       content: counters(section, '.') '.';
     }
-
-    /* temprary */
-    button {
-      margin-left: auto;
-      padding: 0;
-      background-color: transparent;
-      border-color: transparent;
-      font-weight: 700;
-
-      &:hover,
-      &:focus {
-        color: ${themes.colors.failed};
-      }
-    }
   }
 
   & .active {
-    background-color: ${themes.colors.saccess};
+    background-color: ${themes.colors.accent};
     color: ${themes.colors.white};
 
     &:hover,

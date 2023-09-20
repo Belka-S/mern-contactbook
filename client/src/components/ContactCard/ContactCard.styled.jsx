@@ -35,8 +35,18 @@ export const Div = styled.div`
 `;
 
 export const List = styled.ul`
+  margin-bottom: 10px;
+
   list-style: none;
-  font-size: 16px;
+  font-size: 12px;
+
+  @media screen and (width >= 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (width >= 1280px) {
+    font-size: 16px;
+  }
 
   & li {
     padding-block: 5px;
@@ -51,6 +61,10 @@ export const List = styled.ul`
         text-align: right;
 
         color: ${themes.colors.placeholder};
+
+        @media screen and (width < 768px) {
+          letter-spacing: -1px;
+        }
       }
       &:nth-of-type(2) {
         grid-area: value;
@@ -60,6 +74,17 @@ export const List = styled.ul`
 
     &:not(:last-of-type) {
       border-bottom: 1px solid ${themes.colors.border};
+    }
+  }
+
+  & + div {
+    padding-left: 21%;
+
+    @media screen and (width > 768px) {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
     }
   }
 `;

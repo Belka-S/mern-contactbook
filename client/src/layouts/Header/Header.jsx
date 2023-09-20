@@ -6,7 +6,8 @@ import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
 import { cleanContacts, setFilterValue } from 'store/contacts/contactsSlice';
 import { useAuth } from 'utils/hooks/useAuth';
-import { OvalLoader } from 'components/common/Loader/OvalLoader';
+import OvalLoader from 'components/common/Loader/OvalLoader';
+import Button from 'components/common/Button/Button';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export const Header = () => {
         {isLoggedIn && (
           <Div>
             <p>{userEmail}</p>
-            <button onClick={handleLogOut}>Log out</button>
+            <Button onClick={handleLogOut}>Log out</Button>
           </Div>
         )}
       </StyledHeader>

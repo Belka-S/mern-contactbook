@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import loadWebFonts from 'styles/webFonts';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
-import { OvalLoader } from 'components/common/Loader/OvalLoader';
+import OvalLoader from 'components/common/Loader/OvalLoader';
 
 import PublicRoutes from 'routes/PublicRoutes';
 import PrivateRoutes from 'routes/PrivateRoutes';

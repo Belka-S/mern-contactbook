@@ -20,8 +20,8 @@ body {
 
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.02em;
-  line-height: 1.5;
-  color: #000000;
+  line-height: 1.3;
+  color:#343434;
   background-color: #e0e2e8;
 }
 

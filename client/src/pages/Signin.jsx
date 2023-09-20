@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Container } from 'components/common/Container/Container';
+import Container from 'components/common/Container/Container';
 import { INPUT_NAME } from 'utils/constants/constants';
 import { loginThunk } from 'store/auth/authOperations';
 import { Toast, notify } from 'components/common/Toast/Toast';

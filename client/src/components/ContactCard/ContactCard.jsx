@@ -1,15 +1,19 @@
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { BsTelephone, BsEnvelope, BsWhatsapp, BsGithub } from 'react-icons/bs';
 import { LiaTelegram, LiaViber, LiaLinkedinIn } from 'react-icons/lia';
 import { PiMapPinFill } from 'react-icons/pi';
 
 import { Div, List } from './ContactCard.styled';
-import { useAuth, useContacts } from 'utils/hooks';
+import { useContacts } from 'utils/hooks';
+import { deleteContactThunk } from 'store/contacts/contactsOperations';
+import GrigWrap from 'components/common/GrigWrap/GrigWrap';
+import Button from 'components/common/Button/Button';
 
 const ContactCard = () => {
-  const { userId } = useAuth();
-  const { activeContact, isLoading } = useContacts();
+  const dispatch = useDispatch();
+  const { activeContact } = useContacts();
 
-  const shouldRender = !isLoading && userId === activeContact?.owner;
   const off = ['_id', 'name', 'group', 'favorite', 'owner'];
 
   const link = {
@@ -50,37 +54,45 @@ const ContactCard = () => {
   return (
     <>
       <Div>
-        {shouldRender &&
-          Object.keys(link).map(
-            key =>
-              activeContact[key] && (
-                <a
-                  href={link[key].href}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={link[key].href}
-                >
-                  {link[key].icon}
-                </a>
-              )
-          )}
+        {Object.keys(link).map(
+          key =>
+            activeContact[key] && (
+              <a
+                href={link[key].href}
+                target="_blank"
+                rel="noreferrer"
+                key={link[key].href}
+              >
+                {link[key].icon}
+              </a>
+            )
+        )}
       </Div>
+
       <List>
-        {shouldRender &&
-          Object.keys(activeContact).map(
-            key =>
-              !off.includes(key) &&
-              activeContact[key] && (
-                // <li key={key}>{`${key}: ${activeContact[key]}`}</li>
-                <li key={key}>
-                  <span>{`${key}`}</span>
-                  <span>{`${activeContact[key]}`}</span>
-                </li>
-              )
-          )}
+        {Object.keys(activeContact).map(
+          key =>
+            !off.includes(key) &&
+            activeContact[key] && (
+              <li key={key}>
+                <span>{`${key}`}</span>
+                <span>{`${activeContact[key]}`}</span>
+              </li>
+            )
+        )}
       </List>
+
+      <GrigWrap mm="40px" cg="3vw">
+        <Button>Add</Button>
+        <Button>Edit</Button>
+        <Button onClick={() => dispatch(deleteContactThunk(activeContact._id))}>
+          Delete
+        </Button>
+      </GrigWrap>
     </>
   );
 };
 
 export default ContactCard;
+
+ContactCard.propTypes = { marginTop: PropTypes.string };

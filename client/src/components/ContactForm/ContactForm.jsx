@@ -4,24 +4,19 @@ import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
+import { name, phone } from 'utils/constants/regExp';
 import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
 import { selectContacts } from 'store/seletors';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 
 const ContactSchema = object().shape({
   firstName: string()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'Name may contain only letters, apostrophe, dash and spaces'
-    )
+    .matches(name.regExp, name.msg)
     .min(2, 'Too Short!')
     .max(20, 'Too Long!')
     .required('Required'),
   phone: string()
-    .matches(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
+    .matches(phone.regExp, phone.msg)
     .min(5, 'Too Short!')
     .max(20, 'Too Long!')
     .required('Required'),
@@ -29,15 +24,16 @@ const ContactSchema = object().shape({
 
 const ContactForm = ({ handleAddContact }) => {
   const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
 
   const onSubmit = (values, actions) => {
-    // const isInContacts = contacts.some(
-    //   el => el.name.toLowerCase() === values.name.toLowerCase()
-    // );
-    // if (isInContacts) {
-    //   return alert(`${values.name} is already in contacts!`);
-    // }
+    console.log('values: ', values);
+    const isInContacts = contacts.some(
+      el => el.firstName.toLowerCase() === values.firstName.toLowerCase()
+    );
+    if (isInContacts) {
+      return alert(`${values.firstName} is already in contacts!`);
+    }
 
     dispatch(addContactThunk(values));
     handleAddContact(false);

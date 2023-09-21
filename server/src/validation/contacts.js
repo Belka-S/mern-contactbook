@@ -7,8 +7,9 @@ const groupList = ['private', 'work', 'sport'];
 
 const addSchema = validateBody(
   Joi.object({
-    name: Joi.string().min(4).required(),
-    phone: Joi.string().pattern(regExp.phone).required(),
+    firstName: Joi.string().min(4).pattern(regExp.name).required(),
+    lastName: Joi.string().pattern(regExp.name),
+    phone: Joi.string().pattern(regExp.phone),
     email: Joi.string().pattern(regExp.email).error(joiError.email),
     whatsapp: Joi.string().pattern(regExp.phone),
     viber: Joi.string().pattern(regExp.phone),
@@ -17,6 +18,7 @@ const addSchema = validateBody(
     github: Joi.string().pattern(regExp.github),
     address: Joi.string().pattern(regExp.name),
     birthday: Joi.string().pattern(regExp.date),
+    notes: Joi.string(),
     group: Joi.string().valid(...groupList),
     favorite: Joi.boolean(),
   }),

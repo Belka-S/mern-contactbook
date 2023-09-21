@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { BsTelephone, BsEnvelope, BsWhatsapp, BsGithub } from 'react-icons/bs';
 import { LiaTelegram, LiaViber, LiaLinkedinIn } from 'react-icons/lia';
 import { PiMapPinFill } from 'react-icons/pi';
@@ -10,11 +10,11 @@ import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 
-const ContactCard = () => {
+const ContactCard = ({ handleAddContact }) => {
   const dispatch = useDispatch();
   const { activeContact } = useContacts();
 
-  const off = ['_id', 'name', 'group', 'favorite', 'owner'];
+  const off = ['_id', 'firstName', 'lastName', 'group', 'favorite', 'owner'];
 
   const link = {
     phone: {
@@ -83,7 +83,7 @@ const ContactCard = () => {
       </List>
 
       <GrigWrap mm="40px" cg="3vw">
-        <Button>Add</Button>
+        <Button onClick={() => handleAddContact(true)}>Add</Button>
         <Button>Edit</Button>
         <Button onClick={() => dispatch(deleteContactThunk(activeContact._id))}>
           Delete
@@ -95,4 +95,4 @@ const ContactCard = () => {
 
 export default ContactCard;
 
-ContactCard.propTypes = { marginTop: PropTypes.string };
+ContactCard.propTypes = { handleAddContact: PropTypes.func };

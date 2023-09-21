@@ -8,7 +8,7 @@ const emailRegex = [regExp.email, 'Invalid email!'];
 
 const userSchema = new Schema(
   {
-    name: { type: String, minlength: length(4), required },
+    firstName: { type: String, minlength: length(4), required },
     email: { type: String, unique: true, match: emailRegex, required },
     password: { type: String, minlength: length(6), required },
     token: { type: String, default: null },

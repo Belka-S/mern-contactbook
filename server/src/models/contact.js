@@ -10,8 +10,9 @@ const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    name: { type: String, minlength: length(4), required },
-    phone: { type: String, match: regex('phone'), required },
+    firstName: { type: String, minlength: length(4), match: regex('name'), required },
+    lastName: { type: String, match: regex('name'), default: '' },
+    phone: { type: String, match: regex('phone') },
     email: { type: String, match: regex('email'), default: '' },
     whatsapp: { type: String, match: regex('phone'), default: '' },
     viber: { type: String, match: regex('phone'), default: '' },
@@ -20,6 +21,7 @@ const contactSchema = new Schema(
     github: { type: String, match: regex('github'), default: '' },
     address: { type: String, match: regex('name'), default: '' },
     birthday: { type: String, match: regex('date'), default: '' },
+    notes: { type: String, default: '' },
     group: { type: String, enum: groupList, default: 'private' },
     favorite: { type: Boolean, default: false },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },

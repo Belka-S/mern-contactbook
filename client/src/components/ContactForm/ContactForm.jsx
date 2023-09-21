@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,7 @@ import { selectContacts } from 'store/seletors';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 
 const ContactSchema = object().shape({
-  name: string()
+  firstName: string()
     .matches(
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       'Name may contain only letters, apostrophe, dash and spaces'
@@ -26,36 +27,37 @@ const ContactSchema = object().shape({
     .required('Required'),
 });
 
-export const ContactForm = () => {
+const ContactForm = ({ handleAddContact }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  // const contacts = useSelector(selectContacts);
 
   const onSubmit = (values, actions) => {
-    const isInContacts = contacts.some(
-      el => el.name.toLowerCase() === values.name.toLowerCase()
-    );
-    if (isInContacts) {
-      return alert(`${values.name} is already in contacts!`);
-    }
+    // const isInContacts = contacts.some(
+    //   el => el.name.toLowerCase() === values.name.toLowerCase()
+    // );
+    // if (isInContacts) {
+    //   return alert(`${values.name} is already in contacts!`);
+    // }
 
     dispatch(addContactThunk(values));
+    handleAddContact(false);
     actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={{ name: '', phone: '' }}
+      initialValues={{ firstName: '', phone: '' }}
       validationSchema={ContactSchema}
       onSubmit={onSubmit}
     >
       <Form>
         <Label>
-          Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="div" />
+          Fitst Name
+          <Field type="text" name="firstName" />
+          <ErrorMessage name="firstName" component="div" />
         </Label>
         <Label>
-          phone
+          Phone
           <Field type="tel" name="phone" />
           <ErrorMessage name="phone" component="div" />
         </Label>
@@ -64,3 +66,7 @@ export const ContactForm = () => {
     </Formik>
   );
 };
+
+export default ContactForm;
+
+ContactForm.propTypes = { handleAddContact: PropTypes.func };

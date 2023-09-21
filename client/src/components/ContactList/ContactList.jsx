@@ -29,7 +29,11 @@ const ContactList = () => {
   }, [activeContact, contacts, dispatch]);
 
   const filtredContacts = contacts.filter(el => {
-    return el.name.toLowerCase().includes(filterValue.toLowerCase());
+    const value = filterValue.toLowerCase();
+    return (
+      el.firstName.toLowerCase().includes(value) ||
+      el.lastName.toLowerCase().includes(value)
+    );
   });
 
   const handleClick = e => {
@@ -40,9 +44,9 @@ const ContactList = () => {
 
   return (
     <List>
-      {filtredContacts.map(contact => (
-        <li key={contact._id} data-id={contact._id} onClick={handleClick}>
-          {contact.name}
+      {filtredContacts.map(el => (
+        <li key={el._id} data-id={el._id} onClick={handleClick}>
+          {el.firstName} {el.lastName}
         </li>
       ))}
     </List>

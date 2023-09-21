@@ -7,12 +7,19 @@ import Container from 'components/common/Container/Container';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 import ContactCard from 'components/ContactCard/ContactCard';
+import ContactForm from 'components/ContactForm/ContactForm';
 
 const Contacts = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isContactForm, setIsContactForm] = useState(false);
   const { userId } = useAuth();
   const { activeContact, isLoading } = useContacts();
 
+  const shouldRender = !isLoading && userId === activeContact?.owner;
+  const title = shouldRender
+    ? `${activeContact?.firstName} ${activeContact?.lastName}`
+    : '';
+  const gridHeight = window.innerHeight > 500 ? 'calc(100vh - 90px)' : '410px';
   const headerEl = document.querySelector('header');
 
   useEffect(() => {
@@ -26,12 +33,9 @@ const Contacts = () => {
     };
   }, [headerEl]);
 
-  const shouldRender = !isLoading && userId === activeContact?.owner;
-  const title = userId === activeContact?.owner ? activeContact?.name : '';
-
-  const gridHeight = window.innerHeight > 500 ? 'calc(100vh - 90px)' : '410px';
-
-  console.log('isMobile: ', isMobile);
+  const handleAddContact = bool => {
+    setIsContactForm(bool);
+  };
 
   return (
     <GrigWrap h={gridHeight} gtc="4fr 6fr">
@@ -40,12 +44,16 @@ const Contacts = () => {
         {!isMobile && <ContactList />}
       </Container>
 
-      <Container pi="0" mt="0 0 10px 21%" t2={title}>
-        {shouldRender && <ContactCard />}
-      </Container>
+      {isContactForm ? (
+        <ContactForm handleAddContact={handleAddContact} />
+      ) : (
+        <Container pi="0" mt="0 0 10px 21%" t2={title}>
+          {shouldRender && <ContactCard handleAddContact={handleAddContact} />}
+        </Container>
+      )}
 
       {isMobile && (
-        <Container m="" pi="0">
+        <Container pi="0">
           <ContactList />
         </Container>
       )}

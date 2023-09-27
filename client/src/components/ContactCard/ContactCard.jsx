@@ -6,6 +6,7 @@ import { PiMapPinFill } from 'react-icons/pi';
 
 import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
+import { FIELDS_OFF } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
@@ -13,8 +14,6 @@ import Button from 'components/common/Button/Button';
 const ContactCard = ({ handleAddContact }) => {
   const dispatch = useDispatch();
   const { activeContact } = useContacts();
-
-  const off = ['_id', 'firstName', 'lastName', 'group', 'favorite', 'owner'];
 
   const link = {
     phone: {
@@ -72,7 +71,7 @@ const ContactCard = ({ handleAddContact }) => {
       <List>
         {Object.keys(activeContact).map(
           key =>
-            !off.includes(key) &&
+            !FIELDS_OFF.includes(key) &&
             activeContact[key] && (
               <li key={key}>
                 <span>{`${key}`}</span>

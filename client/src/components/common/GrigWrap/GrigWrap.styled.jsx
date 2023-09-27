@@ -11,6 +11,7 @@ export const Div = styled.div`
     auto-fit,
     minmax(${({ mm = '300px' }) => mm}, 1fr)
   );
+
   grid-row-gap: ${({ rg = '10px' }) => rg};
   grid-column-gap: ${({ cg = '40px' }) => cg};
 

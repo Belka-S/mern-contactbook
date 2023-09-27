@@ -20,6 +20,7 @@ const Contacts = () => {
     ? `${activeContact?.firstName} ${activeContact?.lastName}`
     : '';
   const gridHeight = window.innerHeight > 500 ? 'calc(100vh - 90px)' : '410px';
+
   const headerEl = document.querySelector('header');
 
   useEffect(() => {
@@ -41,21 +42,19 @@ const Contacts = () => {
     <GrigWrap h={gridHeight} gtc="4fr 6fr">
       <Container pi="0">
         <Filter /> <br />
-        {!isMobile && <ContactList />}
+        <ContactList />
       </Container>
 
       {isContactForm ? (
         <ContactForm handleAddContact={handleAddContact} />
       ) : (
-        <Container pi="0" mt="0 0 10px 21%" t2={title}>
-          {shouldRender && <ContactCard handleAddContact={handleAddContact} />}
-        </Container>
-      )}
-
-      {isMobile && (
-        <Container pi="0">
-          <ContactList />
-        </Container>
+        !isMobile && (
+          <Container pi="0" mt="0 0 10px 21%" t2={title}>
+            {shouldRender && (
+              <ContactCard handleAddContact={handleAddContact} />
+            )}
+          </Container>
+        )
       )}
 
       {isLoading && <OvalLoader />}

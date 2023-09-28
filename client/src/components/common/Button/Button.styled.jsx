@@ -27,4 +27,11 @@ export const MainButton = styled.button`
     border-color: ${themes.colors.hovered};
     background-color: ${themes.colors.ligthBlue};
   }
+
+  &:disabled {
+    cursor: auto;
+    color: ${themes.colors.border};
+    border-color: ${themes.colors.border};
+    background-color: ${themes.colors.white};
+  }
 `;

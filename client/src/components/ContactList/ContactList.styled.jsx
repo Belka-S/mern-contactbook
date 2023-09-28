@@ -19,6 +19,7 @@ export const List = styled.ul`
 
     gap: 5px;
     cursor: pointer;
+    transition: color 250ms;
 
     &:hover,
     &:focus {

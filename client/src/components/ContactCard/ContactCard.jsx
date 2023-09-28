@@ -8,6 +8,7 @@ import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
 import { FIELDS_OFF } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
+import { setActiveContact } from 'store/contacts/contactsSlice';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 
@@ -50,41 +51,48 @@ const ContactCard = ({ handleAddContact }) => {
     },
   };
 
+  const handleDeleteContact = () => {
+    dispatch(deleteContactThunk(activeContact._id));
+    dispatch(setActiveContact(null));
+  };
+
   return (
     <>
       <Div>
-        {Object.keys(link).map(
-          key =>
-            activeContact[key] && (
-              <a
-                href={link[key].href}
-                target="_blank"
-                rel="noreferrer"
-                key={link[key].href}
-              >
-                {link[key].icon}
-              </a>
-            )
-        )}
+        {activeContact &&
+          Object.keys(link).map(
+            key =>
+              activeContact[key] && (
+                <a
+                  href={link[key].href}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={link[key].href}
+                >
+                  {link[key].icon}
+                </a>
+              )
+          )}
       </Div>
 
       <List>
-        {Object.keys(activeContact).map(
-          key =>
-            !FIELDS_OFF.includes(key) &&
-            activeContact[key] && (
-              <li key={key}>
-                <span>{`${key}`}</span>
-                <span>{`${activeContact[key]}`}</span>
-              </li>
-            )
-        )}
+        {activeContact &&
+          Object.keys(activeContact).map(
+            key =>
+              !FIELDS_OFF.includes(key) &&
+              activeContact[key] && (
+                <li key={key}>
+                  <span>{`${key}`}</span>
+                  <span>{`${activeContact[key]}`}</span>
+                </li>
+              )
+          )}
       </List>
 
       <GrigWrap mm="40px" cg="3vw">
         <Button onClick={() => handleAddContact(true)}>Add</Button>
-        <Button>Edit</Button>
-        <Button onClick={() => dispatch(deleteContactThunk(activeContact._id))}>
+        <Button disabled={!activeContact}>Edit</Button>
+        <Button disabled={!activeContact} onClick={handleDeleteContact}>
           Delete
         </Button>
       </GrigWrap>

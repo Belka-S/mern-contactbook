@@ -12,7 +12,7 @@ const contactSchema = new Schema(
   {
     firstName: { type: String, minlength: length(4), match: regex('name'), required },
     lastName: { type: String, match: regex('name'), default: '' },
-    phone: { type: String, match: regex('phone') },
+    phone: { type: String, match: regex('phone'), default: '' },
     email: { type: String, match: regex('email'), default: '' },
     whatsapp: { type: String, match: regex('phone'), default: '' },
     viber: { type: String, match: regex('phone'), default: '' },

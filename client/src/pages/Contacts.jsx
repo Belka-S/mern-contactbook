@@ -15,12 +15,11 @@ const Contacts = () => {
   const { userId } = useAuth();
   const { activeContact, isLoading } = useContacts();
 
-  const shouldRender = !isLoading && userId === activeContact?.owner;
-  const title = shouldRender
-    ? `${activeContact?.firstName} ${activeContact?.lastName}`
-    : '';
+  const title =
+    !isLoading && userId === activeContact?.owner
+      ? `${activeContact?.firstName} ${activeContact?.lastName}`
+      : '';
   const gridHeight = window.innerHeight > 500 ? 'calc(100vh - 90px)' : '410px';
-
   const headerEl = document.querySelector('header');
 
   useEffect(() => {
@@ -50,9 +49,7 @@ const Contacts = () => {
       ) : (
         !isMobile && (
           <Container pi="0" mt="0 0 10px 21%" t2={title}>
-            {shouldRender && (
-              <ContactCard handleAddContact={handleAddContact} />
-            )}
+            {!isLoading && <ContactCard handleAddContact={handleAddContact} />}
           </Container>
         )
       )}

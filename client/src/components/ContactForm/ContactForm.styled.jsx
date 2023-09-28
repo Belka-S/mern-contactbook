@@ -108,8 +108,8 @@ export const Field = styled(FormikField)`
 
   border: 1px solid transparent;
   outline: transparent;
-  transition: border-color 250ms;
   font-size: 12px;
+  transition: border-color 250ms;
 
   @media screen and (width >= 768px) {
     font-size: 14px;

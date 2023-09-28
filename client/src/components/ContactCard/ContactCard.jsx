@@ -12,7 +12,7 @@ import { setActiveContact } from 'store/contacts/contactsSlice';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 
-const ContactCard = ({ handleAddContact }) => {
+const ContactCard = ({ triggerForm }) => {
   const dispatch = useDispatch();
   const { activeContact } = useContacts();
 
@@ -90,7 +90,7 @@ const ContactCard = ({ handleAddContact }) => {
       </List>
 
       <GrigWrap mm="40px" cg="3vw">
-        <Button onClick={() => handleAddContact(true)}>Add</Button>
+        <Button onClick={() => triggerForm(true)}>Add</Button>
         <Button disabled={!activeContact}>Edit</Button>
         <Button disabled={!activeContact} onClick={handleDeleteContact}>
           Delete
@@ -102,4 +102,4 @@ const ContactCard = ({ handleAddContact }) => {
 
 export default ContactCard;
 
-ContactCard.propTypes = { handleAddContact: PropTypes.func };
+ContactCard.propTypes = { triggerForm: PropTypes.func };

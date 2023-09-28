@@ -7,6 +7,14 @@ import {
 
 import { themes } from 'styles/themes';
 
+export const ErrorMessage = styled(FormikError)`
+  margin-left: 21%;
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: ${themes.colors.failed};
+`;
+
 export const Form = styled(FormikForm)`
   position: relative;
   font-size: 12px;
@@ -19,7 +27,7 @@ export const Form = styled(FormikForm)`
     font-size: 16px;
   }
 
-  & div {
+  & #grid {
     padding-left: 21%;
 
     @media screen and (width > 768px) {
@@ -29,7 +37,6 @@ export const Form = styled(FormikForm)`
       width: 100%;
     }
   }
-
   /* dynamic input width */
   & #firstN,
   & #lastN,
@@ -60,6 +67,10 @@ export const Form = styled(FormikForm)`
 
   & #lastN {
     width: ${({ lnw }) => `${lnw}px`};
+  }
+
+  & .wrapper:not(:last-of-type) {
+    border-bottom: 1px solid ${themes.colors.border};
   }
 
   & span {
@@ -94,10 +105,6 @@ export const Label = styled.label`
   @media screen and (width < 768px) {
     letter-spacing: -1px;
   }
-
-  &:not(:last-of-type) {
-    border-bottom: 1px solid ${themes.colors.border};
-  }
 `;
 
 export const Field = styled(FormikField)`
@@ -123,10 +130,4 @@ export const Field = styled(FormikField)`
   &:focus {
     border-color: ${themes.colors.hovered};
   }
-`;
-
-export const ErrorMessage = styled(FormikError)`
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  color: ${themes.colors.canceled};
 `;

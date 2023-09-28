@@ -3,14 +3,14 @@ const { Schema, model } = require('mongoose');
 const { mongooseError, regExp } = require('../utils');
 
 const required = [true, 'Required field!'];
-const length = lgth => [lgth, `Must be at least ${lgth} characters long!`];
+const unique = [true, 'Must be unique!'];
 const regex = field => [regExp[field], `Invalid ${field}!`];
 
 const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    firstName: { type: String, minlength: length(4), match: regex('name'), required },
+    firstName: { type: String, match: regex('name'), unique, required },
     lastName: { type: String, match: regex('name'), default: '' },
     phone: { type: String, match: regex('phone'), default: '' },
     email: { type: String, match: regex('email'), default: '' },

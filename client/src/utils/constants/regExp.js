@@ -14,7 +14,7 @@ export const PHONE = {
 };
 
 export const TELEGRAM = {
-  msg: 'Only letters, start with @',
+  msg: 'Only letters, more than five, start with @',
   regExp: /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$/,
 };
 
@@ -25,24 +25,24 @@ export const TELEGRAM_PHONE = {
 };
 
 export const LINKEDIN = {
-  msg: 'Starts with https://linkedin.com ',
+  msg: 'Starts with https://linkedin.com',
   regExp: /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/,
 };
 
 export const GITHUB = {
-  msg: 'Starts with https://...github ',
+  msg: 'Starts with https://...github',
   regExp: /^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$/,
 };
 
 export const DATE = {
-  msg: 'Pattern dd-mm-yyyy ',
+  msg: 'Pattern: dd-mm-yyyy',
   regExp:
     /^([0-2^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)((19|20)\d{2}$)/,
 };
 
 export const COUNTRY = {
   msg: 'Only letters, more than two',
-  regExp: /[a-zA-Z]\w{1}$/,
+  regExp: /[a-zA-Z]\w{1}/,
 };
 
 export const RANDOM_UUID = {

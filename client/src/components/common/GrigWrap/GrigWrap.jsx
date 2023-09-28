@@ -4,7 +4,7 @@ import { Div } from './GrigWrap.styled';
 
 const GrigWrap = ({ h, m, p, rg, cg, mm, gtc, children }) => {
   return (
-    <Div h={h} m={m} p={p} rg={rg} cg={cg} mm={mm} gtc={gtc}>
+    <Div id="grid" h={h} m={m} p={p} rg={rg} cg={cg} mm={mm} gtc={gtc}>
       {children}
     </Div>
   );

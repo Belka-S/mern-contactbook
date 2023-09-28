@@ -7,7 +7,7 @@ const groupList = ['private', 'work', 'sport'];
 
 const addSchema = validateBody(
   Joi.object({
-    firstName: Joi.string().min(4).pattern(regExp.name).required(),
+    firstName: Joi.string().pattern(regExp.name).required(),
     lastName: Joi.string().pattern(regExp.name).allow(''),
     phone: Joi.string().pattern(regExp.phone).allow(''),
     email: Joi.string().pattern(regExp.email).allow(''),

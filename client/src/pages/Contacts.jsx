@@ -33,7 +33,7 @@ const Contacts = () => {
     };
   }, [headerEl]);
 
-  const handleAddContact = bool => {
+  const triggerForm = bool => {
     setIsContactForm(bool);
   };
 
@@ -45,11 +45,11 @@ const Contacts = () => {
       </Container>
 
       {isContactForm ? (
-        <ContactForm handleAddContact={handleAddContact} />
+        <ContactForm triggerForm={triggerForm} />
       ) : (
         !isMobile && (
           <Container pi="0" mt="0 0 10px 21%" t2={title}>
-            {!isLoading && <ContactCard handleAddContact={handleAddContact} />}
+            {!isLoading && <ContactCard triggerForm={triggerForm} />}
           </Container>
         )
       )}

@@ -1,13 +1,4 @@
-export const FIELDS_OFF = [
-  '_id',
-  'firstName',
-  'lastName',
-  'group',
-  'favorite',
-  'owner',
-];
-
-export const FIELDS_ON = [
+export const RENDER_FIELDS = [
   'phone',
   'email',
   'whatsapp',
@@ -19,3 +10,5 @@ export const FIELDS_ON = [
   'birthday',
   'notes',
 ];
+
+export const FORM_FIELDS = ['firstName', 'lastName', ...RENDER_FIELDS];

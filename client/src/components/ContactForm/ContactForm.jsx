@@ -6,10 +6,11 @@ import { object, string } from 'yup';
 
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
-import { NAME, PHONE, EMAIL, TELEGRAM, DATE } from 'utils/constants';
-import { FIELDS_ON, LINKEDIN, GITHUB, COUNTRY } from 'utils/constants';
+import { NAME, PHONE, EMAIL, TELEGRAM, DATE, COUNTRY } from 'utils/constants';
+import { RENDER_FIELDS, FORM_FIELDS, LINKEDIN, GITHUB } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
+import { updateContactThunk } from 'store/contacts/contactsOperations';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 
@@ -28,13 +29,18 @@ const ContactSchema = object().shape({
   notes: string(),
 });
 
-const ContactForm = ({ triggerForm }) => {
+const ContactForm = ({ triggerForm, isContactForm }) => {
   const dispatch = useDispatch();
-  const { contacts } = useContacts();
+  const { contacts, activeContact } = useContacts();
   const [name, setName] = useState({ firstWidth: 75, lastWidth: 100 });
 
-  const initialValues = { firstName: '', lastName: '' };
-  FIELDS_ON.forEach(key => (initialValues[key] = ''));
+  const getInitialValues = bool => {
+    const initialValues = {};
+    FORM_FIELDS.forEach(
+      key => (initialValues[key] = bool === 'edit' ? activeContact[key] : '')
+    );
+    return initialValues;
+  };
 
   const onChange = e => {
     const { name, value, placeholder } = e.target;
@@ -55,17 +61,23 @@ const ContactForm = ({ triggerForm }) => {
     const isInContacts = contacts.some(
       el => el.firstName.toLowerCase() === firstName.toLowerCase()
     );
-    if (isInContacts) {
+    if (isInContacts && isContactForm === 'add') {
       return alert(`${firstName} is already in contacts!`);
     }
-    dispatch(addContactThunk(values));
+
+    dispatch(
+      isContactForm === 'add'
+        ? addContactThunk(values)
+        : updateContactThunk({ id: activeContact._id, contact: values })
+    );
+
     triggerForm(false);
     actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={getInitialValues(isContactForm)}
       validationSchema={ContactSchema}
       validateOnBlur="true"
       onSubmit={onSubmit}
@@ -76,7 +88,7 @@ const ContactForm = ({ triggerForm }) => {
         <Field id="firstN" type="text" name="firstName" placeholder="Name" />
         <Field id="lastN" type="text" name="lastName" placeholder="Surname" />
 
-        {FIELDS_ON.map(key => (
+        {RENDER_FIELDS.map(key => (
           <div className="wrapper" key={key}>
             <Label>
               {key}

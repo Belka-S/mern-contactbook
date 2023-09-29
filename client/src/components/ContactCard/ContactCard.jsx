@@ -6,7 +6,7 @@ import { PiMapPinFill } from 'react-icons/pi';
 
 import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
-import { FIELDS_OFF } from 'utils/constants';
+import { RENDER_FIELDS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import { setActiveContact } from 'store/contacts/contactsSlice';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
@@ -79,7 +79,7 @@ const ContactCard = ({ triggerForm }) => {
         {activeContact &&
           Object.keys(activeContact).map(
             key =>
-              !FIELDS_OFF.includes(key) &&
+              RENDER_FIELDS.includes(key) &&
               activeContact[key] && (
                 <li key={key}>
                   <span>{`${key}`}</span>
@@ -90,8 +90,10 @@ const ContactCard = ({ triggerForm }) => {
       </List>
 
       <GrigWrap mm="40px" cg="3vw">
-        <Button onClick={() => triggerForm(true)}>Add</Button>
-        <Button disabled={!activeContact}>Edit</Button>
+        <Button onClick={() => triggerForm('add')}>Add</Button>
+        <Button disabled={!activeContact} onClick={() => triggerForm('edit')}>
+          Edit
+        </Button>
         <Button disabled={!activeContact} onClick={handleDeleteContact}>
           Delete
         </Button>

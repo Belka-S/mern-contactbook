@@ -20,12 +20,11 @@ const ContactList = () => {
     activeEl?.classList.remove('active');
     // set '.active' class
     activeEl = document.querySelector(`li[data-id="${activeContact?._id}"]`);
-    if (!activeEl) {
-      activeEl = document.querySelector('li[data-id]');
-      const activeContact = contacts.find(el => el._id === activeEl.dataset.id);
-      dispatch(setActiveContact(activeContact));
-    }
+    if (!activeEl) activeEl = document.querySelector('li[data-id]');
     activeEl?.classList.add('active');
+
+    const contact = contacts.find(el => el._id === activeEl.dataset.id);
+    dispatch(setActiveContact(contact));
   }, [activeContact, contacts, dispatch]);
 
   const filtredContacts = contacts.filter(el => {

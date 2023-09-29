@@ -29,7 +29,7 @@ export const Div = styled.div`
     }
 
     & svg {
-      fill: ${themes.colors.accent};
+      fill: ${themes.colors.hovered};
     }
   }
 `;

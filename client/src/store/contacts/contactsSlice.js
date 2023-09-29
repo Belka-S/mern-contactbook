@@ -4,6 +4,7 @@ import * as operations from './contactsOperations';
 const thunkArr = [
   operations.fetchContactsThunk,
   operations.addContactThunk,
+  operations.updateContactThunk,
   operations.deleteContactThunk,
 ];
 const fn = type => thunkArr.map(el => el[type]);
@@ -15,8 +16,14 @@ const handleFetchContacts = (_, action) => {
 const handleAddContact = (state, action) => {
   state.push(action.payload.result.contact);
 };
+const handleUpdateContact = (state, action) => {
+  const { contact } = action.payload.result;
+  const index = state.findIndex(el => el._id === contact._id);
+  state.splice(index, 1, contact);
+};
 const handleDeleteContact = (state, action) => {
-  return state.filter(el => el._id !== action.payload.result.contact._id);
+  const { contact } = action.payload.result;
+  return state.filter(el => el._id !== contact._id);
 };
 
 // fulfilled slice
@@ -30,6 +37,7 @@ const contactsItemsSlice = createSlice({
     builder
       .addCase(operations.fetchContactsThunk.fulfilled, handleFetchContacts)
       .addCase(operations.addContactThunk.fulfilled, handleAddContact)
+      .addCase(operations.updateContactThunk.fulfilled, handleUpdateContact)
       .addCase(operations.deleteContactThunk.fulfilled, handleDeleteContact);
   },
 });

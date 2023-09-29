@@ -44,14 +44,14 @@ const Contacts = () => {
         <ContactList />
       </Container>
 
-      {isContactForm ? (
-        <ContactForm triggerForm={triggerForm} />
-      ) : (
-        !isMobile && (
-          <Container pi="0" mt="0 0 10px 21%" t2={title}>
-            {!isLoading && <ContactCard triggerForm={triggerForm} />}
-          </Container>
-        )
+      {isContactForm && (
+        <ContactForm triggerForm={triggerForm} isContactForm={isContactForm} />
+      )}
+
+      {!isContactForm && !isMobile && (
+        <Container pi="0" mt="0 0 10px 21%" t2={title}>
+          {!isLoading && <ContactCard triggerForm={triggerForm} />}
+        </Container>
       )}
 
       {isLoading && <OvalLoader />}

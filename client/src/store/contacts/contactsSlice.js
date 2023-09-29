@@ -14,7 +14,7 @@ const handleFetchContacts = (_, action) => {
   return action.payload.result.contacts;
 };
 const handleAddContact = (state, action) => {
-  state.push(action.payload.result.contact);
+  state.unshift(action.payload.result.contact);
 };
 const handleUpdateContact = (state, action) => {
   const { contact } = action.payload.result;

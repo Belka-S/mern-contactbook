@@ -79,7 +79,6 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
     <Formik
       initialValues={getInitialValues(isContactForm)}
       validationSchema={ContactSchema}
-      validateOnBlur="true"
       onSubmit={onSubmit}
     >
       <Form onChange={onChange} fnw={name.firstWidth} lnw={name.lastWidth}>

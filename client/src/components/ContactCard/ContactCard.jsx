@@ -8,7 +8,6 @@ import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
 import { RENDER_FIELDS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
-import { setActiveContact } from 'store/contacts/contactsSlice';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 
@@ -53,7 +52,6 @@ const ContactCard = ({ triggerForm }) => {
 
   const handleDeleteContact = () => {
     dispatch(deleteContactThunk(activeContact._id));
-    dispatch(setActiveContact(null));
   };
 
   return (

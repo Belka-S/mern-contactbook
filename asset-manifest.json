@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/mern-phonebook/static/css/main.728901e5.css",
-    "main.js": "/mern-phonebook/static/js/main.fc5e8d18.js",
+    "main.js": "/mern-phonebook/static/js/main.5014a430.js",
     "static/js/593.dca90a16.chunk.js": "/mern-phonebook/static/js/593.dca90a16.chunk.js",
     "static/js/526.00459cb9.chunk.js": "/mern-phonebook/static/js/526.00459cb9.chunk.js",
     "static/js/668.5d0fcc45.chunk.js": "/mern-phonebook/static/js/668.5d0fcc45.chunk.js",
-    "static/js/589.e94cb8eb.chunk.js": "/mern-phonebook/static/js/589.e94cb8eb.chunk.js",
+    "static/js/589.e705fa35.chunk.js": "/mern-phonebook/static/js/589.e705fa35.chunk.js",
     "static/js/315.9be8f4f6.chunk.js": "/mern-phonebook/static/js/315.9be8f4f6.chunk.js",
     "static/js/218.af5057d0.chunk.js": "/mern-phonebook/static/js/218.af5057d0.chunk.js",
     "static/js/608.8f887c04.chunk.js": "/mern-phonebook/static/js/608.8f887c04.chunk.js",
     "index.html": "/mern-phonebook/index.html",
     "main.728901e5.css.map": "/mern-phonebook/static/css/main.728901e5.css.map",
-    "main.fc5e8d18.js.map": "/mern-phonebook/static/js/main.fc5e8d18.js.map",
+    "main.5014a430.js.map": "/mern-phonebook/static/js/main.5014a430.js.map",
     "593.dca90a16.chunk.js.map": "/mern-phonebook/static/js/593.dca90a16.chunk.js.map",
     "526.00459cb9.chunk.js.map": "/mern-phonebook/static/js/526.00459cb9.chunk.js.map",
     "668.5d0fcc45.chunk.js.map": "/mern-phonebook/static/js/668.5d0fcc45.chunk.js.map",
-    "589.e94cb8eb.chunk.js.map": "/mern-phonebook/static/js/589.e94cb8eb.chunk.js.map",
+    "589.e705fa35.chunk.js.map": "/mern-phonebook/static/js/589.e705fa35.chunk.js.map",
     "315.9be8f4f6.chunk.js.map": "/mern-phonebook/static/js/315.9be8f4f6.chunk.js.map",
     "218.af5057d0.chunk.js.map": "/mern-phonebook/static/js/218.af5057d0.chunk.js.map",
     "608.8f887c04.chunk.js.map": "/mern-phonebook/static/js/608.8f887c04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.728901e5.css",
-    "static/js/main.fc5e8d18.js"
+    "static/js/main.5014a430.js"
   ]
 }

@@ -1,6 +1,6 @@
 export const themes = Object.freeze({
   colors: {
-    background: '#F7F6F9',
+    background: '#e0e2e8',
     accent: '#206bdd',
     hovered: '#2374ef',
 

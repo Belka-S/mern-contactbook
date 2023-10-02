@@ -9,10 +9,12 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 8px 0;
   margin-bottom: 16px;
+  z-index: 10;
+
   border-bottom: 1px solid black;
+  background-color: ${themes.colors.background};
 `;
 
 export const NavLink = styled(Link)`

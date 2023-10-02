@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import {
-  Form as FormikForm,
-  Field as FormikField,
-  ErrorMessage as FormikError,
-} from 'formik';
+import { Form as FormikForm } from 'formik';
+import { Field as FormikField } from 'formik';
+import { ErrorMessage as FormikError } from 'formik';
 
 import { themes } from 'styles/themes';
 
@@ -37,19 +35,22 @@ export const Form = styled(FormikForm)`
       width: 100%;
     }
   }
+
   /* dynamic input width */
-  & #firstN,
-  & #lastN,
+  & #first,
+  & #last,
   span {
+    padding: 0;
     font-size: 16px;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 
     @media screen and (width >= 768px) {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     @media screen and (width >= 1280px) {
-      font-size: 20px;
+      font-size: 26px;
     }
 
     &::placeholder {
@@ -61,11 +62,11 @@ export const Form = styled(FormikForm)`
     }
   }
 
-  & #firstN {
+  & #first {
     width: ${({ fnw }) => `${fnw}px`};
   }
 
-  & #lastN {
+  & #last {
     width: ${({ lnw }) => `${lnw}px`};
   }
 
@@ -75,8 +76,8 @@ export const Form = styled(FormikForm)`
 
   & span {
     position: absolute;
-    left: -100%;
-    bottom: -100%;
+    left: 100%;
+    bottom: 0;
     color: transparent;
   }
 `;

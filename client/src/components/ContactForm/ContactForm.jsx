@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
@@ -29,31 +29,36 @@ const ContactSchema = object().shape({
   notes: string(),
 });
 
+const initialValues = {};
+
 const ContactForm = ({ triggerForm, isContactForm }) => {
   const dispatch = useDispatch();
   const { contacts, activeContact } = useContacts();
-  const [name, setName] = useState({ firstWidth: 75, lastWidth: 100 });
+  const [width, setWidth] = useState({ firstName: null, lastName: null });
 
+  const spanEl = document.querySelector('span');
+  const getWidth = el => el.getBoundingClientRect().width + 8;
   const getInitialValues = bool => {
-    const initialValues = {};
     FORM_FIELDS.forEach(
       key => (initialValues[key] = bool === 'edit' ? activeContact[key] : '')
     );
     return initialValues;
   };
 
+  useEffect(() => {
+    const { firstName, lastName } = initialValues;
+    const firstSpanEl = document.querySelector('.first-name');
+    const lastSpanEl = document.querySelector('.last-name');
+    firstSpanEl.innerHTML = firstName ? firstName : 'Name';
+    lastSpanEl.innerHTML = lastName ? lastName : 'Surname';
+    setWidth(prevState => ({ ...prevState, firstName: getWidth(firstSpanEl) }));
+    setWidth(prevState => ({ ...prevState, lastName: getWidth(lastSpanEl) }));
+  }, []);
+
   const onChange = e => {
     const { name, value, placeholder } = e.target;
-    const spanEl = document.querySelector('span');
     spanEl.innerHTML = value ? value : placeholder;
-    const getWidth = el => el.getBoundingClientRect().width + 15;
-
-    if (name === 'firstName') {
-      setName(prevState => ({ ...prevState, firstWidth: getWidth(spanEl) }));
-    }
-    if (name === 'lastName') {
-      setName(prevState => ({ ...prevState, lastWidth: getWidth(spanEl) }));
-    }
+    setWidth(prevState => ({ ...prevState, [name]: getWidth(spanEl) }));
   };
 
   const onSubmit = (values, actions) => {
@@ -81,11 +86,11 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
       validationSchema={ContactSchema}
       onSubmit={onSubmit}
     >
-      <Form onChange={onChange} fnw={name.firstWidth} lnw={name.lastWidth}>
+      <Form onChange={onChange} fnw={width.firstName} lnw={width.lastName}>
         <ErrorMessage name="firstName" component="div" />
         <ErrorMessage name="lastName" component="div" />
-        <Field id="firstN" type="text" name="firstName" placeholder="Name" />
-        <Field id="lastN" type="text" name="lastName" placeholder="Surname" />
+        <Field id="first" type="text" name="firstName" placeholder="Name" />
+        <Field id="last" type="text" name="lastName" placeholder="Surname" />
 
         {RENDER_FIELDS.map(key => (
           <div className="wrapper" key={key}>
@@ -96,13 +101,17 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
             <ErrorMessage name={key} component="div" />
           </div>
         ))}
-        <span></span>
+
         <GrigWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
           <Button type="submit">Submit</Button>
           <Button type="button" onClick={() => triggerForm(false)}>
             Cancel
           </Button>
         </GrigWrap>
+
+        <span></span>
+        <span className="first-name"></span>
+        <span className="last-name"></span>
       </Form>
     </Formik>
   );

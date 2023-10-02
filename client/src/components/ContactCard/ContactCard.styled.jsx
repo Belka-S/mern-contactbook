@@ -80,7 +80,7 @@ export const List = styled.ul`
   & + div {
     padding-left: 21%;
 
-    @media screen and (width > 768px) {
+    @media screen and (width >= 768px) {
       position: absolute;
       bottom: 0;
       right: 0;

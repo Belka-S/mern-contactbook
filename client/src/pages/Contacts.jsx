@@ -19,7 +19,7 @@ const Contacts = () => {
     !isLoading && userId === activeContact?.owner
       ? `${activeContact?.firstName} ${activeContact?.lastName}`
       : '';
-  const gridHeight = window.innerHeight > 500 ? 'calc(100vh - 90px)' : '410px';
+  const gridHeight = window.innerHeight > 600 ? 'calc(100vh - 90px)' : '510px';
   const headerEl = document.querySelector('header');
 
   useEffect(() => {

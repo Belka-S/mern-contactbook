@@ -39,7 +39,7 @@ const Contacts = () => {
 
   return (
     <GrigWrap h={gridHeight} gtc="4fr 6fr">
-      <Container pi="0">
+      <Container p="0">
         <Filter /> <br />
         <ContactList />
       </Container>
@@ -49,7 +49,7 @@ const Contacts = () => {
       )}
 
       {!isContactForm && !isMobile && (
-        <Container pi="0" mt="0 0 10px 21%" t2={title}>
+        <Container p="0" mt="0 0 10px 21%" t2={title}>
           {!isLoading && <ContactCard triggerForm={triggerForm} />}
         </Container>
       )}

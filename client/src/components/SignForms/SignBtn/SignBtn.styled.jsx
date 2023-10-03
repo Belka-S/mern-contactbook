@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { themes } from 'styles/themes';
 
-export const Btn = styled.button`
-  padding: 2px 6px;
+export const Button = styled.button`
+  height: 41px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-weight: 500;
+  font-weight: 700;
   font-size: 12px;
 
   @media screen and (width >= 768px) {
@@ -15,23 +15,22 @@ export const Btn = styled.button`
     font-size: 14px;
   }
 
-  color: ${themes.colors.black};
-  border: 1px solid ${themes.colors.border};
+  color: ${themes.colors.white};
+  border: 1px solid ${themes.colors.accent};
   border-radius: ${themes.borderRadius.s};
-  background-color: ${themes.colors.white};
+  background-color: ${themes.colors.accent};
   transition: border-color 250ms, background-color 250ms, color 250ms;
 
   &:hover,
   &:focus {
-    color: ${themes.colors.hovered};
     border-color: ${themes.colors.hovered};
-    background-color: ${themes.colors.ligthBlue};
+    background-color: ${themes.colors.hovered};
   }
 
   &:disabled {
     cursor: auto;
     color: ${themes.colors.border};
-    border-color: ${themes.colors.border};
-    background-color: ${themes.colors.white};
+    border-color: ${themes.colors.accent};
+    background-color: ${themes.colors.accent};
   }
 `;

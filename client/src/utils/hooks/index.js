@@ -1,4 +1,2 @@
-import { useAuth } from 'utils/hooks/useAuth';
-import { useContacts } from 'utils/hooks/useContacts';
-
-export { useAuth, useContacts };
+export * from 'utils/hooks/useAuth';
+export * from 'utils/hooks/useContacts';

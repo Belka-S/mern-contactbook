@@ -2,32 +2,16 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import { object, string } from 'yup';
 
+import GrigWrap from 'components/common/GrigWrap/GrigWrap';
+import Button from 'components/common/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
-import { NAME, PHONE, EMAIL, TELEGRAM, DATE, COUNTRY } from 'utils/constants';
-import { RENDER_FIELDS, FORM_FIELDS, LINKEDIN, GITHUB } from 'utils/constants';
+import { RENDER_FIELDS, FORM_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 import { updateContactThunk } from 'store/contacts/contactsOperations';
-import GrigWrap from 'components/common/GrigWrap/GrigWrap';
-import Button from 'components/common/Button/Button';
-
-const ContactSchema = object().shape({
-  firstName: string().matches(NAME.regExp, NAME.msg).required('Required'),
-  lastName: string().matches(NAME.regExp, NAME.msg),
-  phone: string().matches(PHONE.regExp, PHONE.msg).required('Required'),
-  email: string().matches(EMAIL.regExp, EMAIL.msg),
-  whatsapp: string().matches(PHONE.regExp, PHONE.msg),
-  viber: string().matches(PHONE.regExp, PHONE.msg),
-  telegram: string().matches(TELEGRAM.regExp, TELEGRAM.msg),
-  linkedin: string().matches(LINKEDIN.regExp, LINKEDIN.msg),
-  github: string().matches(GITHUB.regExp, GITHUB.msg),
-  address: string().matches(COUNTRY.regExp, COUNTRY.msg),
-  birthday: string().matches(DATE.regExp, DATE.msg),
-  notes: string(),
-});
+import { contactSchema } from 'utils/validation';
 
 const initialValues = {};
 
@@ -83,7 +67,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
   return (
     <Formik
       initialValues={getInitialValues(isContactForm)}
-      validationSchema={ContactSchema}
+      validationSchema={contactSchema}
       onSubmit={onSubmit}
     >
       <Form onChange={onChange} fnw={width.firstName} lnw={width.lastName}>

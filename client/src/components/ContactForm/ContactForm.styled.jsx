@@ -119,6 +119,12 @@ export const Field = styled(FormikField)`
   font-size: 12px;
   transition: border-color 250ms;
 
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  }
+
   @media screen and (width >= 768px) {
     font-size: 14px;
   }

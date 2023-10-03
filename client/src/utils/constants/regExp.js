@@ -1,6 +1,6 @@
 export const NAME = {
   msg: 'Only letters, numbers, underscores, dashes, spases',
-  regExp: /^[a-zA-Zа-яА-Я0-9]+(([_ -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я0-9]*)*$/,
+  regExp: /^[a-zA-Zа-яА-Я0-9]+(([_ -][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 export const EMAIL = {
@@ -14,7 +14,7 @@ export const PHONE = {
 };
 
 export const TELEGRAM = {
-  msg: 'Only letters, more than five, start with @',
+  msg: 'Only letters and numbers,  more than five, start with @',
   regExp: /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$/,
 };
 
@@ -26,12 +26,14 @@ export const TELEGRAM_PHONE = {
 
 export const LINKEDIN = {
   msg: 'Starts with https://linkedin.com',
-  regExp: /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)/,
+  regExp:
+    /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 export const GITHUB = {
   msg: 'Starts with https://...github',
-  regExp: /^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$/,
+  regExp:
+    /^(http(s?):\/\/)?(www\.)?github\.com+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 export const DATE = {

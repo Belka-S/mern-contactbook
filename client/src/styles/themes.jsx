@@ -1,8 +1,8 @@
 export const themes = Object.freeze({
   colors: {
     background: '#e0e2e8',
-    accent: '#206bdd',
-    hovered: '#2374ef',
+    accent: '#2374ef',
+    hovered: '#206bdd',
 
     black: '#343434',
     white: '#FFFFFF',
@@ -10,7 +10,6 @@ export const themes = Object.freeze({
 
     failed: '#E74A3B',
     saccess: '#019595',
-    canceled: '#E5EDFA',
 
     border: '#b1b1b1',
     placeholder: '#5c5858',
@@ -51,12 +50,11 @@ export const themes = Object.freeze({
   },
   borderRadius: {
     s: '5px',
-    m: '10px',
-    l: '15px',
+    m: '8px',
+    l: '12px',
   },
-  modalBackdropcolors: {
+  backdropColors: {
     black: 'rgba(23, 24, 32, 0.5)',
     grey: 'rgba(103, 103, 103, 0.5)',
   },
-  backgroundImages: {},
 });

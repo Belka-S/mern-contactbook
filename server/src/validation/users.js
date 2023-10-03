@@ -5,7 +5,7 @@ const { validateBody } = require('../decorators');
 
 const registerSchema = validateBody(
   Joi.object({
-    firstName: Joi.string().min(4).required(),
+    name: Joi.string().min(4).required(),
     email: Joi.string().pattern(regExp.email).required().error(joiError.email),
     password: Joi.string().min(6).required().error(joiError.password),
   }),

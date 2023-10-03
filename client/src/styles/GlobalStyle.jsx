@@ -90,11 +90,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  /* border: 1px solid rgb(0, 0, 0); */
+  /* border: 1px solid #b1b1b1; */
   -webkit-text-fill-color: rgb(0, 0, 0);
-  /* -webkit-box-shadow: 0 0 0px 1000px #ffffff inset; */
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
-
 `;

@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { Btn } from './Button.styled';
+import { Button } from './SignBtn.styled';
 
-const Button = ({ onClick, type, disabled, children }) => {
+const SignBtn = ({ onClick, type, disabled, children }) => {
   return (
-    <Btn onClick={onClick} type={type} disabled={disabled}>
+    <Button onClick={onClick} type={type} disabled={disabled}>
       {children}
-    </Btn>
+    </Button>
   );
 };
 
-export default Button;
+export default SignBtn;
 
 Button.propTepes = {
   onClick: PropTypes.func,

@@ -11,7 +11,7 @@ export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
 
-  border-radius: ${themes.borderRadius.m};
+  border-radius: ${themes.radius.m};
   background-color: ${themes.colors.white};
 `;
 

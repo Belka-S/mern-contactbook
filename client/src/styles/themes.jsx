@@ -48,7 +48,7 @@ export const themes = Object.freeze({
   toastify: {
     theme: 'light',
   },
-  borderRadius: {
+  radius: {
     s: '5px',
     m: '8px',
     l: '12px',

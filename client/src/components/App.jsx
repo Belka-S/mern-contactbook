@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import loadWebFonts from 'styles/webFonts';
-import { refreshThunk } from 'store/auth/authOperations';
+// import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import OvalLoader from 'components/common/Loader/OvalLoader';
 
@@ -18,16 +18,16 @@ const Contacts = lazy(() => import('pages/Contacts'));
 const Profile = lazy(() => import('pages/Profile'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
     loadWebFonts();
   }, []);
 
-  useEffect(() => {
-    dispatch(refreshThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshThunk());
+  // }, [dispatch]);
 
   return (
     <>

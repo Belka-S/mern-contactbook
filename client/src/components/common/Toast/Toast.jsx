@@ -5,7 +5,7 @@ export const notify = text => toast(text);
 
 export const Toast = () => (
   <Toaster
-    position="top-center"
+    position="top-right"
     reverseOrder={false}
     gutter={8}
     containerClassName=""
@@ -13,11 +13,13 @@ export const Toast = () => (
     toastOptions={{
       // Define default options
       className: '',
-      duration: 2000,
+      duration: 3000,
       style: {
-        background: `${themes.colors.failed}`,
-        color: `${themes.colors.white}`,
-        fontSize: '20px',
+        background: `${themes.colors.white}`,
+        color: `${themes.colors.failed}`,
+        radius: `${themes.radius.s}`,
+        outline: `1.5px solid ${themes.colors.failed}`,
+        fontSize: '18px',
       },
 
       // Default options for specific types

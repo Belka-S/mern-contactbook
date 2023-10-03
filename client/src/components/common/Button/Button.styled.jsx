@@ -17,7 +17,7 @@ export const Btn = styled.button`
 
   color: ${themes.colors.black};
   border: 1px solid ${themes.colors.border};
-  border-radius: ${themes.borderRadius.s};
+  border-radius: ${themes.radius.s};
   background-color: ${themes.colors.white};
   transition: border-color 250ms, background-color 250ms, color 250ms;
 

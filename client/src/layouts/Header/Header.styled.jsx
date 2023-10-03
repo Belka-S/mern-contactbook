@@ -19,7 +19,7 @@ export const StyledHeader = styled.header`
 
 export const NavLink = styled(Link)`
   padding: 2px 5px;
-  border-radius: ${themes.borderRadius.s};
+  border-radius: ${themes.radius.s};
   text-decoration: none;
   color: black;
   font-weight: 700;

@@ -8,6 +8,7 @@ import { loginThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/SignForms/SignForms.styled';
 import { ErrorMessage, Div } from 'components/SignForms/SignForms.styled';
 import { signinSchema } from 'utils/validation';
+import { notify } from 'components/common/Toast/Toast';
 
 const initialValues = { email: '', password: '' };
 
@@ -20,7 +21,11 @@ const SigninForm = () => {
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(loginThunk(values));
+    dispatch(loginThunk(values))
+      .unwrap()
+      .then(pld => console.log(pld.status))
+      .catch(err => notify(err));
+
     actions.resetForm();
   };
 

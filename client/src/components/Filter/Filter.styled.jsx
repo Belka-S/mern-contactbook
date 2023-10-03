@@ -15,7 +15,7 @@ export const Div = styled.div`
     padding-inline: ${heightSize};
 
     border: 1px solid ${themes.colors.border};
-    border-radius: ${themes.borderRadius.s};
+    border-radius: ${themes.radius.s};
     outline: transparent;
     transition: border-color 250ms;
 

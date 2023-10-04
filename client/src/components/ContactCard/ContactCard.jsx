@@ -6,10 +6,11 @@ import { PiMapPinFill } from 'react-icons/pi';
 
 import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
-import { RENDER_FIELDS } from 'utils/constants';
+import { RENDER_FIELDS, errMsg } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
+import { notify } from 'components/common/Toast/Toast';
 
 const ContactCard = ({ triggerForm }) => {
   const dispatch = useDispatch();
@@ -51,7 +52,10 @@ const ContactCard = ({ triggerForm }) => {
   };
 
   const handleDeleteContact = () => {
-    dispatch(deleteContactThunk(activeContact._id));
+    dispatch(deleteContactThunk(activeContact._id))
+      .unwrap()
+      .then(pld => console.log(pld.status))
+      .catch(err => notify(errMsg(err)));
   };
 
   return (

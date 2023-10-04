@@ -8,6 +8,7 @@ import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 import ContactCard from 'components/ContactCard/ContactCard';
 import ContactForm from 'components/ContactForm/ContactForm';
+import { Toast } from 'components/common/Toast/Toast';
 
 const Contacts = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -55,6 +56,7 @@ const Contacts = () => {
       )}
 
       {isLoading && <OvalLoader />}
+      <Toast />
     </GrigWrap>
   );
 };

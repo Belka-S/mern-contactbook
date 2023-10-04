@@ -16,7 +16,7 @@ const addSchema = validateBody(
     telegram: Joi.string().pattern(regExp.telegram).allow(''),
     linkedin: Joi.string().pattern(regExp.linkedin).allow(''),
     github: Joi.string().pattern(regExp.github).allow(''),
-    address: Joi.string().pattern(regExp.name).allow(''),
+    address: Joi.string().pattern(regExp.address).allow(''),
     birthday: Joi.string().pattern(regExp.date).allow(''),
     notes: Joi.string().allow(''),
     group: Joi.string().valid(...groupList),

@@ -18,7 +18,7 @@ const contactSchema = new Schema(
     telegram: { type: String, match: regex('telegram'), default: '' },
     linkedin: { type: String, match: regex('linkedin'), default: '' },
     github: { type: String, match: regex('github'), default: '' },
-    address: { type: String, match: regex('name'), default: '' },
+    address: { type: String, match: regex('address'), default: '' },
     birthday: { type: String, match: regex('date'), default: '' },
     notes: { type: String, default: '' },
     group: { type: String, enum: groupList, default: 'private' },

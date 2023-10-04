@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Div } from './Container.styled';
 
 const Container = ({
-  m,
-  p,
   w,
   h,
+  m,
+  p,
   d,
   fd,
   ai,
@@ -18,7 +18,7 @@ const Container = ({
   mt,
   children,
 }) => (
-  <Div m={m} p={p} w={w} h={h} d={d} fd={fd} ai={ai} jc={jc} ta={ta} mt={mt}>
+  <Div w={w} h={h} m={m} p={p} d={d} fd={fd} ai={ai} jc={jc} ta={ta} mt={mt}>
     {t1 && <h1>{t1}</h1>}
     {t2 && <h2>{t2}</h2>}
     {t3 && <h3>{t3}</h3>}

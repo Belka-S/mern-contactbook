@@ -87,7 +87,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
         ))}
 
         <GrigWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Save</Button>
           <Button type="button" onClick={() => triggerForm(false)}>
             Cancel
           </Button>

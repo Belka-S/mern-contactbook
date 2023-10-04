@@ -16,10 +16,8 @@ const linkedin =
 const github = /^(http(s?):\/\/)?(www\.)?github\.com+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/;
 // dd-mm-yyyy
 const date = /^([0-2^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)((19|20)\d{2}$)/;
-// letters, more than two
-const country = /[a-zA-Z]\w{1}$/;
-// letters, numbers, dashes
-const cryptoRandomUUID = /^[a-zA-Zа-яА-Я0-9]+(([-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я0-9]*)*$/;
+// letters, numbers, commas, dashes, spases'
+const address = /^[a-zA-Zа-яА-Я0-9]+(([ -]|(, )[a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/;
 
 module.exports = {
   name,
@@ -30,6 +28,5 @@ module.exports = {
   linkedin,
   github,
   date,
-  country,
-  cryptoRandomUUID,
+  address,
 };

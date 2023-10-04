@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Btn } from './Button.styled';
 
-const Button = ({ onClick, type, disabled, children }) => {
+const Button = ({ onClick, type = 'button', disabled, children }) => {
   return (
     <Btn onClick={onClick} type={type} disabled={disabled}>
       {children}

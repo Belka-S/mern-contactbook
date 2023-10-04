@@ -7,12 +7,13 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
 
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
 
   @media screen and (width >= 768px) {
     padding: 4px 10px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   color: ${themes.colors.white};

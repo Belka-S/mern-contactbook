@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import Link from 'components/common/Link/Link';
-import SignBtn from './SignBtn/SignBtn';
+import { SignBtn, GoogleBtn } from './FormBtns/FormBtns';
 import { loginThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/SignForms/SignForms.styled';
 import { ErrorMessage, Div } from 'components/SignForms/SignForms.styled';
@@ -28,6 +28,10 @@ const SigninForm = () => {
       .catch(err => notify(errMsg(err)));
 
     actions.resetForm();
+  };
+
+  const handleGoogleAuth = e => {
+    console.log(e);
   };
 
   return (
@@ -55,6 +59,7 @@ const SigninForm = () => {
           <SignBtn type="submit" disabled={isDisabled({ values, errors })}>
             Sign in
           </SignBtn>
+          <GoogleBtn type="button" onClick={handleGoogleAuth} />
         </Form>
       )}
     </Formik>

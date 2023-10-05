@@ -20,7 +20,7 @@ export const Field = styled(FormikField)`
   margin-bottom: 20px;
 
   &:last-of-type {
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
 
   border: 1px solid ${themes.colors.border};

@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import Link from 'components/common/Link/Link';
-import SignBtn from './SignBtn/SignBtn';
+import { SignBtn, GoogleBtn } from './FormBtns/FormBtns';
 import { registerThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/SignForms/SignForms.styled';
 import { ErrorMessage, Div } from 'components/SignForms/SignForms.styled';
@@ -54,6 +54,7 @@ const SignupForm = () => {
           <SignBtn type="submit" disabled={isDisabled({ values, errors })}>
             Sign up
           </SignBtn>
+          <GoogleBtn type="button" />
         </Form>
       )}
     </Formik>

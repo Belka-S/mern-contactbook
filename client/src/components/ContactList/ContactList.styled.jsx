@@ -39,6 +39,7 @@ export const List = styled.ul`
     &:hover,
     &:focus {
       color: ${themes.colors.white};
+      cursor: default;
     }
   }
 `;

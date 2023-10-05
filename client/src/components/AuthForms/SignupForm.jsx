@@ -3,30 +3,29 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import Link from 'components/common/Link/Link';
-import { SignBtn, GoogleBtn } from './FormBtns/FormBtns';
-import { loginThunk } from 'store/auth/authOperations';
-import { Form, Field, Label } from 'components/SignForms/SignForms.styled';
-import { ErrorMessage, Div } from 'components/SignForms/SignForms.styled';
-import { signinSchema } from 'utils/validation';
+import { SignBtn, GoogleBtn } from './AuthBtns/AuthBtns';
+import { registerThunk } from 'store/auth/authOperations';
+import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
+import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
+import { signupSchema } from 'utils/validation';
 import { errMsg } from 'utils/constants';
 import { notify } from 'components/common/Toast/Toast';
 
-const initialValues = { email: '', password: '' };
+const initialValues = { name: '', email: '', password: '' };
 
-const SigninForm = () => {
+const SignupForm = () => {
   const dispatch = useDispatch();
 
   const isDisabled = ({ errors, values }) => {
-    const { email, password } = values;
-    return Object.keys(errors).length || !email || !password;
+    const { name, email, password } = values;
+    return Object.keys(errors).length || !name || !email || !password;
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(loginThunk(values))
+    dispatch(registerThunk(values))
       .unwrap()
       .then(pld => console.log(pld.status))
       .catch(err => notify(errMsg(err)));
-
     actions.resetForm();
   };
 
@@ -37,14 +36,14 @@ const SigninForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={signinSchema}
+      validationSchema={signupSchema}
       onSubmit={onSubmit}
     >
       {({ values, errors }) => (
         <Form>
           <Div>
-            <h2>Sign in</h2>
-            <Link to="/signup">Don't have an account?</Link>
+            <h2>Sign up</h2>
+            <Link to="/signin">Have an account?</Link>
           </Div>
 
           {Object.keys(initialValues).map(key => (
@@ -57,7 +56,7 @@ const SigninForm = () => {
           ))}
 
           <SignBtn type="submit" disabled={isDisabled({ values, errors })}>
-            Sign in
+            Sign up
           </SignBtn>
           <GoogleBtn type="button" onClick={handleGoogleAuth} />
         </Form>
@@ -66,4 +65,4 @@ const SigninForm = () => {
   );
 };
 
-export default SigninForm;
+export default SignupForm;

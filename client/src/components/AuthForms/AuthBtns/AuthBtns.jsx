@@ -3,7 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { MdArrowForwardIos } from 'react-icons/md';
 
 import Container from 'components/common/Container/Container';
-import { SignButton, IconButton } from './FormBtns.styled';
+import { SignButton, IconButton } from './AuthBtns.styled';
 
 const SignBtn = ({ onClick, type, disabled, children }) => {
   return (

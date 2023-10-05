@@ -5,7 +5,7 @@ const { User } = require('../../models');
 const { HttpError } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
-const { ACCESS_SECRET_KEY } = process.env;
+const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
 const login = ctrlWrapper(async (req, res) => {
   const { email, password } = req.body;
@@ -18,8 +18,9 @@ const login = ctrlWrapper(async (req, res) => {
   if (!isMatch) throw HttpError(401);
 
   const payload = { id: user._id };
-  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '23h' });
-  const newUser = await User.findByIdAndUpdate(user._id, { token }, { new: true });
+  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '30s' });
+  const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+  const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
   if (!newUser) throw HttpError(403);
 
   res.status(200).json({ status: 'success', code: 201, result: { user: newUser } });

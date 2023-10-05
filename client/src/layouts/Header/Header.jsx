@@ -4,11 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import { StyledHeader, NavLink, Div } from './Header.styled';
 import { logoutThunk } from 'store/auth/authOperations';
-import {
-  cleanContacts,
-  setActiveContact,
-  setFilterValue,
-} from 'store/contacts/contactsSlice';
+import { cleanContacts, setActiveContact } from 'store/contacts/contactsSlice';
+import { setFilterValue } from 'store/contacts/contactsSlice';
 import { useAuth } from 'utils/hooks/useAuth';
 import OvalLoader from 'components/common/Loader/OvalLoader';
 import Button from 'components/common/Button/Button';

@@ -3,10 +3,10 @@ const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 
 const { User } = require('../../models');
-const { HttpError, sendEmail } = require('../../utils');
+const { HttpError } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
-const { ACCESS_SECRET_KEY } = process.env;
+const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
 const register = ctrlWrapper(async (req, res) => {
   const { name, email, password } = req.body;
@@ -31,8 +31,9 @@ const register = ctrlWrapper(async (req, res) => {
   });
 
   const payload = { id: user._id };
-  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '23h' });
-  const newUser = await User.findByIdAndUpdate(user._id, { token }, { new: true });
+  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '30s' });
+  const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+  const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
   if (!newUser) throw HttpError(403);
 
   res.status(201).json({ status: 'success', code: 201, result: { user: newUser } });

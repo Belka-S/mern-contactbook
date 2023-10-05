@@ -17,44 +17,19 @@ const initialState = {
   error: false,
 };
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState,
-  extraReducers: builder => {
-    builder
-      .addCase(operations.registerThunk.fulfilled, handleAuthSucsess)
-      .addCase(operations.loginThunk.fulfilled, handleAuthSucsess)
-      .addCase(operations.logoutThunk.fulfilled, handleLogoutSucsess)
-      .addCase(operations.refreshThunk.fulfilled, handleRefreshSucsess)
-      .addCase(operations.refreshThunk.pending, handleRefreshPending)
-      .addCase(operations.refreshThunk.rejected, handleRefreshError)
-      .addMatcher(isAnyOf(...fn('pending')), handlePending)
-      .addMatcher(isAnyOf(...fn('rejected')), handleError);
-  },
-});
-
-export const authReducer = authSlice.reducer;
-
 const handleAuthSucsess = (state, action) => {
   const { _id, name, email, token, refreshToken } = action.payload.result.user;
 
-  state.user = { _id, name, email, token, refreshToken };
-  state.isLoggedIn = token ? true : false;
-  state.error = false;
-};
-
-const handleLogoutSucsess = state => {
-  return initialState;
-};
-
-const handleRefreshSucsess = (state, action) => {
-  const { _id, name, email, token, refreshToken } = action.payload.result.user;
-
-  state.user = { _id, name, email, token, refreshToken };
-  state.isLoggedIn = true;
+  state.user = { token, refreshToken };
+  if (_id) state.user._id = _id;
+  if (name) state.user.name = name;
+  if (email) state.user.email = email;
+  state.isLoggedIn = Boolean(token);
   state.isRefreshing = false;
   state.error = false;
 };
+
+const handleLogoutSucsess = state => initialState;
 
 const handleRefreshPending = state => {
   state.isRefreshing = true;
@@ -75,3 +50,28 @@ const handleError = state => {
   state.isLoading = false;
   state.error = true;
 };
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  reducers: {
+    authenticate: handleAuthSucsess,
+  },
+  extraReducers: builder => {
+    builder
+      // auth
+      .addCase(operations.registerThunk.fulfilled, handleAuthSucsess)
+      .addCase(operations.loginThunk.fulfilled, handleAuthSucsess)
+      .addCase(operations.logoutThunk.fulfilled, handleLogoutSucsess)
+      // auth from localStorage
+      .addCase(operations.refreshThunk.fulfilled, handleAuthSucsess)
+      .addCase(operations.refreshThunk.pending, handleRefreshPending)
+      .addCase(operations.refreshThunk.rejected, handleRefreshError)
+      // pending/reject
+      .addMatcher(isAnyOf(...fn('pending')), handlePending)
+      .addMatcher(isAnyOf(...fn('rejected')), handleError);
+  },
+});
+
+export const { authenticate } = authSlice.actions;
+export const authReducer = authSlice.reducer;

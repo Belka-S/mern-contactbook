@@ -8,6 +8,7 @@ export const selectUserId = state => state.auth.user._id;
 export const selectUserName = state => state.auth.user.name;
 export const selectUserEmail = state => state.auth.user.email;
 export const selectToken = state => state.auth.user.token;
+export const selectRefreshToken = state => state.auth.user.refreshToken;
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectAuthError = state => state.auth.error;

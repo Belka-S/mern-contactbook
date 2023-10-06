@@ -29,7 +29,7 @@ const handleAuthSucsess = (state, action) => {
   state.error = false;
 };
 
-const handleLogoutSucsess = state => initialState;
+const handleLogoutSucsess = () => initialState;
 
 const handleRefreshPending = state => {
   state.isRefreshing = true;

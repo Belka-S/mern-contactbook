@@ -7,9 +7,7 @@ const add = ctrlWrapper(async (req, res) => {
   const newContact = await Contact.create({ ...req.body, owner });
   if (!newContact) throw HttpError(403);
 
-  res
-    .status(201)
-    .json({ status: 'success', code: 201, result: { contact: filterValues(newContact) } });
+  res.status(201).json({ message: 'Created', result: { contact: filterValues(newContact) } });
 });
 
 module.exports = add;

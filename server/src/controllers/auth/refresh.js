@@ -19,9 +19,9 @@ const refresh = ctrlWrapper(async (req, res, next) => {
     const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
     if (!newUser) throw HttpError(403);
 
-    res
-      .status(200)
-      .json({ status: 'success', code: 200, result: { user: { token, refreshToken } } });
+    res.status(200).json({
+      result: { user: { token: newUser.token, refreshToken: newUser.refreshToken } },
+    });
   } catch {
     next(HttpError(403));
   }

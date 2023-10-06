@@ -9,7 +9,6 @@ export const useAuth = () => {
   const userEmail = useSelector(selectors.selectUserEmail);
   const error = useSelector(selectors.selectAuthError);
   const isLoading = useSelector(selectors.selectAuthIsLoading);
-  const refreshToken = useSelector(selectors.selectRefreshToken);
 
   return {
     isLoggedIn,
@@ -19,6 +18,5 @@ export const useAuth = () => {
     userEmail,
     error,
     isLoading,
-    refreshToken,
   };
 };

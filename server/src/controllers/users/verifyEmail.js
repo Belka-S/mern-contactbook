@@ -12,9 +12,7 @@ const verifyEmail = ctrlWrapper(async (req, res) => {
   });
   if (!newUser) throw HttpError(403);
 
-  res
-    .status(200)
-    .json({ status: 'success', code: 200, result: { message: `Email ${user.email} verified` } });
+  res.status(200).json({ message: `Email ${user.email} verified` });
 });
 
 module.exports = verifyEmail;

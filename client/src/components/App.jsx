@@ -6,6 +6,7 @@ import loadWebFonts from 'styles/webFonts';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 import OvalLoader from 'components/common/Loader/OvalLoader';
+import { Toast } from 'components/common/Toast/Toast';
 
 import PublicRoutes from 'routes/PublicRoutes';
 import PrivateRoutes from 'routes/PrivateRoutes';
@@ -49,6 +50,8 @@ export const App = () => {
       )}
 
       {isRefreshing && <OvalLoader />}
+
+      <Toast />
     </>
   );
 };

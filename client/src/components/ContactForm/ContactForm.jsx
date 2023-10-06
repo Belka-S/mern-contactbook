@@ -7,12 +7,11 @@ import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
-import { RENDER_FIELDS, FORM_FIELDS, errMsg } from 'utils/constants';
+import { RENDER_FIELDS, FORM_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 import { updateContactThunk } from 'store/contacts/contactsOperations';
 import { contactSchema } from 'utils/validation';
-import { notify } from 'components/common/Toast/Toast';
 
 const initialValues = {};
 
@@ -59,11 +58,8 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
       isContactForm === 'add'
         ? addContactThunk(values)
         : updateContactThunk({ id: activeContact._id, contact: values })
-    )
-      .unwrap()
-      .then(pld => console.log(pld.status))
-      .catch(err => notify(errMsg(err)));
-
+    );
+    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
     triggerForm(false);
     actions.resetForm();
   };

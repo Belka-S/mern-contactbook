@@ -23,7 +23,7 @@ const login = ctrlWrapper(async (req, res) => {
   const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
   if (!newUser) throw HttpError(403);
 
-  res.status(200).json({ status: 'success', code: 201, result: { user: newUser } });
+  res.status(200).json({ message: `Logged in: ${newUser.email}`, result: { user: newUser } });
 });
 
 module.exports = login;

@@ -5,17 +5,14 @@ import Container from 'components/common/Container/Container';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 import { loginThunk } from 'store/auth/authOperations';
-import { notify } from 'components/common/Toast/Toast';
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleDemo = () => {
-    dispatch(loginThunk({ email: 'demo@mail.com', password: 'demo123' }))
-      .unwrap()
-      .then(pld => console.log(pld.status))
-      .catch(err => notify(err));
+    dispatch(loginThunk({ email: 'demo@mail.com', password: 'demo123' }));
+    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
   };
 
   const handleSignin = () => {

@@ -3,9 +3,11 @@ import axios from 'axios';
 import { store } from 'store/store';
 import { authenticate } from 'store/auth/authSlice';
 import { logoutThunk } from 'store/auth/authOperations';
+import { notify } from 'components/common/Toast/Toast';
 
 const { REACT_APP_BACK_URL_DEV, REACT_APP_BACK_URL_PROD } = process.env;
 
+// axios instance
 const apiClient = axios.create({
   baseURL:
     process.env.NODE_ENV === 'development'
@@ -13,6 +15,7 @@ const apiClient = axios.create({
       : `${REACT_APP_BACK_URL_PROD}/api`,
 });
 
+// set token
 const token = {
   set(token) {
     apiClient.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -22,13 +25,15 @@ const token = {
   },
 };
 
+// response interseptor
 apiClient.interceptors.response.use(
   response => {
-    console.log('response: ', response.data);
+    const { message, result } = response.data;
+    !result?.contacts && message && notify(message);
+
     return response;
   },
   async error => {
-    console.log('error: ', error.response);
     if (error.response.status === 401) {
       try {
         const { refreshToken } = store.getState().auth.user;
@@ -51,6 +56,8 @@ apiClient.interceptors.response.use(
         return Promise.reject(error);
       }
     }
+
+    notify(error.response.data.message);
     return Promise.reject(error);
   }
 );

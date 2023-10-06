@@ -8,8 +8,6 @@ import { registerThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
 import { signupSchema } from 'utils/validation';
-import { errMsg } from 'utils/constants';
-import { notify } from 'components/common/Toast/Toast';
 
 const initialValues = { name: '', email: '', password: '' };
 
@@ -22,10 +20,8 @@ const SignupForm = () => {
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(registerThunk(values))
-      .unwrap()
-      .then(pld => console.log(pld.status))
-      .catch(err => notify(errMsg(err)));
+    dispatch(registerThunk(values));
+    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
     actions.resetForm();
   };
 

@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { themes } from 'styles/themes';
 
-const Button = styled.button`
+const Button = css`
   height: 41px;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  cursor: pointer;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
 
@@ -19,7 +20,9 @@ const Button = styled.button`
   transition: border-color 250ms, background-color 250ms, color 250ms;
 `;
 
-export const SignButton = styled(Button)`
+export const SignButton = styled.button`
+  ${Button};
+
   margin-top: 30px;
 
   font-weight: 700;
@@ -41,7 +44,9 @@ export const SignButton = styled(Button)`
   }
 `;
 
-export const IconButton = styled(Button)`
+export const IconLink = styled.a`
+  ${Button};
+
   margin-top: 18px;
   padding-inline: 10px;
 

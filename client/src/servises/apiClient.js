@@ -1,19 +1,13 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 import { store } from 'store/store';
 import { authenticate } from 'store/auth/authSlice';
 import { logoutThunk } from 'store/auth/authOperations';
-import { notify } from 'components/common/Toast/Toast';
-
-const { REACT_APP_BACK_URL_DEV, REACT_APP_BACK_URL_PROD } = process.env;
+import { baseURL } from './baseURL';
 
 // axios instance
-const apiClient = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'development'
-      ? `${REACT_APP_BACK_URL_DEV}/api`
-      : `${REACT_APP_BACK_URL_PROD}/api`,
-});
+const apiClient = axios.create({ baseURL });
 
 // set token
 const token = {
@@ -29,7 +23,7 @@ const token = {
 apiClient.interceptors.response.use(
   response => {
     const { message, result } = response.data;
-    !result?.contacts && message && notify(message);
+    !result?.contacts && message && toast(message);
 
     return response;
   },
@@ -57,7 +51,7 @@ apiClient.interceptors.response.use(
       }
     }
 
-    notify(error.response.data.message);
+    toast(error.response.data.message);
     return Promise.reject(error);
   }
 );

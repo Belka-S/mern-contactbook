@@ -1,9 +1,7 @@
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { themes } from 'styles/themes';
 
-export const notify = text => toast(text);
-
-export const Toast = () => (
+const Toast = () => (
   <Toaster
     position="top-right"
     reverseOrder={false}
@@ -13,13 +11,13 @@ export const Toast = () => (
     toastOptions={{
       // Define default options
       className: '',
-      duration: 3000,
+      duration: 2000,
       style: {
         background: `${themes.colors.white}`,
         color: `${themes.colors.failed}`,
         radius: `${themes.radius.s}`,
         outline: `1.5px solid ${themes.colors.failed}`,
-        fontSize: '18px',
+        fontSize: '16px',
       },
 
       // Default options for specific types
@@ -33,3 +31,5 @@ export const Toast = () => (
     }}
   />
 );
+
+export default Toast;

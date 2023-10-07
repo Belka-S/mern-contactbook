@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import Link from 'components/common/Link/Link';
-import { SignBtn, GoogleBtn } from './AuthBtns/AuthBtns';
+import { SignBtn } from './AuthBtns/SignBtn';
+import { GoogleBtn } from './AuthBtns/GoogleBtn';
 import { registerThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
@@ -23,10 +24,6 @@ const SignupForm = () => {
     dispatch(registerThunk(values));
     // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
     actions.resetForm();
-  };
-
-  const handleGoogleAuth = e => {
-    console.log(e);
   };
 
   return (
@@ -51,10 +48,9 @@ const SignupForm = () => {
             </Fragment>
           ))}
 
-          <SignBtn type="submit" disabled={isDisabled({ values, errors })}>
-            Sign up
-          </SignBtn>
-          <GoogleBtn type="button" onClick={handleGoogleAuth} />
+          <SignBtn disabled={isDisabled({ values, errors })}>Sign up</SignBtn>
+
+          <GoogleBtn />
         </Form>
       )}
     </Formik>

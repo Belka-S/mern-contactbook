@@ -31,11 +31,10 @@ const register = ctrlWrapper(async (req, res) => {
   });
 
   const payload = { id: user._id };
-  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '30s' });
+  const token = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '60s' });
   const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
   const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
-  if (!newUser) throw HttpError(403);
-
+  if (!newUser) throw HttpError(403, 'Failed to log in');
   res.status(201).json({ message: `Created: ${newUser.email} `, result: { user: newUser } });
 });
 

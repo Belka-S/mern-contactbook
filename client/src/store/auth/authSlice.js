@@ -20,7 +20,7 @@ const initialState = {
 const handleAuthSucsess = (state, action) => {
   const { _id, name, email, token, refreshToken } = action.payload.result.user;
 
-  state.user = { token, refreshToken };
+  state.user = { ...state.user, token, refreshToken };
   if (_id) state.user._id = _id;
   if (name) state.user.name = name;
   if (email) state.user.email = email;

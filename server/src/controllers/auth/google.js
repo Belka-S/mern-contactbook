@@ -9,12 +9,12 @@ const frontUrl = NODE_ENV === 'development' ? FRONT_URL_DEV : FRONT_URL_PROD;
 
 const google = async (req, res) => {
   const { _id: id } = req.user;
-  const token = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
+  const accessToken = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
   const refreshToken = jwt.sign({ id }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
-  const newUser = await User.findByIdAndUpdate(id, { token, refreshToken });
+  const newUser = await User.findByIdAndUpdate(id, { accessToken, refreshToken });
   if (!newUser) throw HttpError(403, 'Failed to log in');
 
-  res.redirect(`${frontUrl}/google?token=${token}&refreshToken=${refreshToken}`);
+  res.redirect(`${frontUrl}/google?accessToken=${accessToken}&refreshToken=${refreshToken}`);
 };
 
 module.exports = google;

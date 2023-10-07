@@ -3,13 +3,13 @@ import { apiClient, token } from './apiClient';
 // Auth
 export const register = async credentials => {
   const { data } = await apiClient.post('/auth/register', credentials);
-  token.set(data.result.user.token);
+  token.set(data.result.user.accessToken);
   return data;
 };
 
 export const logIn = async credentials => {
   const { data } = await apiClient.post('/auth/login', credentials);
-  token.set(data.result.user.token);
+  token.set(data.result.user.accessToken);
   return data;
 };
 

@@ -8,10 +8,11 @@ const Google = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const token = searchParams.get('token');
+  const accessToken = searchParams.get('accessToken');
   const refreshToken = searchParams.get('refreshToken');
+  const result = { user: { accessToken, refreshToken } };
 
-  dispatch(authenticate({ result: { user: { token, refreshToken } } }));
+  dispatch(authenticate({ result }));
   dispatch(refreshThunk());
 };
 

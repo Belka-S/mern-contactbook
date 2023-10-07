@@ -14,12 +14,16 @@ const refresh = ctrlWrapper(async (req, res, next) => {
     if (!user || !user.refreshToken || user.refreshToken !== refreshtoken) {
       next(HttpError(403));
     }
-    const token = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
+    const accessToken = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
     const refreshToken = jwt.sign({ id }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
-    const newUser = await User.findByIdAndUpdate(user._id, { token, refreshToken }, { new: true });
+    const newUser = await User.findByIdAndUpdate(
+      user._id,
+      { accessToken, refreshToken },
+      { new: true },
+    );
     if (!newUser) throw HttpError(403);
 
-    res.status(200).json({ result: { user: { token, refreshToken } } });
+    res.status(200).json({ result: { user: { accessToken, refreshToken } } });
   } catch {
     next(HttpError(403));
   }

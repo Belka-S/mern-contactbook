@@ -38,11 +38,11 @@ apiClient.interceptors.response.use(
         error.config.headers.refreshtoken = `${refreshToken}`;
 
         const { data } = await apiClient.post('/auth/refresh');
-        const { user } = data.result;
+        const { accessToken } = data.result.user;
 
-        token.set(user.token);
+        token.set(accessToken);
         await store.dispatch(authenticate(data));
-        error.config.headers.Authorization = `Bearer ${user.token}`;
+        error.config.headers.Authorization = `Bearer ${accessToken}`;
 
         return apiClient(error.config);
       } catch (error) {

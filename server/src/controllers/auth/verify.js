@@ -12,7 +12,7 @@ const verifyEmail = ctrlWrapper(async (req, res) => {
   });
   const user = userArr[0];
   if (!user) {
-    throw HttpError(401, 'Action Required: Verify Your Email');
+    throw HttpError(401, `Action required: verify ${user.email}`);
   }
   // Check verification code
   const [code, newEmail] = user.verificationCode.split(' ');
@@ -31,7 +31,7 @@ const verifyEmail = ctrlWrapper(async (req, res) => {
   const newUser = await User.findByIdAndUpdate(
     user._id,
     { verifiedEmail: true, verificationCode: null, token, refreshToken },
-    { new: true }
+    { new: true },
   );
   if (!newUser) throw HttpError(500, 'Failed to verify email.');
 

@@ -12,7 +12,7 @@ import { signinSchema } from 'utils/validation';
 
 const initialValues = { email: '', password: '' };
 
-const SigninForm = () => {
+const SigninForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
 
   const isDisabled = ({ errors, values }) => {
@@ -21,8 +21,10 @@ const SigninForm = () => {
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(loginThunk(values));
-    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
+    dispatch(loginThunk(values))
+      .unwrap()
+      .then(pld => setIsModal(!pld.result.user.verifiedEmail));
+    // .catch(err => console.log(err));
     actions.resetForm();
   };
 

@@ -11,7 +11,7 @@ const handleAuthSucsess = (state, action) => {
     action.payload.result.user;
 
   state.user = { ...state.user, accessToken, refreshToken };
-  if (_id) state.user._id = _id;
+  if (_id) state.user.id = _id;
   if (name) state.user.name = name;
   if (email) state.user.email = email;
   if (String(verifiedEmail) === 'true' || 'false') {

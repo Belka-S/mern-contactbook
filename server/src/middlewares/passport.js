@@ -18,8 +18,9 @@ const googleParams = {
 };
 
 const googleCallback = async (request, accessToken, refreshToken, profile, done) => {
+  console.log('profile: ', profile);
   try {
-    const { email, displayName, verified, picture } = profile;
+    const { email, displayName, verified, picture, provider } = profile;
     const user = await User.findOne({ email });
     if (user) {
       return done(null, user);
@@ -30,8 +31,9 @@ const googleCallback = async (request, accessToken, refreshToken, profile, done)
       name: displayName,
       email,
       password,
-      verifiedEmail: verified,
       avatarUrl: picture,
+      verifiedEmail: verified,
+      verificationCode: provider,
     });
     // Send avtocreate password notification
     // const msg = createMsg.changePassword(email);

@@ -23,7 +23,10 @@ const token = {
 apiClient.interceptors.response.use(
   response => {
     const { message, result } = response.data;
+
     !result?.contacts && message && toast(message);
+    result?.user?.verificationCode === 'google' &&
+      toast(`Logged in: ${result.user.email}`);
 
     return response;
   },

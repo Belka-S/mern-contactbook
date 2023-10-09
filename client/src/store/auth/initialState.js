@@ -3,6 +3,7 @@ export const initialState = {
     id: null,
     name: null,
     email: null,
+    verifiedEmail: null,
     accessToken: null,
     refreshToken: null,
   },

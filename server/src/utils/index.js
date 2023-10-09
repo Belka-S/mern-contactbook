@@ -5,7 +5,8 @@ const joiError = require('./joiError');
 const regExp = require('./regExp');
 const filterValues = require('./filterValues');
 const { sendEmail } = require('./sendEmail');
-const { restrictedAccess } = require('./restrictedAccess');
+const restrictedAccess = require('./restrictedAccess');
+const randomNumber = require('./randomNumber');
 
 module.exports = {
   logFile,
@@ -16,4 +17,5 @@ module.exports = {
   regExp,
   filterValues,
   restrictedAccess,
+  randomNumber,
 };

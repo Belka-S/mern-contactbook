@@ -7,7 +7,6 @@ import { themes } from 'styles/themes';
 
 export const Form = styled(FormikForm)`
   padding: 40px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 

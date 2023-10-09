@@ -1,12 +1,12 @@
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 const { User } = require('../../models');
-const { HttpError } = require('../../utils');
+const { HttpError, randomNumber } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
-const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
+// const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
 const register = ctrlWrapper(async (req, res) => {
   const { name, email, password } = req.body;
@@ -19,7 +19,7 @@ const register = ctrlWrapper(async (req, res) => {
   }
   const hashPassword = await bcrypt.hash(password, 10);
   const avatarUrl = gravatar.url(email);
-  const verificationCode = (Math.random() * 100000).toFixed(0);
+  const verificationCode = randomNumber(6);
 
   // await sendEmail(email, verificationCode);
 
@@ -29,17 +29,17 @@ const register = ctrlWrapper(async (req, res) => {
     avatarUrl,
     verificationCode,
   });
+  if (!user) throw HttpError(403, 'Failed to sign up');
 
-  const payload = { id: user._id };
-  const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '60s' });
-  const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
-  const newUser = await User.findByIdAndUpdate(
-    user._id,
-    { accessToken, refreshToken },
-    { new: true },
-  );
-  if (!newUser) throw HttpError(403, 'Failed to log in');
-  res.status(201).json({ message: `Created: ${newUser.email} `, result: { user: newUser } });
+  // const payload = { id: user._id };
+  // const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '60s' });
+  // const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+  // const newUser = await User.findByIdAndUpdate(
+  //   user._id,
+  //   { accessToken, refreshToken },
+  //   { new: true },
+  // );
+  res.status(201).json({ message: `Created: ${user.email}` });
 });
 
 module.exports = register;

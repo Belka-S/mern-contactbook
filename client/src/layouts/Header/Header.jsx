@@ -10,7 +10,7 @@ import { useAuth } from 'utils/hooks/useAuth';
 import OvalLoader from 'components/common/Loader/OvalLoader';
 import Button from 'components/common/Button/Button';
 
-export const Header = () => {
+const Header = () => {
   const dispatch = useDispatch();
   const { isLoggedIn, userEmail } = useAuth();
 
@@ -42,3 +42,5 @@ export const Header = () => {
     </>
   );
 };
+
+export default Header;

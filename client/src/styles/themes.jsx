@@ -13,6 +13,9 @@ export const themes = Object.freeze({
 
     border: '#b1b1b1',
     placeholder: '#5c5858',
+
+    backdrop: 'rgba(23, 24, 32, 0.5)',
+    backdrop1: 'rgba(103, 103, 103, 0.5)',
   },
   fontSizes: {
     micro: '10px',
@@ -44,17 +47,12 @@ export const themes = Object.freeze({
     authHeading:
       '0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035)',
     authButton: '4px 2px 16px rgba(136, 165, 191, 0.48)',
-  },
-  toastify: {
-    theme: 'light',
+    modal:
+      '0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.1)',
   },
   radius: {
     s: '5px',
     m: '8px',
     l: '12px',
-  },
-  backdropColors: {
-    black: 'rgba(23, 24, 32, 0.5)',
-    grey: 'rgba(103, 103, 103, 0.5)',
   },
 });

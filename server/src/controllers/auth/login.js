@@ -12,10 +12,11 @@ const login = ctrlWrapper(async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) throw HttpError(401);
-  // if (!user.verifiedEmail) throw HttpError(401);
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw HttpError(401);
+
+  if (!user.verifiedEmail) throw HttpError(403, `Action required: verify ${email}`);
 
   const payload = { id: user._id };
   const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, { expiresIn: '60s' });

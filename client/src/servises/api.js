@@ -7,21 +7,21 @@ export const register = async credentials => {
   return data;
 };
 
-export const logIn = async credentials => {
+export const login = async credentials => {
   const { data } = await apiClient.post('/auth/login', credentials);
   token.set(data.result.user.accessToken);
   return data;
 };
 
-export const logOut = async () => {
+export const logout = async () => {
   const { data } = await apiClient.post('/auth/logout');
   token.unset();
   return data;
 };
 
-export const refresh = async persistedToken => {
+export const refreshUser = async persistedToken => {
   token.set(persistedToken);
-  const { data } = await apiClient.get('/users/current');
+  const { data } = await apiClient.get('/auth/current');
   return data;
 };
 

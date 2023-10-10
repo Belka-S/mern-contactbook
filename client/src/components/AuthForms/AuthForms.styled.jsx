@@ -51,7 +51,7 @@ export const Div = styled.div`
   align-items: baseline;
 
   & h2 {
-    margin: 0 0 0 0;
+    margin: 0;
     font-size: 24px;
   }
 `;

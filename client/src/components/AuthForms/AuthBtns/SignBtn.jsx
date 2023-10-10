@@ -2,13 +2,15 @@ import PropTypes from 'prop-types';
 
 import { SignButton } from './AuthBtns.styled';
 
-export const SignBtn = ({ onClick, disabled, children }) => {
+const SignBtn = ({ onClick, disabled, children }) => {
   return (
     <SignButton onClick={onClick} type="submit" disabled={disabled}>
       {children}
     </SignButton>
   );
 };
+
+export default SignBtn;
 
 SignButton.propTepes = {
   onClick: PropTypes.func,

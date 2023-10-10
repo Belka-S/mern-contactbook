@@ -5,7 +5,7 @@ const { ctrlWrapper } = require('../../decorators');
 const { HttpError } = require('../../utils');
 const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
-const refresh = ctrlWrapper(async (req, res, next) => {
+const refreshToken = ctrlWrapper(async (req, res, next) => {
   const { refreshtoken } = req.headers; // const { refreshtoken } = req.body;
   try {
     const { id } = jwt.verify(refreshtoken, REFRESH_SECRET_KEY);
@@ -29,4 +29,4 @@ const refresh = ctrlWrapper(async (req, res, next) => {
   }
 });
 
-module.exports = refresh;
+module.exports = refreshToken;

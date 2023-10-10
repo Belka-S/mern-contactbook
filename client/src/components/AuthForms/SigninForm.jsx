@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import Link from 'components/common/Link/Link';
-import { SignBtn } from './AuthBtns/SignBtn';
-import { GoogleBtn } from './AuthBtns/GoogleBtn';
+import SignBtn from './AuthBtns/SignBtn';
+import GoogleBtn from './AuthBtns/GoogleBtn';
 import { loginThunk } from 'store/auth/authOperations';
 import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';

@@ -5,7 +5,7 @@ import { baseURL } from 'servises/baseURL';
 import Container from 'components/common/Container/Container';
 import { IconLink } from './AuthBtns.styled';
 
-export const GoogleBtn = () => (
+const GoogleBtn = () => (
   <IconLink href={`${baseURL}/auth/google`}>
     <Container p="0" d="flex" ai="center" jc="space-between">
       <FcGoogle size="20px" />
@@ -14,3 +14,5 @@ export const GoogleBtn = () => (
     </Container>
   </IconLink>
 );
+
+export default GoogleBtn;

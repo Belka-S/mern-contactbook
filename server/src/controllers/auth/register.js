@@ -3,7 +3,7 @@ const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 
 const { User } = require('../../models');
-const { HttpError, randomNumber } = require('../../utils');
+const { HttpError, randomNumber, sendMail, createMsg } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
 const { REFRESH_SECRET_KEY } = process.env;
@@ -20,7 +20,8 @@ const register = ctrlWrapper(async (req, res) => {
   const hashPassword = await bcrypt.hash(password, 10);
   const avatarUrl = gravatar.url(email);
   const verificationCode = randomNumber(6);
-  // await sendEmail(email, verificationCode);
+  const msg = createMsg('verifyEmail.ejs', { email, verificationCode });
+  await sendMail.nodemailer(msg);
 
   const user = await User.create({
     ...req.body,
@@ -35,7 +36,7 @@ const register = ctrlWrapper(async (req, res) => {
   const newUser = await User.findByIdAndUpdate(id, { refreshToken }, { new: true });
 
   if (!newUser) throw HttpError(403);
-  res.status(201).json({ message: `Created: ${user.email}`, result: { user: newUser } });
+  res.status(201).json({ message: `Verify: ${user.email}`, result: { user: newUser } });
 });
 
 module.exports = register;

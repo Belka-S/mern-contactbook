@@ -10,8 +10,7 @@ sg.setApiKey(SENDGRID_API_KEY);
 
 const sendgrid = async msg => {
   try {
-    await sg.send(msg);
-    // console.log(`Email sent to ${email}`);
+    await sg.send(msg); // console.log(`Email sent to ${email}`);
   } catch (error) {
     throw new HttpError(500, error.message);
   }
@@ -27,8 +26,7 @@ const transporter = nm.createTransport({
 
 const nodemailer = async msg => {
   try {
-    await transporter.sendMail(msg);
-    // console.log(`Email sent to ${email}`);
+    await transporter.sendMail(msg); // console.log(`Email sent to ${email}`);
   } catch (error) {
     throw new HttpError(500, error.message);
   }

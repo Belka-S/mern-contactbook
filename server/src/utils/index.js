@@ -4,7 +4,9 @@ const mongooseError = require('./mongooseError');
 const joiError = require('./joiError');
 const regExp = require('./regExp');
 const filterValues = require('./filterValues');
-const { sendEmail } = require('./sendEmail');
+const sendMail = require('./sendMail');
+const createMsg = require('./createMsg');
+const renderEjsTemplate = require('./renderEjsTemplate');
 const restrictedAccess = require('./restrictedAccess');
 const randomNumber = require('./randomNumber');
 
@@ -13,8 +15,10 @@ module.exports = {
   HttpError,
   mongooseError,
   joiError,
-  sendEmail,
   regExp,
+  sendMail,
+  createMsg,
+  renderEjsTemplate,
   filterValues,
   restrictedAccess,
   randomNumber,

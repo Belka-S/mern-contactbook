@@ -2,8 +2,8 @@ const register = require('./register');
 const login = require('./login');
 const logout = require('./logout');
 const google = require('./google');
-const verify = require('./verify');
+const verifyEmail = require('./verifyEmail');
 const refreshToken = require('./refreshToken');
-const getCurrent = require('./getCurrent');
+const getUser = require('./getUser');
 
-module.exports = { register, login, logout, google, verify, refreshToken, getCurrent };
+module.exports = { register, login, logout, google, verifyEmail, refreshToken, getUser };

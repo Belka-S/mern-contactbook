@@ -18,10 +18,10 @@ const loginSchema = validateBody(
   }),
 );
 
-const emailVerificationSchema = validateBody(
+const verifySchema = validateBody(
   Joi.object({
-    email: Joi.string().email(regExp.email).required().error(joiError.email),
+    verificationCode: Joi.number().required(),
   }),
 );
 
-module.exports = { registerSchema, loginSchema, emailVerificationSchema };
+module.exports = { registerSchema, loginSchema, verifySchema };

@@ -23,8 +23,9 @@ const SigninForm = ({ setIsModal }) => {
   const onSubmit = (values, actions) => {
     dispatch(loginThunk(values))
       .unwrap()
-      .then(pld => setIsModal(!pld.result.user.verifiedEmail));
-    // .catch(err => console.log(err));
+      .then(pld => setIsModal(!pld.result.user.verifiedEmail))
+      .catch(err => console.log(err));
+
     actions.resetForm();
   };
 

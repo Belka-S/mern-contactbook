@@ -12,4 +12,4 @@ const code = number().required('is required').typeError('must be a number');
 
 export const signupSchema = object().shape({ name, email, password });
 export const signinSchema = object().shape({ email, password });
-export const verifySchema = object().shape({ code });
+export const verifySchema = object().shape({ verificationCode: code });

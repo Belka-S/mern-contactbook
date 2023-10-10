@@ -21,7 +21,12 @@ export const logout = async () => {
 
 export const refreshUser = async persistedToken => {
   token.set(persistedToken);
-  const { data } = await apiClient.get('/auth/current');
+  const { data } = await apiClient.get('/auth/user');
+  return data;
+};
+
+export const verifyEmail = async credentials => {
+  const { data } = await apiClient.post('/auth/verify', credentials);
   return data;
 };
 

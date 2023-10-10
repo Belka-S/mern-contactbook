@@ -37,9 +37,20 @@ export const logoutThunk = createAsyncThunk(
 export const refreshThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.user.token;
+    const persistedToken = thunkAPI.getState().auth.user.accessToken;
     try {
       return await API.refreshUser(persistedToken);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const verifyThunk = createAsyncThunk(
+  'auth/verify',
+  async (credentials, thunkAPI) => {
+    try {
+      return await API.verifyEmail(credentials);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

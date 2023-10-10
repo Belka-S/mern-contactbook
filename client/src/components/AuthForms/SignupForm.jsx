@@ -12,7 +12,7 @@ import { signupSchema } from 'utils/validation';
 
 const initialValues = { name: '', email: '', password: '' };
 
-const SignupForm = () => {
+const SignupForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
 
   const isDisabled = ({ errors, values }) => {
@@ -21,8 +21,11 @@ const SignupForm = () => {
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(registerThunk(values));
-    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
+    dispatch(registerThunk(values))
+      .unwrap()
+      .then(pld => setIsModal(!pld.result.user.verifiedEmail))
+      .catch(err => console.log(err));
+    
     actions.resetForm();
   };
 

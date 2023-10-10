@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import Container from 'components/common/Container/Container';
-import Modal from 'layouts/Modal/Modal';
 import SigninForm from 'components/AuthForms/SigninForm';
+import Modal from 'layouts/Modal/Modal';
 import VerifyForm from 'components/AuthForms/VerifyForm';
 
 const Signin = () => {

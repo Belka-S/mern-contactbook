@@ -7,6 +7,6 @@ const { authenticate, upload } = require('../../middlewares');
 const router = express.Router();
 
 router.patch('/avatars', authenticate, upload.single('avatar'), ctrl.users.updateAvatar);
-router.get('/verify/:verificationCode', ctrl.users.verifyEmail);
+// router.get('/verify/:verificationCode', ctrl.users.verifyEmail);
 
 module.exports = router;

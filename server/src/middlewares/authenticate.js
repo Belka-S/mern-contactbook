@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { HttpError } = require('../utils');
 const { User } = require('../models');
 
-const { ACCESS_SECRET_KEY } = process.env;
+const { TOKEN_ACCESS_SECRET } = process.env;
 
 const authenticate = async (req, res, next) => {
   const { authorization = '' } = req.headers;
@@ -14,7 +14,7 @@ const authenticate = async (req, res, next) => {
   }
 
   try {
-    const { id } = jwt.verify(accessToken, ACCESS_SECRET_KEY);
+    const { id } = jwt.verify(accessToken, TOKEN_ACCESS_SECRET);
     const user = await User.findById(id);
     if (!user || !user.accessToken || user.accessToken !== accessToken) {
       next(HttpError(401));

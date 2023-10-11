@@ -6,9 +6,9 @@ const bcrypt = require('bcryptjs');
 const { User } = require('../models/user');
 // const { sendEmail, createMsg } = require('../utils');
 
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, NODE_ENV, PORT, BACK_URL_PROD } = process.env;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, NODE_ENV, PORT, PROD_BACK_URL } = process.env;
 
-const baseUrl = NODE_ENV === 'development' ? `http://localhost:${PORT}` : BACK_URL_PROD;
+const baseUrl = NODE_ENV === 'development' ? `http://localhost:${PORT}` : PROD_BACK_URL;
 
 const googleParams = {
   clientID: GOOGLE_CLIENT_ID,

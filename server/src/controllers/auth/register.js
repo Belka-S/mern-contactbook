@@ -6,7 +6,7 @@ const { User } = require('../../models');
 const { HttpError, randomNumber, sendMail, createMsg } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
-const { REFRESH_SECRET_KEY } = process.env;
+const { TOKEN_REFRESH_SECRET } = process.env;
 
 const register = ctrlWrapper(async (req, res) => {
   const { name, email, password } = req.body;
@@ -32,7 +32,7 @@ const register = ctrlWrapper(async (req, res) => {
   if (!user) throw HttpError(403, 'Failed to sign up');
 
   const id = user._id;
-  const refreshToken = jwt.sign({ id }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+  const refreshToken = jwt.sign({ id }, TOKEN_REFRESH_SECRET, { expiresIn: '7d' });
   const newUser = await User.findByIdAndUpdate(id, { refreshToken }, { new: true });
 
   if (!newUser) throw HttpError(403);

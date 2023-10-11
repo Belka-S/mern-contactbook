@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../../models');
 const { ctrlWrapper } = require('../../decorators');
 const { HttpError } = require('../../utils');
-const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
+const { TOKEN_ACCESS_SECRET, TOKEN_REFRESH_SECRET } = process.env;
 
 const refreshToken = ctrlWrapper(async (req, res, next) => {
   const { refreshtoken } = req.headers; // const { refreshtoken } = req.body;
   try {
-    const { id } = jwt.verify(refreshtoken, REFRESH_SECRET_KEY);
+    const { id } = jwt.verify(refreshtoken, TOKEN_REFRESH_SECRET);
     const user = await User.findOne({ refreshToken: refreshtoken });
 
     const candidate = { accessToken: null, refreshToken: null };
@@ -16,8 +16,8 @@ const refreshToken = ctrlWrapper(async (req, res, next) => {
     if (!user || !user.verifiedEmail || !user.refreshToken || user.refreshToken !== refreshtoken) {
       res.status(403).json({ message: 'Forbidden', result: { user: candidate } });
     } else {
-      candidate.accessToken = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
-      candidate.refreshToken = jwt.sign({ id }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+      candidate.accessToken = jwt.sign({ id }, TOKEN_ACCESS_SECRET, { expiresIn: '60s' });
+      candidate.refreshToken = jwt.sign({ id }, TOKEN_REFRESH_SECRET, { expiresIn: '7d' });
 
       const newUser = await User.findByIdAndUpdate(user._id, candidate, { new: true });
       if (!newUser) throw HttpError(403);

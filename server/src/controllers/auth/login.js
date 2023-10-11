@@ -5,7 +5,7 @@ const { User } = require('../../models');
 const { HttpError, sendMail, createMsg } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
 
-const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
+const { TOKEN_ACCESS_SECRET, TOKEN_REFRESH_SECRET } = process.env;
 
 const login = ctrlWrapper(async (req, res) => {
   const { email, password } = req.body;
@@ -23,8 +23,8 @@ const login = ctrlWrapper(async (req, res) => {
     res.status(200).json({ message: `Verify: ${user.email}`, result: { user } });
   } else {
     const id = user._id;
-    const accessToken = jwt.sign({ id }, ACCESS_SECRET_KEY, { expiresIn: '60s' });
-    const refreshToken = jwt.sign({ id }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
+    const accessToken = jwt.sign({ id }, TOKEN_ACCESS_SECRET, { expiresIn: '60s' });
+    const refreshToken = jwt.sign({ id }, TOKEN_REFRESH_SECRET, { expiresIn: '7d' });
 
     const newUser = await User.findByIdAndUpdate(id, { accessToken, refreshToken }, { new: true });
     if (!newUser) throw HttpError(403);

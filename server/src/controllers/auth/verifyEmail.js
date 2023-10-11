@@ -22,7 +22,7 @@ const verifyEmail = ctrlWrapper(async (req, res) => {
   const newUser = await User.findByIdAndUpdate(user._id, candidate, { new: true });
   if (!newUser) throw HttpError(403, `Failed to verify ${user.email}`);
 
-  res.status(200).json({ message: `Verified: ${newUser.email} `, result: { user: newUser } });
+  res.status(200).json({ message: `Email verified`, result: { user: newUser } });
 });
 
 module.exports = verifyEmail;

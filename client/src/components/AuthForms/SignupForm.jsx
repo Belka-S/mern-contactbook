@@ -25,7 +25,7 @@ const SignupForm = ({ setIsModal }) => {
       .unwrap()
       .then(pld => setIsModal(!pld.result.user.verifiedEmail))
       .catch(err => console.log(err));
-    
+
     actions.resetForm();
   };
 

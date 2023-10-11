@@ -53,7 +53,6 @@ apiClient.interceptors.response.use(
         return Promise.reject(error);
       }
     }
-
     toast(error.response.data.message);
     return Promise.reject(error);
   }

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import Link from 'components/common/Link/Link';
 import SignBtn from './AuthBtns/SignBtn';
@@ -24,7 +25,7 @@ const SigninForm = ({ setIsModal }) => {
     dispatch(loginThunk(values))
       .unwrap()
       .then(pld => setIsModal(!pld.result.user.verifiedEmail))
-      .catch(err => console.log(err));
+      .catch(err => err.includes('401') && toast('Unauthorized'));
 
     actions.resetForm();
   };

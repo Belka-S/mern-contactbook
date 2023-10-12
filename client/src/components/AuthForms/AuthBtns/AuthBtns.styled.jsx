@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { themes } from 'styles/themes';
 
-const Button = css`
+const CommonStyles = css`
   height: 41px;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ const Button = css`
 `;
 
 export const SignButton = styled.button`
-  ${Button};
+  ${CommonStyles};
 
   margin-top: 30px;
 
@@ -45,7 +45,7 @@ export const SignButton = styled.button`
 `;
 
 export const IconLink = styled.a`
-  ${Button};
+  ${CommonStyles};
 
   margin-top: 18px;
   padding-inline: 10px;

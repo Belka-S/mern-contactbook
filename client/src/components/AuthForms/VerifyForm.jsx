@@ -38,7 +38,7 @@ const VerifyForm = () => {
 
           <Fragment>
             <Label>
-              code <ErrorMessage name="verificationCode" component="span" />
+              Code: <ErrorMessage name="verificationCode" component="span" />
             </Label>
             <Field type="text" name="verificationCode" />
           </Fragment>

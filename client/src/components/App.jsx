@@ -11,13 +11,14 @@ import OvalLoader from 'components/common/Loader/OvalLoader';
 import PublicRoutes from 'routes/PublicRoutes';
 import PrivateRoutes from 'routes/PrivateRoutes';
 
-import Home from 'pages/Home';
-import Google from 'pages/Google';
-const Signup = lazy(() => import('pages/Signup'));
-const Signin = lazy(() => import('pages/Signin'));
+import HomePage from 'pages/HomePage';
+import GooglePage from 'pages/GooglePage';
 const SharedLayuot = lazy(() => import('layouts/SharedLayuot/SharedLayuot'));
-const Contacts = lazy(() => import('pages/Contacts'));
-const Profile = lazy(() => import('pages/Profile'));
+const SignupPage = lazy(() => import('pages/SignupPage'));
+const SigninPage = lazy(() => import('pages/SigninPage'));
+// const ForgotPage = lazy(() => import('pages/ForgotPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
+const ProfilePage = lazy(() => import('pages/ProfilePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -36,15 +37,16 @@ export const App = () => {
       {!isRefreshing && (
         <Routes>
           <Route element={<PublicRoutes />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/google" element={<Google />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signin" element={<SigninPage />} />
+            <Route path="/google" element={<GooglePage />} />
+            {/* <Route path="/forgot" element={<ForgotPage />} /> */}
           </Route>
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<SharedLayuot />}>
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/" />} />

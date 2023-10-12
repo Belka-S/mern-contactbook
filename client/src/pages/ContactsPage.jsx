@@ -9,7 +9,7 @@ import ContactList from 'components/ContactList/ContactList';
 import ContactCard from 'components/ContactCard/ContactCard';
 import ContactForm from 'components/ContactForm/ContactForm';
 
-const Contacts = () => {
+const ContactsPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isContactForm, setIsContactForm] = useState(false);
   const { userId } = useAuth();
@@ -59,4 +59,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsPage;

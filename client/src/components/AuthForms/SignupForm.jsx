@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import Link from 'components/common/Link/Link';
+import LinkRoute from 'components/AuthForms/AuthLinks/LinkRoute';
 import SignBtn from './AuthBtns/SignBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { registerThunk } from 'store/auth/authOperations';
@@ -12,7 +13,7 @@ import { signupSchema } from 'utils/validation';
 
 const initialValues = { name: '', email: '', password: '' };
 
-const SignupForm = ({ setIsModal }) => {
+const SignupForm = ({ setIsVerify }) => {
   const dispatch = useDispatch();
 
   const isDisabled = ({ errors, values }) => {
@@ -23,7 +24,7 @@ const SignupForm = ({ setIsModal }) => {
   const onSubmit = (values, actions) => {
     dispatch(registerThunk(values))
       .unwrap()
-      .then(pld => setIsModal(!pld.result.user.verifiedEmail))
+      .then(pld => setIsVerify(!pld.result.user.verifiedEmail))
       .catch(err => console.log(err));
 
     actions.resetForm();
@@ -39,13 +40,15 @@ const SignupForm = ({ setIsModal }) => {
         <Form>
           <Div>
             <h2>Sign up</h2>
-            <Link to="/signin">Have an account?</Link>
+            <LinkRoute to="/signin">Have an account?</LinkRoute>
           </Div>
 
           {Object.keys(initialValues).map(key => (
             <Fragment key={key}>
               <Label>
-                {key} <ErrorMessage name={key} component="span" />
+                {key.at(0).toUpperCase() + key.substring(1) + ':'}
+                <pre> </pre>
+                <ErrorMessage name={key} component="span" />
               </Label>
               <Field type={key} name={key} />
             </Fragment>
@@ -61,3 +64,7 @@ const SignupForm = ({ setIsModal }) => {
 };
 
 export default SignupForm;
+
+SignupForm.propTypes = {
+  setIsVerify: PropTypes.func,
+};

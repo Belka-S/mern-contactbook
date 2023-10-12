@@ -29,12 +29,16 @@ export const Field = styled(FormikField)`
 `;
 
 export const Label = styled.label`
+  display: flex;
+  align-items: baseline;
+
   font-size: 16px;
   font-weight: 500;
 
-  &::first-letter {
-    text-transform: uppercase;
+  & pre {
+    font-size: 10px;
   }
+  // &::first-letter { text-transform: uppercase; }
 `;
 
 export const ErrorMessage = styled(FormikError)`

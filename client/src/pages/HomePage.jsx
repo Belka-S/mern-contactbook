@@ -6,7 +6,7 @@ import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 import { loginThunk } from 'store/auth/authOperations';
 
-const Home = () => {
+const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

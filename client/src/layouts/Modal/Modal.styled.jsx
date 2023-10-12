@@ -13,7 +13,7 @@ export const Backdrop = styled.div`
   z-index: 100;
 
   background-color: ${themes.colors.backdrop};
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(5px);
 
   & > div {
     min-width: 400px;

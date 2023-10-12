@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+
 import toast from 'react-hot-toast';
 
-import Link from 'components/common/Link/Link';
+import LinkRoute from 'components/AuthForms/AuthLinks/LinkRoute';
+import LinkBtn from './AuthLinks/LinkBtn';
 import SignBtn from './AuthBtns/SignBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { loginThunk } from 'store/auth/authOperations';
@@ -13,18 +16,24 @@ import { signinSchema } from 'utils/validation';
 
 const initialValues = { email: '', password: '' };
 
-const SigninForm = ({ setIsModal }) => {
+const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
   const dispatch = useDispatch();
 
   const isDisabled = ({ errors, values }) => {
     const { email, password } = values;
+
     return Object.keys(errors).length || !email || !password;
+  };
+
+  const onClick = ({ email }) => {
+    setEmail(email);
+    setIsForgot(true);
   };
 
   const onSubmit = (values, actions) => {
     dispatch(loginThunk(values))
       .unwrap()
-      .then(pld => setIsModal(!pld.result.user.verifiedEmail))
+      .then(pld => setIsVerify(!pld.result.user.verifiedEmail))
       .catch(err => err.includes('401') && toast('Unauthorized'));
 
     actions.resetForm();
@@ -40,13 +49,20 @@ const SigninForm = ({ setIsModal }) => {
         <Form>
           <Div>
             <h2>Sign in</h2>
-            <Link to="/signup">Don't have an account?</Link>
+            <LinkRoute to="/signup">Don't have an account?</LinkRoute>
           </Div>
 
           {Object.keys(initialValues).map(key => (
             <Fragment key={key}>
               <Label>
-                {key} <ErrorMessage name={key} component="span" />
+                {key.at(0).toUpperCase() + key.substring(1) + ':'}
+                <pre> </pre>
+                <ErrorMessage name={key} component="span" />
+                {key === 'password' && (
+                  <LinkBtn onClick={() => onClick(values)}>
+                    Forgot your pass?
+                  </LinkBtn>
+                )}
               </Label>
               <Field type={key} name={key} />
             </Fragment>
@@ -62,3 +78,9 @@ const SigninForm = ({ setIsModal }) => {
 };
 
 export default SigninForm;
+
+SigninForm.propTypes = {
+  setIsVerify: PropTypes.func,
+  setIsForgot: PropTypes.func,
+  setEmail: PropTypes.func,
+};

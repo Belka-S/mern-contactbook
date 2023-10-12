@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom/dist';
 
 import { authenticate } from 'store/auth/authSlice';
 
-const Google = () => {
+const GooglePage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
@@ -14,4 +14,4 @@ const Google = () => {
   dispatch(authenticate({ result }));
 };
 
-export default Google;
+export default GooglePage;

@@ -56,3 +56,25 @@ export const verifyThunk = createAsyncThunk(
     }
   }
 );
+
+export const forgotThunk = createAsyncThunk(
+  'auth/forgot',
+  async (credentials, thunkAPI) => {
+    try {
+      return await API.forgotPass(credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetThunk = createAsyncThunk(
+  'auth/reset',
+  async (credentials, thunkAPI) => {
+    try {
+      return await API.resetPass(credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

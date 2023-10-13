@@ -27,7 +27,7 @@ const SigninPage = () => {
 
       {isForgot && (
         <Modal onClick={() => setIsForgot(!isForgot)}>
-          <ForgotForm email={email} />
+          <ForgotForm setIsForgot={setIsForgot} email={email} />
         </Modal>
       )}
     </Container>

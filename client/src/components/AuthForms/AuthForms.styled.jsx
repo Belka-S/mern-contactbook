@@ -56,6 +56,8 @@ export const Div = styled.div`
 
   & h2 {
     margin: 0;
+
+    font-family: 'Montserrat', sans-serif;
     font-size: 24px;
   }
 `;

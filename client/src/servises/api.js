@@ -30,6 +30,16 @@ export const verifyEmail = async credentials => {
   return data;
 };
 
+export const forgotPass = async credentials => {
+  const { data } = await apiClient.post('/auth/forgot', credentials);
+  return data;
+};
+
+export const resetPass = async credentials => {
+  const { data } = await apiClient.post('/auth/reset', credentials);
+  return data;
+};
+
 // Contacts
 export const fetchContacts = async () => {
   const { data } = await apiClient.get('/contacts');

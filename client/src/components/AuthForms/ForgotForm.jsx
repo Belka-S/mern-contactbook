@@ -1,27 +1,25 @@
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { Formik } from 'formik';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
 import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
 import { forgotSchema } from 'utils/validation';
-// import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
+import { forgotThunk } from 'store/auth/authOperations';
 
-const ForgotForm = ({ email }) => {
-  // const dispatch = useDispatch();
+const ForgotForm = ({ setIsForgot, email }) => {
+  const dispatch = useDispatch();
 
   const isDisabled = ({ errors }) => Object.keys(errors).length;
 
   const onSubmit = (values, actions) => {
-    console.log('values: ', values);
-    // dispatch(verifyThunk(values))
-    //   .unwrap() // .then(pld =>  console.log(pld))
-    //   .catch(err => console.log(err))
-    //   .then(() => dispatch(refreshThunk()));
+    dispatch(forgotThunk(values))
+      .unwrap() // .then(pld => console.log(pld))
+      .catch(err => console.log(err));
 
-    actions.resetForm();
+    setIsForgot(false); // actions.resetForm();
   };
 
   return (
@@ -33,7 +31,7 @@ const ForgotForm = ({ email }) => {
       {({ errors }) => (
         <Form>
           <Div>
-            <h2>Recover password</h2>
+            <h2>Get reset link</h2>
           </Div>
 
           <Fragment>
@@ -53,5 +51,6 @@ const ForgotForm = ({ email }) => {
 export default ForgotForm;
 
 ForgotForm.propTepes = {
+  setIsForgot: PropTypes.func,
   email: PropTypes.string,
 };

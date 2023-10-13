@@ -16,7 +16,7 @@ import GooglePage from 'pages/GooglePage';
 const SharedLayuot = lazy(() => import('layouts/SharedLayuot/SharedLayuot'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
 const SigninPage = lazy(() => import('pages/SigninPage'));
-// const ForgotPage = lazy(() => import('pages/ForgotPage'));
+const ResetPage = lazy(() => import('pages/ResetPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const ProfilePage = lazy(() => import('pages/ProfilePage'));
 
@@ -41,7 +41,7 @@ export const App = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/google" element={<GooglePage />} />
-            {/* <Route path="/forgot" element={<ForgotPage />} /> */}
+            <Route path="/reset" element={<ResetPage />} />
           </Route>
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<SharedLayuot />}>

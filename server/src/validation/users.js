@@ -24,4 +24,24 @@ const verifySchema = validateBody(
   }),
 );
 
-module.exports = { registerSchema, loginSchema, verifySchema };
+const forgotSchema = validateBody(
+  Joi.object({
+    email: Joi.string().email(regExp.email).required().error(joiError.email),
+  }),
+);
+
+const resetSchema = validateBody(
+  Joi.object({
+    id: Joi.string().required(),
+    pwdToken: Joi.string().required(),
+    newPass: Joi.string().min(6).required().error(joiError.password),
+    confirmPass: Joi.any()
+      .equal(Joi.ref('newPass'))
+      .required()
+      .label('Confirm password')
+      .error(joiError.password),
+    // .messages({ 'any.only': '{{#label}} does not match' }),
+  }),
+);
+
+module.exports = { registerSchema, loginSchema, verifySchema, forgotSchema, resetSchema };

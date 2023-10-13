@@ -3,7 +3,15 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import * as OPS from 'store/auth/authOperations';
 import { initialState } from './initialState';
 
-const thunkArr = [OPS.registerThunk, OPS.loginThunk, OPS.logoutThunk];
+const thunkArr = [
+  OPS.registerThunk,
+  OPS.loginThunk,
+  OPS.logoutThunk,
+  OPS.verifyThunk,
+  OPS.forgotThunk,
+  OPS.resetThunk,
+  OPS.refreshThunk,
+];
 const fn = type => thunkArr.map(el => el[type]);
 
 const handleAuthSucsess = (state, action) => {
@@ -57,6 +65,9 @@ const authSlice = createSlice({
       .addCase(OPS.loginThunk.fulfilled, handleAuthSucsess)
       .addCase(OPS.logoutThunk.fulfilled, handleLogoutSucsess)
       .addCase(OPS.verifyThunk.fulfilled, handleAuthSucsess)
+      // reset password
+      .addCase(OPS.forgotThunk.fulfilled, handleLogoutSucsess)
+      .addCase(OPS.resetThunk.fulfilled, handleLogoutSucsess)
       // auth from localStorage
       .addCase(OPS.refreshThunk.fulfilled, handleAuthSucsess)
       .addCase(OPS.refreshThunk.pending, handleRefreshPending)

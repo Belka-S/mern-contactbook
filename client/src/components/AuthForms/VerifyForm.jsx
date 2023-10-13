@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
+import { Label, Tittle } from 'components/AuthForms/AuthForms.styled';
 import { verifySchema } from 'utils/validation';
 import { useAuth } from 'utils/hooks';
 import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
@@ -38,15 +38,15 @@ const VerifyForm = () => {
     >
       {({ values, errors }) => (
         <Form>
-          <Div>
+          <Tittle>
             <h2>Verify: {userEmail}</h2>
-          </Div>
+          </Tittle>
 
           <Fragment>
             <Label>
               Code:
               <pre> </pre>
-              <ErrorMessage name="verificationCode" component="span" />
+              <ErrorMsg name="verificationCode" component="span" />
             </Label>
             <Field
               type="text"

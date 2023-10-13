@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
 import { resetThunk } from 'store/auth/authOperations';
-import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
+import { Label, Tittle } from 'components/AuthForms/AuthForms.styled';
 import { resetSchema } from 'utils/validation';
 
 const initialValues = { newPass: '', confirmPass: '' };
@@ -42,9 +42,9 @@ const ResetForm = ({ id, pwdToken }) => {
     >
       {({ values, errors }) => (
         <Form>
-          <Div>
+          <Tittle>
             <h2>Reset password</h2>
-          </Div>
+          </Tittle>
 
           {Object.keys(initialValues).map(key => (
             <Fragment key={key}>
@@ -52,7 +52,7 @@ const ResetForm = ({ id, pwdToken }) => {
                 {key.at(0).toUpperCase() +
                   key.replace('Pass', ' password:').substring(1)}
                 <pre> </pre>
-                <ErrorMessage name={key} component="span" />
+                <ErrorMsg name={key} component="span" />
               </Label>
               <Field
                 type="password"

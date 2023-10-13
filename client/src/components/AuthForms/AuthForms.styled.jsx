@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form as FormikForm } from 'formik';
 import { Field as FormikField } from 'formik';
-import { ErrorMessage as FormikError } from 'formik';
+import { ErrorMessage } from 'formik';
 
 import { themes } from 'styles/themes';
 
@@ -14,20 +14,44 @@ export const Form = styled(FormikForm)`
   background-color: ${themes.colors.white};
 `;
 
-export const Field = styled(FormikField)`
-  padding: 10px;
+export const Label = styled.label`
+  display: flex;
+  align-items: baseline;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  & pre {
+    font-size: 10px;
+  }
+  // &::first-letter { text-transform: uppercase; }
+`;
+
+const FieldStyles = css`
   margin-bottom: 20px;
+  width: 100%;
 
   &:last-of-type {
     margin-bottom: 0;
   }
+`;
+
+export const FieldWrap = styled.div`
+  ${FieldStyles}
+  position: relative;
+`;
+
+export const Field = styled(FormikField)`
+  ${FieldStyles}
+
+  padding: 10px 12px;
 
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
 
   border: 1px solid ${themes.colors.border};
   border-radius: ${themes.radius.s};
-  outline: 1px solid transparent;
+  outline: 0.5px solid transparent;
   transition: border-color 250ms linear, outline-color 250ms linear;
 
   border-color: ${({ validation }) => {
@@ -63,27 +87,7 @@ export const Field = styled(FormikField)`
   }
 `;
 
-export default styled.label`
-  display: flex;
-  align-items: baseline;
-
-  font-size: 16px;
-  font-weight: 500;
-
-  & pre {
-    font-size: 10px;
-  }
-  // &::first-letter { text-transform: uppercase; }
-`;
-
-export const ErrorMessage = styled(FormikError)`
-  font-size: 14px;
-  font-weight: 400;
-
-  color: ${themes.colors.error};
-`;
-
-export const Div = styled.div`
+export const Tittle = styled.div`
   margin-bottom: 25px;
   display: flex;
   justify-content: space-between;
@@ -95,4 +99,11 @@ export const Div = styled.div`
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
   }
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  font-size: 14px;
+  font-weight: 400;
+
+  color: ${themes.colors.error};
 `;

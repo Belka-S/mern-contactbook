@@ -1,22 +1,24 @@
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import LinkRoute from 'components/AuthForms/AuthLinks/LinkRoute';
 import LinkBtn from './AuthLinks/LinkBtn';
 import SignBtn from './AuthBtns/SignBtn';
+import PassBtn from './IconBtns/PassBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { loginThunk } from 'store/auth/authOperations';
-import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
+import { ErrorMsg, Label, Tittle } from 'components/AuthForms/AuthForms.styled';
 import { signinSchema } from 'utils/validation';
 
 const initialValues = { email: '', password: '' };
 
 const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
   const dispatch = useDispatch();
+  const [hide, setHide] = useState('password');
 
   const isValid = ({ values, errors, key }) => {
     const noValue = !values[key] && 'noValue';
@@ -52,28 +54,35 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
     >
       {({ values, errors }) => (
         <Form>
-          <Div>
+          <Tittle>
             <h2>Sign in</h2>
             <LinkRoute to="/signup">Don't have an account?</LinkRoute>
-          </Div>
+          </Tittle>
 
           {Object.keys(initialValues).map(key => (
             <Fragment key={key}>
               <Label>
                 {key.at(0).toUpperCase() + key.substring(1) + ':'}
                 <pre> </pre>
-                <ErrorMessage name={key} component="span" />
+                <ErrorMsg name={key} component="span" />
                 {key === 'password' && (
                   <LinkBtn onClick={() => onClick(values)}>
                     Forgot your pass?
                   </LinkBtn>
                 )}
               </Label>
-              <Field
-                type={key}
-                name={key}
-                validation={isValid({ values, errors, key })}
-              />
+
+              <FieldWrap>
+                <Field
+                  type={key === 'password' ? hide : key}
+                  name={key}
+                  validation={isValid({ values, errors, key })}
+                />
+
+                {key === 'password' && (
+                  <PassBtn hide={hide} setHide={setHide} />
+                )}
+              </FieldWrap>
             </Fragment>
           ))}
 

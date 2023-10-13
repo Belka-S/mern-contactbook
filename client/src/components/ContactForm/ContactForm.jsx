@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 import GrigWrap from 'components/common/GrigWrap/GrigWrap';
 import Button from 'components/common/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
-import { ErrorMessage } from 'components/ContactForm/ContactForm.styled';
+import { ErrorMsg } from 'components/ContactForm/ContactForm.styled';
 import { RENDER_FIELDS, FORM_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
@@ -71,8 +71,8 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
       onSubmit={onSubmit}
     >
       <Form onChange={onChange} fnw={width.firstName} lnw={width.lastName}>
-        <ErrorMessage name="firstName" component="div" />
-        <ErrorMessage name="lastName" component="div" />
+        <ErrorMsg name="firstName" component="div" />
+        <ErrorMsg name="lastName" component="div" />
         <Field id="first" type="text" name="firstName" placeholder="Name" />
         <Field id="last" type="text" name="lastName" placeholder="Surname" />
 
@@ -82,7 +82,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
               {key}
               <Field type="text" name={key} />
             </Label>
-            <ErrorMessage name={key} component="div" />
+            <ErrorMsg name={key} component="div" />
           </div>
         ))}
 

@@ -4,8 +4,8 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
+import { Label, Tittle } from 'components/AuthForms/AuthForms.styled';
 import { forgotSchema } from 'utils/validation';
 import { forgotThunk } from 'store/auth/authOperations';
 
@@ -36,18 +36,18 @@ const ForgotForm = ({ setIsForgot, email }) => {
     >
       {({ values, errors }) => (
         <Form>
-          <Div>
+          <Tittle>
             <h2>Get reset link</h2>
-          </Div>
+          </Tittle>
 
           <Fragment>
             <Label>
               Email:
               <pre> </pre>
-              <ErrorMessage name="email" component="span" />
+              <ErrorMsg name="email" component="span" />
             </Label>
             <Field
-              type="text"
+              type="email"
               name="email"
               validation={isValid({ values, errors, key: 'email' })}
             />

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Form as FormikForm } from 'formik';
 import { Field as FormikField } from 'formik';
-import { ErrorMessage as FormikError } from 'formik';
+import { ErrorMessage } from 'formik';
 
 import { themes } from 'styles/themes';
 
-export const ErrorMessage = styled(FormikError)`
+export const ErrorMsg = styled(ErrorMessage)`
   margin-left: 21%;
   padding-bottom: 5px;
   font-size: 12px;

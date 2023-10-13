@@ -8,8 +8,9 @@ export const themes = Object.freeze({
     white: '#FFFFFF',
     ligthBlue: '#ddf0ff83',
 
-    failed: '#E74A3B',
-    saccess: '#019595',
+    error: '#E74A3B',
+    success: '#3CBC81',
+    noValue: '#2374ef',
 
     border: '#b1b1b1',
     placeholder: '#5c5858',

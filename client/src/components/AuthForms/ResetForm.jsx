@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
 import { resetThunk } from 'store/auth/authOperations';
-import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
+import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
 import { resetSchema } from 'utils/validation';
 
@@ -13,6 +13,12 @@ const initialValues = { newPass: '', confirmPass: '' };
 
 const ResetForm = ({ id, pwdToken }) => {
   const dispatch = useDispatch();
+
+  const isValid = ({ values, errors, key }) => {
+    const noValue = !values[key] && 'noValue';
+    const isError = errors[key] ? 'error' : 'success';
+    return noValue || isError;
+  };
 
   const isDisabled = ({ errors, values }) => {
     const isError = Object.keys(errors).length;
@@ -48,7 +54,11 @@ const ResetForm = ({ id, pwdToken }) => {
                 <pre> </pre>
                 <ErrorMessage name={key} component="span" />
               </Label>
-              <Field type="password" name={key} />
+              <Field
+                type="password"
+                name={key}
+                validation={isValid({ values, errors, key })}
+              />
             </Fragment>
           ))}
 

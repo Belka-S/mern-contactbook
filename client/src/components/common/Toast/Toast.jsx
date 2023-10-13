@@ -14,9 +14,9 @@ const Toast = () => (
       duration: 2000,
       style: {
         background: `${themes.colors.white}`,
-        color: `${themes.colors.failed}`,
+        color: `${themes.colors.error}`,
         radius: `${themes.radius.s}`,
-        outline: `1.5px solid ${themes.colors.failed}`,
+        outline: `1.5px solid ${themes.colors.error}`,
         fontSize: '16px',
       },
 

@@ -22,13 +22,48 @@ export const Field = styled(FormikField)`
     margin-bottom: 0;
   }
 
-  border: 1px solid ${themes.colors.border};
-  border-radius: 5px;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
+
+  border: 1px solid ${themes.colors.border};
+  border-radius: ${themes.radius.s};
+  outline: 1px solid transparent;
+  transition: border-color 250ms linear, outline-color 250ms linear;
+
+  border-color: ${({ validation }) => {
+    switch (validation) {
+      case 'noValue':
+        return themes.colors.border;
+      case validation:
+        return themes.colors[validation];
+      default:
+        break;
+    }
+  }};
+
+  &:hover,
+  &:focus {
+    border-color: ${({ validation }) => {
+      switch (validation) {
+        case validation:
+          return themes.colors[validation];
+        default:
+          break;
+      }
+    }};
+
+    outline-color: ${({ validation }) => {
+      switch (validation) {
+        case validation:
+          return themes.colors[validation];
+        default:
+          break;
+      }
+    }};
+  }
 `;
 
-export const Label = styled.label`
+export default styled.label`
   display: flex;
   align-items: baseline;
 
@@ -45,7 +80,7 @@ export const ErrorMessage = styled(FormikError)`
   font-size: 14px;
   font-weight: 400;
 
-  color: ${themes.colors.failed};
+  color: ${themes.colors.error};
 `;
 
 export const Div = styled.div`

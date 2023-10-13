@@ -9,7 +9,7 @@ import LinkBtn from './AuthLinks/LinkBtn';
 import SignBtn from './AuthBtns/SignBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { loginThunk } from 'store/auth/authOperations';
-import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
+import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
 import { signinSchema } from 'utils/validation';
 
@@ -17,6 +17,12 @@ const initialValues = { email: '', password: '' };
 
 const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
   const dispatch = useDispatch();
+
+  const isValid = ({ values, errors, key }) => {
+    const noValue = !values[key] && 'noValue';
+    const isError = errors[key] ? 'error' : 'success';
+    return noValue || isError;
+  };
 
   const isDisabled = ({ errors, values }) => {
     const isError = Object.keys(errors).length;
@@ -63,7 +69,11 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
                   </LinkBtn>
                 )}
               </Label>
-              <Field type={key} name={key} />
+              <Field
+                type={key}
+                name={key}
+                validation={isValid({ values, errors, key })}
+              />
             </Fragment>
           ))}
 

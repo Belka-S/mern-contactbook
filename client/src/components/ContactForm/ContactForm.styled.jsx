@@ -10,7 +10,7 @@ export const ErrorMessage = styled(FormikError)`
   padding-bottom: 5px;
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
-  color: ${themes.colors.failed};
+  color: ${themes.colors.error};
 `;
 
 export const Form = styled(FormikForm)`

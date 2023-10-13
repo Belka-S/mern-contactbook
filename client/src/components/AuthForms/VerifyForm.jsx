@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import { Form, Field, Label } from 'components/AuthForms/AuthForms.styled';
+import Label, { Form, Field } from 'components/AuthForms/AuthForms.styled';
 import { ErrorMessage, Div } from 'components/AuthForms/AuthForms.styled';
 import { verifySchema } from 'utils/validation';
 import { useAuth } from 'utils/hooks';
@@ -12,6 +12,12 @@ import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
 const VerifyForm = () => {
   const dispatch = useDispatch();
   const { userEmail } = useAuth();
+
+  const isValid = ({ values, errors, key }) => {
+    const noValue = !values[key] && 'noValue';
+    const isError = errors[key] ? 'error' : 'success';
+    return noValue || isError;
+  };
 
   const isDisabled = ({ errors }) => Object.keys(errors).length;
 
@@ -30,7 +36,7 @@ const VerifyForm = () => {
       validationSchema={verifySchema}
       onSubmit={onSubmit}
     >
-      {({ errors }) => (
+      {({ values, errors }) => (
         <Form>
           <Div>
             <h2>Verify: {userEmail}</h2>
@@ -38,9 +44,15 @@ const VerifyForm = () => {
 
           <Fragment>
             <Label>
-              Code: <ErrorMessage name="verificationCode" component="span" />
+              Code:
+              <pre> </pre>
+              <ErrorMessage name="verificationCode" component="span" />
             </Label>
-            <Field type="text" name="verificationCode" />
+            <Field
+              type="text"
+              name="verificationCode"
+              validation={isValid({ values, errors, key: 'verificationCode' })}
+            />
           </Fragment>
 
           <SignBtn disabled={isDisabled({ errors })}>Submit</SignBtn>

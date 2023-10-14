@@ -86,5 +86,5 @@ const SignupForm = ({ setIsVerify }) => {
 export default SignupForm;
 
 SignupForm.propTypes = {
-  setIsVerify: PropTypes.func,
+  setIsVerify: PropTypes.func.isRequired,
 };

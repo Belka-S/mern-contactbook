@@ -98,7 +98,7 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
 export default SigninForm;
 
 SigninForm.propTypes = {
-  setIsVerify: PropTypes.func,
-  setIsForgot: PropTypes.func,
-  setEmail: PropTypes.func,
+  setIsVerify: PropTypes.func.isRequired,
+  setIsForgot: PropTypes.func.isRequired,
+  setEmail: PropTypes.func.isRequired,
 };

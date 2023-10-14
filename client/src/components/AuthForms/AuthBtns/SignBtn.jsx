@@ -13,11 +13,11 @@ const SignBtn = ({ onClick, disabled, children }) => {
 export default SignBtn;
 
 SignButton.propTepes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.oneOf(['img', 'png', 'svg']),
-  ]),
+  ]).isRequired,
 };

@@ -31,7 +31,7 @@ const Modal = ({ onClick, children }) => {
 export default Modal;
 
 Modal.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

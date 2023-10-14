@@ -13,10 +13,10 @@ const LinkBtn = ({ onClick, fs, children }) => {
 export default LinkBtn;
 
 Btn.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   fs: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]),
+  ]).isRequired,
 };

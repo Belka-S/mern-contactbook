@@ -103,4 +103,4 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
 
 export default ContactForm;
 
-ContactForm.propTypes = { triggerForm: PropTypes.func };
+ContactForm.propTypes = { triggerForm: PropTypes.func.isRequired };

@@ -20,6 +20,6 @@ const PassBtn = ({ toggle, setToggle }) => {
 export default PassBtn;
 
 PassBtn.propTypes = {
-  setToggle: PropTypes.func,
-  toggle: PropTypes.string,
+  setToggle: PropTypes.func.isRequired,
+  toggle: PropTypes.string.isRequired,
 };

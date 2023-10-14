@@ -71,4 +71,7 @@ const ResetForm = ({ id, pwdToken }) => {
 
 export default ResetForm;
 
-ResetForm.propTypes = { id: PropTypes.string, pwdToken: PropTypes.string };
+ResetForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  pwdToken: PropTypes.string.isRequired,
+};

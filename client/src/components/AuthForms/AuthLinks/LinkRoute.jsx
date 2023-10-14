@@ -13,10 +13,10 @@ const LinkRoute = ({ to, fs, children }) => {
 export default LinkRoute;
 
 Link.propTypes = {
-  to: PropTypes.string,
+  to: PropTypes.string.isRequired,
   fs: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]),
+  ]).isRequired,
 };

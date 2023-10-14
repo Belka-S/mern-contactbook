@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { Form as FormikForm } from 'formik';
 import { Field as FormikField } from 'formik';
 import { ErrorMessage } from 'formik';
+import { BsCheckCircle, BsExclamationCircle } from 'react-icons/bs';
 
 import { themes } from 'styles/themes';
 
@@ -45,6 +46,7 @@ export const Field = styled(FormikField)`
   ${FieldStyles}
 
   padding: 10px 12px;
+  padding-left: ${({ name }) => name === 'password' && '38px'};
 
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
@@ -104,6 +106,25 @@ export const Tittle = styled.div`
 export const ErrorMsg = styled(ErrorMessage)`
   font-size: 14px;
   font-weight: 400;
+
+  color: ${themes.colors.error};
+`;
+
+const IconStyles = css`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+`;
+
+export const SuccessIcon = styled(BsCheckCircle)`
+  ${IconStyles};
+
+  color: ${themes.colors.success};
+`;
+
+export const ErrorIcon = styled(BsExclamationCircle)`
+  ${IconStyles};
 
   color: ${themes.colors.error};
 `;

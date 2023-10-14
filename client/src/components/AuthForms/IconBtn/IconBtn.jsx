@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
-import { IconBtn } from './IconBtns.styled';
+import { IconBtn } from './IconBtn.styled';
 
 const PassBtn = ({ toggle, setToggle }) => {
   const onClick = () => {

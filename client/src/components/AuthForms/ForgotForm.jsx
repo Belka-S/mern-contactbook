@@ -4,17 +4,18 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import { Form, Field, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
-import { Label, Tittle } from 'components/AuthForms/AuthForms.styled';
-import { forgotSchema } from 'utils/validation';
 import { forgotThunk } from 'store/auth/authOperations';
+import { forgotSchema } from 'utils/validation';
+import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
+import { ErrorMsg, Label, Tittle } from 'components/AuthForms/AuthForms.styled';
+import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
 
 const ForgotForm = ({ setIsForgot, email }) => {
   const dispatch = useDispatch();
 
-  const isValid = ({ values, errors, key }) => {
-    const noValue = !values[key] && 'noValue';
-    const isError = errors[key] ? 'error' : 'success';
+  const isValid = ({ values, errors }) => {
+    const noValue = !Object.values(values)[0] && 'noValue';
+    const isError = Object.values(errors).length ? 'error' : 'success';
     return noValue || isError;
   };
 
@@ -46,11 +47,17 @@ const ForgotForm = ({ setIsForgot, email }) => {
               <pre> </pre>
               <ErrorMsg name="email" component="span" />
             </Label>
-            <Field
-              type="email"
-              name="email"
-              validation={isValid({ values, errors, key: 'email' })}
-            />
+
+            <FieldWrap>
+              <Field
+                type="email"
+                name="email"
+                validation={isValid({ values, errors })}
+              />
+
+              {isValid({ values, errors }) === 'error' && <ErrorIcon />}
+              {isValid({ values, errors }) === 'success' && <SuccessIcon />}
+            </FieldWrap>
           </Fragment>
 
           <SignBtn disabled={isDisabled({ errors })}>Submit</SignBtn>

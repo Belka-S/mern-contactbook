@@ -3,19 +3,20 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import { Form, Field, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
-import { Label, Tittle } from 'components/AuthForms/AuthForms.styled';
-import { verifySchema } from 'utils/validation';
 import { useAuth } from 'utils/hooks';
+import { verifySchema } from 'utils/validation';
 import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
+import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
+import { Label, Tittle, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
+import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
 
 const VerifyForm = () => {
   const dispatch = useDispatch();
   const { userEmail } = useAuth();
 
-  const isValid = ({ values, errors, key }) => {
-    const noValue = !values[key] && 'noValue';
-    const isError = errors[key] ? 'error' : 'success';
+  const isValid = ({ values, errors }) => {
+    const noValue = !Object.values(values)[0] && 'noValue';
+    const isError = Object.values(errors).length ? 'error' : 'success';
     return noValue || isError;
   };
 
@@ -48,11 +49,16 @@ const VerifyForm = () => {
               <pre> </pre>
               <ErrorMsg name="verificationCode" component="span" />
             </Label>
-            <Field
-              type="text"
-              name="verificationCode"
-              validation={isValid({ values, errors, key: 'verificationCode' })}
-            />
+            <FieldWrap>
+              <Field
+                type="text"
+                name="verificationCode"
+                validation={isValid({ values, errors })}
+              />
+
+              {isValid({ values, errors }) === 'error' && <ErrorIcon />}
+              {isValid({ values, errors }) === 'success' && <SuccessIcon />}
+            </FieldWrap>
           </Fragment>
 
           <SignBtn disabled={isDisabled({ errors })}>Submit</SignBtn>

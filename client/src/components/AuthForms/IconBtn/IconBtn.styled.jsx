@@ -5,7 +5,7 @@ export const IconBtn = styled.button`
   width: fit-content;
   position: absolute;
   top: 50%;
-  right: 12px;
+  left: 10px;
 
   transform: translateY(-50%);
 

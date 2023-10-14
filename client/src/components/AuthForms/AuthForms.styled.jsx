@@ -46,7 +46,7 @@ export const Field = styled(FormikField)`
   ${FieldStyles}
 
   padding: 10px 12px;
-  padding-left: ${({ name }) => name === 'password' && '38px'};
+  padding-left: ${({ name }) => name.toLowerCase().includes('pass') && '38px'};
 
   font-size: 16px;
   font-family: 'Roboto', sans-serif;

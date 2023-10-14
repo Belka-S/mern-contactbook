@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
+import PassBtn from './IconBtn/IconBtn';
 import { resetThunk } from 'store/auth/authOperations';
 import { resetSchema } from 'utils/validation';
 import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
@@ -14,6 +15,7 @@ const initialValues = { newPass: '', confirmPass: '' };
 
 const ResetForm = ({ id, pwdToken }) => {
   const dispatch = useDispatch();
+  const [toggle, setToggle] = useState('password');
 
   const isValid = ({ values, errors, key }) => {
     const noValue = !values[key] && 'noValue';
@@ -58,11 +60,12 @@ const ResetForm = ({ id, pwdToken }) => {
 
               <FieldWrap>
                 <Field
-                  type="password"
+                  type={toggle}
                   name={key}
                   validation={isValid({ values, errors, key })}
                 />
 
+                <PassBtn toggle={toggle} setToggle={setToggle} />
                 {values[key] && errors[key] && <ErrorIcon />}
                 {values[key] && !errors[key] && <SuccessIcon />}
               </FieldWrap>

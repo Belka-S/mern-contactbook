@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import LinkRoute from 'components/AuthForms/AuthLinks/LinkRoute';
 import SignBtn from './AuthBtns/SignBtn';
-import PassBtn from './IconBtn/IconBtn';
+import IconBtn from './IconBtn/IconBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { registerThunk } from 'store/auth/authOperations';
 import { signupSchema } from 'utils/validation';
@@ -69,7 +69,7 @@ const SignupForm = ({ setIsVerify }) => {
                 />
 
                 {key === 'password' && (
-                  <PassBtn toggle={toggle} setToggle={setToggle} />
+                  <IconBtn toggle={toggle} setToggle={setToggle} />
                 )}
                 {values[key] && errors[key] && <ErrorIcon />}
                 {values[key] && !errors[key] && <SuccessIcon />}

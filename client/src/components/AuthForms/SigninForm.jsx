@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import LinkRoute from 'components/AuthForms/AuthLinks/LinkRoute';
 import LinkBtn from './AuthLinks/LinkBtn';
 import SignBtn from './AuthBtns/SignBtn';
-import PassBtn from './IconBtn/IconBtn';
+import IconBtn from './IconBtn/IconBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { loginThunk } from 'store/auth/authOperations';
 import { signinSchema } from 'utils/validation';
@@ -81,7 +81,7 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
                 />
 
                 {key === 'password' && (
-                  <PassBtn toggle={toggle} setToggle={setToggle} />
+                  <IconBtn toggle={toggle} setToggle={setToggle} />
                 )}
                 {values[key] && errors[key] && <ErrorIcon />}
                 {values[key] && !errors[key] && <SuccessIcon />}

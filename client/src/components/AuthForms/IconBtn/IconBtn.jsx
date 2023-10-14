@@ -1,25 +1,25 @@
 import PropTypes from 'prop-types';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
-import { IconBtn } from './IconBtn.styled';
+import { Button } from './IconBtn.styled';
 
-const PassBtn = ({ toggle, setToggle }) => {
+const IconBtn = ({ toggle, setToggle }) => {
   const onClick = () => {
     if (toggle === 'text') setToggle('password');
     if (toggle === 'password') setToggle('text');
   };
 
   return (
-    <IconBtn type="button" onClick={onClick}>
+    <Button type="button" onClick={onClick}>
       {toggle === 'password' && <BsEye size="18px" />}
       {toggle === 'text' && <BsEyeSlash size="18px" />}
-    </IconBtn>
+    </Button>
   );
 };
 
-export default PassBtn;
+export default IconBtn;
 
-PassBtn.propTypes = {
+IconBtn.propTypes = {
   setToggle: PropTypes.func.isRequired,
   toggle: PropTypes.string.isRequired,
 };

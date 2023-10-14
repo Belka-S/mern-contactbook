@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themes } from 'styles/themes';
 
-export const IconBtn = styled.button`
+export const Button = styled.button`
   width: fit-content;
   position: absolute;
   top: 50%;

@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import PassBtn from './IconBtn/IconBtn';
+import IconBtn from './IconBtn/IconBtn';
 import { resetThunk } from 'store/auth/authOperations';
 import { resetSchema } from 'utils/validation';
 import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
@@ -65,7 +65,7 @@ const ResetForm = ({ id, pwdToken }) => {
                   validation={isValid({ values, errors, key })}
                 />
 
-                <PassBtn toggle={toggle} setToggle={setToggle} />
+                <IconBtn toggle={toggle} setToggle={setToggle} />
                 {values[key] && errors[key] && <ErrorIcon />}
                 {values[key] && !errors[key] && <SuccessIcon />}
               </FieldWrap>

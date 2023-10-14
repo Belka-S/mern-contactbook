@@ -18,7 +18,7 @@ const initialValues = { email: '', password: '' };
 
 const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
   const dispatch = useDispatch();
-  const [hide, setHide] = useState('password');
+  const [toggle, setToggle] = useState('password');
 
   const isValid = ({ values, errors, key }) => {
     const noValue = !values[key] && 'noValue';
@@ -29,7 +29,7 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
   const isDisabled = ({ errors, values }) => {
     const isError = Object.keys(errors).length;
     const noValue = Object.keys(values).some(key => !values[key]);
-    return isError || noValue;
+    return noValue || isError;
   };
 
   const onClick = ({ email }) => {
@@ -74,13 +74,13 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
 
               <FieldWrap>
                 <Field
-                  type={key === 'password' ? hide : key}
+                  type={key === 'password' ? toggle : key}
                   name={key}
                   validation={isValid({ values, errors, key })}
                 />
 
                 {key === 'password' && (
-                  <PassBtn hide={hide} setHide={setHide} />
+                  <PassBtn toggle={toggle} setToggle={setToggle} />
                 )}
               </FieldWrap>
             </Fragment>

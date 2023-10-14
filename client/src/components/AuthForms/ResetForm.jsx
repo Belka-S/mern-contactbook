@@ -23,7 +23,7 @@ const ResetForm = ({ id, pwdToken }) => {
   const isDisabled = ({ errors, values }) => {
     const isError = Object.keys(errors).length;
     const noValue = Object.keys(values).some(key => !values[key]);
-    return isError || noValue;
+    return noValue || isError;
   };
 
   const onSubmit = (values, actions) => {

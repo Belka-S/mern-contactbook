@@ -3,16 +3,16 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 import { IconBtn } from './IconBtns.styled';
 
-const PassBtn = ({ hide, setHide }) => {
+const PassBtn = ({ toggle, setToggle }) => {
   const onClick = () => {
-    if (hide === 'text') setHide('password');
-    if (hide === 'password') setHide('text');
+    if (toggle === 'text') setToggle('password');
+    if (toggle === 'password') setToggle('text');
   };
 
   return (
     <IconBtn type="button" onClick={onClick}>
-      {hide === 'password' && <BsEye size="18px" />}
-      {hide === 'text' && <BsEyeSlash size="18px" />}
+      {toggle === 'password' && <BsEye size="18px" />}
+      {toggle === 'text' && <BsEyeSlash size="18px" />}
     </IconBtn>
   );
 };
@@ -20,6 +20,6 @@ const PassBtn = ({ hide, setHide }) => {
 export default PassBtn;
 
 PassBtn.propTypes = {
-  setHide: PropTypes.func,
-  hide: PropTypes.string,
+  setToggle: PropTypes.func,
+  toggle: PropTypes.string,
 };

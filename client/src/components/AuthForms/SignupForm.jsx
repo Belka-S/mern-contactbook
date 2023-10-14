@@ -16,7 +16,7 @@ const initialValues = { name: '', email: '', password: '' };
 
 const SignupForm = ({ setIsVerify }) => {
   const dispatch = useDispatch();
-  const [hide, setHide] = useState('password');
+  const [toggle, setToggle] = useState('password');
 
   const isValid = ({ values, errors, key }) => {
     const noValue = !values[key] && 'noValue';
@@ -27,7 +27,7 @@ const SignupForm = ({ setIsVerify }) => {
   const isDisabled = ({ errors, values }) => {
     const isError = Object.keys(errors).length;
     const noValue = Object.keys(values).some(key => !values[key]);
-    return isError || noValue;
+    return noValue || isError;
   };
 
   const onSubmit = (values, actions) => {
@@ -62,13 +62,13 @@ const SignupForm = ({ setIsVerify }) => {
 
               <FieldWrap>
                 <Field
-                  type={key === 'password' ? hide : key}
+                  type={key === 'password' ? toggle : key}
                   name={key}
                   validation={isValid({ values, errors, key })}
                 />
 
                 {key === 'password' && (
-                  <PassBtn hide={hide} setHide={setHide} />
+                  <PassBtn toggle={toggle} setToggle={setToggle} />
                 )}
               </FieldWrap>
             </Fragment>

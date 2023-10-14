@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Container from 'components/common/Container/Container';
-import GrigWrap from 'components/common/GrigWrap/GrigWrap';
-import Button from 'components/common/Button/Button';
+import Container from 'components/shared/Container/Container';
+import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import Button from 'components/shared/Button/Button';
 import { loginThunk } from 'store/auth/authOperations';
 
 const HomePage = () => {

@@ -6,8 +6,8 @@ import { loadWebFonts } from 'styles/webFonts';
 import { refreshThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 
-import Toast from 'components/common/Toast/Toast';
-import OvalLoader from 'components/common/Loader/OvalLoader';
+import Toast from 'components/shared/Toast/Toast';
+import OvalLoader from 'components/shared/Loader/OvalLoader';
 import PublicRoutes from 'routes/PublicRoutes';
 import PrivateRoutes from 'routes/PrivateRoutes';
 

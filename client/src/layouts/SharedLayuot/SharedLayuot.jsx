@@ -1,4 +1,4 @@
-import Container from 'components/common/Container/Container';
+import Container from 'components/shared/Container/Container';
 import Header from 'layouts/Header/Header';
 
 const SharedLayuot = () => (

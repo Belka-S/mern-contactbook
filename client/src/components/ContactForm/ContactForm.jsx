@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 
-import GrigWrap from 'components/common/GrigWrap/GrigWrap';
-import Button from 'components/common/Button/Button';
+import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import Button from 'components/shared/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMsg } from 'components/ContactForm/ContactForm.styled';
 import { RENDER_FIELDS, FORM_FIELDS } from 'utils/constants';

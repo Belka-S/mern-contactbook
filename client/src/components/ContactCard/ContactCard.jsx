@@ -8,8 +8,8 @@ import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
 import { RENDER_FIELDS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
-import GrigWrap from 'components/common/GrigWrap/GrigWrap';
-import Button from 'components/common/Button/Button';
+import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import Button from 'components/shared/Button/Button';
 
 const ContactCard = ({ triggerForm }) => {
   const dispatch = useDispatch();

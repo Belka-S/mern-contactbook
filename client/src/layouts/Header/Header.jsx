@@ -7,8 +7,8 @@ import { logoutThunk } from 'store/auth/authOperations';
 import { cleanContacts, setActiveContact } from 'store/contacts/contactsSlice';
 import { setFilterValue } from 'store/contacts/contactsSlice';
 import { useAuth } from 'utils/hooks/useAuth';
-import OvalLoader from 'components/common/Loader/OvalLoader';
-import Button from 'components/common/Button/Button';
+import OvalLoader from 'components/shared/Loader/OvalLoader';
+import Button from 'components/shared/Button/Button';
 
 const Header = () => {
   const dispatch = useDispatch();

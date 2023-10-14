@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Container from 'components/common/Container/Container';
+import Container from 'components/shared/Container/Container';
 import SigninForm from 'components/AuthForms/SigninForm';
 import ForgotForm from 'components/AuthForms/ForgotForm';
 import Modal from 'layouts/Modal/Modal';

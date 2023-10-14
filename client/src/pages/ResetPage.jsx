@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
-import Container from 'components/common/Container/Container';
+import Container from 'components/shared/Container/Container';
 import ResetForm from 'components/AuthForms/ResetForm';
 
 const ResetPage = () => {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { useAuth, useContacts } from 'utils/hooks';
-import OvalLoader from 'components/common/Loader/OvalLoader';
-import GrigWrap from 'components/common/GrigWrap/GrigWrap';
-import Container from 'components/common/Container/Container';
+import OvalLoader from 'components/shared/Loader/OvalLoader';
+import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import Container from 'components/shared/Container/Container';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 import ContactCard from 'components/ContactCard/ContactCard';

@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 import { store } from 'store/store';
 import { authenticate } from 'store/auth/authSlice';
-import { logoutThunk } from 'store/auth/authOperations';
+import { loginThunk } from 'store/auth/authOperations';
 import { baseURL } from './baseURL';
 
 // axios instance
@@ -51,7 +51,8 @@ apiClient.interceptors.response.use(
 
         return apiClient(error.config);
       } catch (error) {
-        store.dispatch(logoutThunk());
+        store.dispatch(loginThunk({}));
+        console.log('error: ', error);
         return Promise.reject(error);
       }
     }

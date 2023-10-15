@@ -36,7 +36,9 @@ const register = ctrlWrapper(async (req, res) => {
   const newUser = await User.findByIdAndUpdate(id, { refreshToken }, { new: true });
 
   if (!newUser) throw HttpError(403);
-  res.status(201).json({ message: `Verify: ${user.email}`, result: { user: newUser } });
+  res
+    .status(201)
+    .json({ message: `Verification code sent to ${user.email}`, result: { user: newUser } });
 });
 
 module.exports = register;

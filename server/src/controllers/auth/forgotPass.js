@@ -21,7 +21,9 @@ const forgotPass = ctrlWrapper(async (req, res) => {
   const msg = createMsg('forgotPass.ejs', { email, link });
   await sendMail.nodemailer(msg);
 
-  res.status(200).json({ message: `Email to ${user.email} sent` });
+  res.status(200).json({
+    message: `Link sent to ${user.email} (expires in 10 min)`,
+  });
 });
 
 module.exports = forgotPass;

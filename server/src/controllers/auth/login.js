@@ -20,7 +20,7 @@ const login = ctrlWrapper(async (req, res) => {
   if (!verifiedEmail) {
     const msg = createMsg('verifyEmail.ejs', { email, verificationCode });
     await sendMail.nodemailer(msg);
-    res.status(200).json({ message: `Verify: ${user.email}`, result: { user } });
+    res.status(200).json({ message: `Verification code sent to ${user.email}`, result: { user } });
   } else {
     const id = user._id;
     const accessToken = jwt.sign({ id }, TOKEN_ACCESS_SECRET, { expiresIn: '60s' });

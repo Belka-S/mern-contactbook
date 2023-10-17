@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 
-import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMsg } from 'components/ContactForm/ContactForm.styled';
@@ -86,12 +86,12 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
           </div>
         ))}
 
-        <GrigWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
+        <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
           <Button type="submit">Save</Button>
           <Button type="button" onClick={() => triggerForm(false)}>
             Cancel
           </Button>
-        </GrigWrap>
+        </GridWrap>
 
         <span></span>
         <span className="first-name"></span>

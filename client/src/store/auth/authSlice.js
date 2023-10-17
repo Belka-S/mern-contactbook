@@ -10,7 +10,7 @@ const thunkArr = [
   OPS.verifyThunk,
   OPS.forgotThunk,
   OPS.resetThunk,
-  OPS.refreshThunk,
+  // OPS.refreshThunk,
 ];
 const fn = type => thunkArr.map(el => el[type]);
 

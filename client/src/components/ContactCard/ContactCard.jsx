@@ -8,7 +8,7 @@ import { Div, List } from './ContactCard.styled';
 import { useContacts } from 'utils/hooks';
 import { RENDER_FIELDS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
-import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
 
 const ContactCard = ({ triggerForm }) => {
@@ -88,7 +88,7 @@ const ContactCard = ({ triggerForm }) => {
           )}
       </List>
 
-      <GrigWrap mm="40px" cg="3vw">
+      <GridWrap mm="40px" cg="3vw">
         <Button onClick={() => triggerForm('add')}>Add</Button>
         <Button disabled={!activeContact} onClick={() => triggerForm('edit')}>
           Edit
@@ -96,7 +96,7 @@ const ContactCard = ({ triggerForm }) => {
         <Button disabled={!activeContact} onClick={handleDeleteContact}>
           Delete
         </Button>
-      </GrigWrap>
+      </GridWrap>
     </>
   );
 };

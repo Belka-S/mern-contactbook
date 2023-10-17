@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useAuth, useContacts } from 'utils/hooks';
 import OvalLoader from 'components/shared/Loader/OvalLoader';
-import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Container from 'components/shared/Container/Container';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
@@ -38,7 +38,7 @@ const ContactsPage = () => {
   };
 
   return (
-    <GrigWrap h={gridHeight} gtc="4fr 6fr">
+    <GridWrap h={gridHeight} gtc="4fr 6fr">
       <Container p="0">
         <Filter /> <br />
         <ContactList />
@@ -55,7 +55,7 @@ const ContactsPage = () => {
       )}
 
       {isLoading && <OvalLoader />}
-    </GrigWrap>
+    </GridWrap>
   );
 };
 

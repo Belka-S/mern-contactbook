@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-import { Div } from './GrigWrap.styled';
+import { Div } from './GridWrap.styled';
 
-const GrigWrap = ({ h, m, p, rg, cg, mm, gtc, children }) => {
+const GridWrap = ({ h, m, p, rg, cg, mm, gtc, children }) => {
   return (
     <Div id="grid" h={h} m={m} p={p} rg={rg} cg={cg} mm={mm} gtc={gtc}>
       {children}
@@ -10,9 +10,9 @@ const GrigWrap = ({ h, m, p, rg, cg, mm, gtc, children }) => {
   );
 };
 
-export default GrigWrap;
+export default GridWrap;
 
-GrigWrap.propTypes = {
+GridWrap.propTypes = {
   h: PropTypes.string,
   m: PropTypes.string,
   p: PropTypes.string,

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import Container from 'components/shared/Container/Container';
-import GrigWrap from 'components/shared/GrigWrap/GrigWrap';
+import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
 import { loginThunk } from 'store/auth/authOperations';
 
@@ -29,10 +29,10 @@ const HomePage = () => {
       t1="Phone Book"
       ta="center"
     >
-      <GrigWrap gtc="1fr 1fr" cg="20px">
+      <GridWrap gtc="1fr 1fr" cg="20px">
         <Button onClick={handleDemo}>Try demo</Button>
         <Button onClick={handleSignin}>Log in</Button>
-      </GrigWrap>
+      </GridWrap>
     </Container>
   );
 };

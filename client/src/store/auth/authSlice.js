@@ -15,13 +15,21 @@ const thunkArr = [
 const fn = type => thunkArr.map(el => el[type]);
 
 const handleAuthSucsess = (state, action) => {
-  const { _id, name, email, verifiedEmail, accessToken, refreshToken } =
-    action.payload.result.user;
+  const {
+    _id,
+    name,
+    email,
+    avatarUrl,
+    verifiedEmail,
+    accessToken,
+    refreshToken,
+  } = action.payload.result.user;
 
   state.user = { ...state.user, accessToken, refreshToken };
   if (_id) state.user.id = _id;
   if (name) state.user.name = name;
   if (email) state.user.email = email;
+  if (avatarUrl) state.user.avatarUrl = avatarUrl;
   if (String(verifiedEmail) === 'true' || 'false') {
     state.user.verifiedEmail = verifiedEmail;
   }

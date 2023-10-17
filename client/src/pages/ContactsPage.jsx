@@ -23,6 +23,8 @@ const ContactsPage = () => {
   const headerEl = document.querySelector('header');
 
   useEffect(() => {
+    setIsMobile(headerEl?.clientWidth <= 300);
+
     window.addEventListener('resize', e => {
       setIsMobile(headerEl?.clientWidth <= 300);
     });

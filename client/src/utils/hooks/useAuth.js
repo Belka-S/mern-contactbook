@@ -5,6 +5,7 @@ export const useAuth = () => {
   const userId = useSelector(selectors.selectUserId);
   const userName = useSelector(selectors.selectUserName);
   const userEmail = useSelector(selectors.selectUserEmail);
+  const userAvatarUrl = useSelector(selectors.selectUserAvatarUrl);
   const userVerifiedEmail = useSelector(selectors.selectUserVerifiedEmail);
 
   const isLoggedIn = useSelector(selectors.selectIsLoggedIn);
@@ -16,6 +17,7 @@ export const useAuth = () => {
     userId,
     userName,
     userEmail,
+    userAvatarUrl,
     userVerifiedEmail,
 
     isLoggedIn,

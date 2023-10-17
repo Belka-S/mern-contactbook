@@ -7,6 +7,7 @@ export const selectFilterValue = state => state.contacts.filter;
 export const selectUserId = state => state.auth.user.id;
 export const selectUserName = state => state.auth.user.name;
 export const selectUserEmail = state => state.auth.user.email;
+export const selectUserAvatarUrl = state => state.auth.user.avatarUrl;
 export const selectUserVerifiedEmail = state => state.auth.user.verifiedEmail;
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;

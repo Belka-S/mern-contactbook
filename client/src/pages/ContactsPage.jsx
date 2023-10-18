@@ -19,6 +19,7 @@ const ContactsPage = () => {
     !isLoading && userId === activeContact?.owner
       ? `${activeContact?.firstName} ${activeContact?.lastName}`
       : '';
+
   const gridHeight = window.innerHeight > 600 ? 'calc(100vh - 90px)' : '510px';
   const headerEl = document.querySelector('header');
 
@@ -40,8 +41,8 @@ const ContactsPage = () => {
   };
 
   return (
-    <GridWrap h={gridHeight} gtc="4fr 6fr">
-      <Container p="0">
+    <GridWrap h={gridHeight} gtc="2fr 3fr">
+      <Container p="0" t1="Contacts">
         <Filter /> <br />
         <ContactList />
       </Container>

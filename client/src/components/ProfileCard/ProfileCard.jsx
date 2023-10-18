@@ -1,19 +1,27 @@
-import Container from 'components/shared/Container/Container';
+import GridWrap from 'components/shared/GridWrap/GridWrap';
+import Button from 'components/shared/Button/Button';
+import { Div } from './ProfileCard.styled';
 
 import { useAuth } from 'utils/hooks';
+import { USER_FIELDS } from 'utils/constants';
 
 const ProfileCard = () => {
-  const { userName, userEmail, userAvatarUrl } = useAuth();
+  const user = useAuth();
 
   return (
-    <Container p="0">
-      <img src={userAvatarUrl} alt="user-avatar" />
-      <p>{userName}</p>
-      <p>{userEmail}</p>
-      <p>info</p>
-      <p>info</p>
-      <p>info</p>
-    </Container>
+    <Div>
+      <img src={user.userAvatarUrl} alt="user-avatar" />
+      {USER_FIELDS.map(el => (
+        <p>
+          {el.replace('user', '')}: {user[el]}
+        </p>
+      ))}
+      <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
+        <Button>Edit</Button>
+        <div></div>
+        <Button>Delete</Button>
+      </GridWrap>
+    </Div>
   );
 };
 

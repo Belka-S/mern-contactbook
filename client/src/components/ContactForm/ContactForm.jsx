@@ -7,7 +7,7 @@ import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
 import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
 import { ErrorMsg } from 'components/ContactForm/ContactForm.styled';
-import { RENDER_FIELDS, FORM_FIELDS } from 'utils/constants';
+import { CONTACT_FIELDS, FORM_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 import { updateContactThunk } from 'store/contacts/contactsOperations';
@@ -76,7 +76,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
         <Field id="first" type="text" name="firstName" placeholder="Name" />
         <Field id="last" type="text" name="lastName" placeholder="Surname" />
 
-        {RENDER_FIELDS.map(key => (
+        {CONTACT_FIELDS.map(key => (
           <div className="wrapper" key={key}>
             <Label>
               {key}

@@ -1,11 +1,11 @@
 import { combineReducers, createSlice, isAnyOf } from '@reduxjs/toolkit';
-import * as operations from './contactsOperations';
+import * as OPS from './contactsOperations';
 
 const thunkArr = [
-  operations.fetchContactsThunk,
-  operations.addContactThunk,
-  operations.updateContactThunk,
-  operations.deleteContactThunk,
+  OPS.fetchContactsThunk,
+  OPS.addContactThunk,
+  OPS.updateContactThunk,
+  OPS.deleteContactThunk,
 ];
 const fn = type => thunkArr.map(el => el[type]);
 
@@ -35,10 +35,10 @@ const contactsItemsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(operations.fetchContactsThunk.fulfilled, handleFetchContacts)
-      .addCase(operations.addContactThunk.fulfilled, handleAddContact)
-      .addCase(operations.updateContactThunk.fulfilled, handleUpdateContact)
-      .addCase(operations.deleteContactThunk.fulfilled, handleDeleteContact);
+      .addCase(OPS.fetchContactsThunk.fulfilled, handleFetchContacts)
+      .addCase(OPS.addContactThunk.fulfilled, handleAddContact)
+      .addCase(OPS.updateContactThunk.fulfilled, handleUpdateContact)
+      .addCase(OPS.deleteContactThunk.fulfilled, handleDeleteContact);
   },
 });
 

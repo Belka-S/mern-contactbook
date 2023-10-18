@@ -1,4 +1,4 @@
-export const RENDER_FIELDS = [
+export const CONTACT_FIELDS = [
   'phone',
   'email',
   'whatsapp',
@@ -11,4 +11,4 @@ export const RENDER_FIELDS = [
   'notes',
 ];
 
-export const FORM_FIELDS = ['firstName', 'lastName', ...RENDER_FIELDS];
+export const FORM_FIELDS = ['firstName', 'lastName', ...CONTACT_FIELDS];

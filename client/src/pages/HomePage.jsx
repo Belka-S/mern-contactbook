@@ -11,7 +11,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleDemo = () => {
-    dispatch(loginThunk({ email: 'demo@mail.com', password: 'demo123' }));
+    dispatch(loginThunk({ email: 'demo@mail.com', password: '123123' }));
     // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
   };
 

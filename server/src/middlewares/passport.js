@@ -18,7 +18,6 @@ const googleParams = {
 };
 
 const googleCallback = async (request, accessToken, refreshToken, profile, done) => {
-  console.log('profile: ', profile);
   try {
     const { email, displayName, verified, picture, provider } = profile;
     const user = await User.findOne({ email });

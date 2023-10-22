@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom/dist';
-
 import { authenticate } from 'store/auth/authSlice';
 
 const GooglePage = () => {

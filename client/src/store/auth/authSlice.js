@@ -87,7 +87,7 @@ const authSlice = createSlice({
       .addCase(OPS.forgotThunk.fulfilled, handleLogoutSucsess)
       .addCase(OPS.resetThunk.fulfilled, handleLogoutSucsess)
       // auth from localStorage
-      .addCase(OPS.refreshThunk.fulfilled, handleAuthSucsess)
+      .addCase(OPS.refreshThunk.fulfilled, handleLoginSucsess)
       .addCase(OPS.refreshThunk.pending, handleRefreshPending)
       .addCase(OPS.refreshThunk.rejected, handleRefreshError)
       // pending/reject

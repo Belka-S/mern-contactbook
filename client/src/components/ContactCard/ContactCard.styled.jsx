@@ -3,7 +3,7 @@ import { themes } from 'styles/themes';
 
 export const Div = styled.div`
   margin-bottom: 15px;
-  margin-left: 21%;
+  margin-left: 22%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 10px;
@@ -51,13 +51,11 @@ export const List = styled.ul`
   & li {
     padding-block: 5px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr;
     grid-column-gap: 20px;
-    grid-template-areas: 'key value value value value';
 
     & span {
       &:nth-of-type(1) {
-        grid-area: key;
         text-align: right;
 
         color: ${themes.colors.placeholder};
@@ -67,7 +65,6 @@ export const List = styled.ul`
         }
       }
       &:nth-of-type(2) {
-        grid-area: value;
         text-align: left;
       }
     }
@@ -78,7 +75,7 @@ export const List = styled.ul`
   }
 
   & + div {
-    padding-left: 21%;
+    padding-left: 22%;
 
     @media screen and (width >= 768px) {
       position: absolute;

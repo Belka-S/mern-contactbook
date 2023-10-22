@@ -3,7 +3,17 @@ import styled from 'styled-components';
 export const Div = styled.div`
   position: relative;
 
-  & #grid {
+  & img {
+    width: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+  }
+
+  & span {
+    padding-block: 5px;
+  }
+
+  & #grid:last-of-type {
     padding-left: 21%;
 
     @media screen and (width > 768px) {

@@ -6,7 +6,7 @@ import { ErrorMessage } from 'formik';
 import { themes } from 'styles/themes';
 
 export const ErrorMsg = styled(ErrorMessage)`
-  margin-left: 21%;
+  margin-left: 22%;
   padding-bottom: 5px;
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
@@ -26,7 +26,7 @@ export const Form = styled(FormikForm)`
   }
 
   & #grid {
-    padding-left: 21%;
+    padding-left: 22%;
 
     @media screen and (width > 768px) {
       position: absolute;
@@ -58,7 +58,7 @@ export const Form = styled(FormikForm)`
     }
 
     &:first-of-type {
-      margin: 0 0 10px 21%;
+      margin: 0 0 10px 22%;
     }
   }
 
@@ -70,7 +70,7 @@ export const Form = styled(FormikForm)`
     width: ${({ lnw }) => `${lnw}px`};
   }
 
-  & .wrapper:not(:last-of-type) {
+  & .wrapper:not(:nth-last-of-type(2)) {
     border-bottom: 1px solid ${themes.colors.border};
   }
 
@@ -85,10 +85,10 @@ export const Form = styled(FormikForm)`
 export const Label = styled.label`
   padding-block: 2px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr;
   grid-column-gap: 20px;
-  grid-template-areas: 'key value value value value';
-  grid-area: key;
+  /* grid-template-areas: 'key value value value value'; */
+  /* grid-area: key; */
   text-align: right;
   align-items: center;
 
@@ -110,7 +110,7 @@ export const Label = styled.label`
 
 export const Field = styled(FormikField)`
   padding-block: 3px;
-  grid-area: value;
+  /* grid-area: value; */
   text-align: left;
   background-color: transparent;
 

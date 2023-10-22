@@ -52,7 +52,7 @@ const ContactsPage = () => {
       )}
 
       {!isContactForm && !isMobile && (
-        <Container p="0" mt="0 0 10px 22%" t2={title}>
+        <Container p="0" mt="10px 0 10px 22%" t2={title}>
           {!isLoading && <ContactCard triggerForm={triggerForm} />}
         </Container>
       )}

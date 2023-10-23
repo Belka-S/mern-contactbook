@@ -10,29 +10,14 @@ const thunkArr = [
   OPS.verifyThunk,
   OPS.forgotThunk,
   OPS.resetThunk,
-  // OPS.refreshThunk,
+  OPS.deleteThunk,
 ];
 const fn = type => thunkArr.map(el => el[type]);
 
 const handleAuthSucsess = (state, action) => {
-  const {
-    // _id,
-    // name,
-    // email,
-    // avatarUrl,
-    // verifiedEmail,
-    accessToken,
-    refreshToken,
-  } = action.payload.result.user;
+  const { accessToken, refreshToken } = action.payload.result.user;
 
   state.user = { ...state.user, accessToken, refreshToken };
-  // if (_id) state.user.id = _id;
-  // if (name) state.user.name = name;
-  // if (email) state.user.email = email;
-  // if (avatarUrl) state.user.avatarUrl = avatarUrl;
-  // if (String(verifiedEmail) === 'true' || 'false') {
-  //   state.user.verifiedEmail = verifiedEmail;
-  // }
   state.isLoggedIn = Boolean(accessToken);
   state.isRefreshing = false;
   state.error = false;
@@ -81,8 +66,8 @@ const authSlice = createSlice({
       // auth success
       .addCase(OPS.registerThunk.fulfilled, handleLoginSucsess)
       .addCase(OPS.loginThunk.fulfilled, handleLoginSucsess)
-      .addCase(OPS.verifyThunk.fulfilled, handleLoginSucsess)
       .addCase(OPS.logoutThunk.fulfilled, handleLogoutSucsess)
+      .addCase(OPS.verifyThunk.fulfilled, handleLoginSucsess)
       // reset password
       .addCase(OPS.forgotThunk.fulfilled, handleLogoutSucsess)
       .addCase(OPS.resetThunk.fulfilled, handleLogoutSucsess)
@@ -90,6 +75,8 @@ const authSlice = createSlice({
       .addCase(OPS.refreshThunk.fulfilled, handleLoginSucsess)
       .addCase(OPS.refreshThunk.pending, handleRefreshPending)
       .addCase(OPS.refreshThunk.rejected, handleRefreshError)
+      // user
+      .addCase(OPS.deleteThunk.fulfilled, handleLogoutSucsess)
       // pending/reject
       .addMatcher(isAnyOf(...fn('pending')), handlePending)
       .addMatcher(isAnyOf(...fn('rejected')), handleError);

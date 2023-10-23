@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as API from 'servises/api';
+import * as API from 'servises/userApi';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
@@ -34,18 +34,6 @@ export const logoutThunk = createAsyncThunk(
   }
 );
 
-export const refreshThunk = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.user.accessToken;
-    try {
-      return await API.refreshUser(persistedToken);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const verifyThunk = createAsyncThunk(
   'auth/verify',
   async (credentials, thunkAPI) => {
@@ -73,6 +61,30 @@ export const resetThunk = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       return await API.resetPass(credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const persistedToken = thunkAPI.getState().auth.user.accessToken;
+    try {
+      return await API.refreshUser(persistedToken);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteThunk = createAsyncThunk(
+  'user/delete',
+  async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.accessToken;
+    try {
+      return await API.deleteUser(token);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

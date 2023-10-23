@@ -10,7 +10,7 @@ export const Div = styled.div`
     font-size: 20px;
     font-weight: 500;
 
-    &:first-of-type {
+    &:nth-of-type(2n + 1) {
       text-align: end;
       color: ${themes.colors.placeholder};
 

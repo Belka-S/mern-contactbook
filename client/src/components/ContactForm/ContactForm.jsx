@@ -79,7 +79,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
         {CONTACT_FIELDS.map(key => (
           <div className="wrapper" key={key}>
             <Label>
-              {key}
+              {key}:
               <Field type="text" name={key} />
             </Label>
             <ErrorMsg name={key} component="div" />

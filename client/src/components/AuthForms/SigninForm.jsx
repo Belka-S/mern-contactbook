@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import { Fragment, useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -42,7 +42,7 @@ const SigninForm = ({ setIsVerify, setIsForgot, setEmail }) => {
     dispatch(loginThunk(values))
       .unwrap()
       .then(pld => setIsVerify(!pld.result.user.verifiedEmail))
-      .catch(err => err.includes('401') && toast('Unauthorized'));
+      .catch(err => err.includes('401') && toast.error('Unauthorized'));
 
     actions.resetForm();
   };

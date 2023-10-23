@@ -1,10 +1,10 @@
-const User = require('../../models/user');
+const { User } = require('../../models/user');
 const { ctrlWrapper } = require('../../decorators');
-const { cloudinary, HttpError, filterEmptyValue } = require('../../utils');
+const { cloudinary, HttpError, filterValues } = require('../../utils');
 
 const updateProfile = ctrlWrapper(async (req, res) => {
-  const { name, birthday, phone, skype } = req.body;
-  const { _id, email } = req.user;
+  const { name, location, socialLink, whatsApp, telegram, birthday, about } = req.body;
+  const { _id } = req.user;
   let avatarUrl = req.user.avatarUrl;
 
   // Update avatar
@@ -16,17 +16,18 @@ const updateProfile = ctrlWrapper(async (req, res) => {
 
     const avatar = { avatarUrl: url, avatarId: public_id };
     const newUser = await User.findByIdAndUpdate(_id, avatar);
-    if (!newUser) throw HttpError(500, 'Failed to update avatar.');
+    if (!newUser) throw HttpError(403, 'Failed to update avatar');
   }
-  const profileData = { name, birthday, phone, skype };
-  filterEmptyValue(profileData);
+  const profileData = { name, location, socialLink, whatsApp, telegram, birthday, about };
+
   // Update user data
   const newUser = await User.findByIdAndUpdate(_id, profileData, { new: true });
-  if (!newUser) throw HttpError(500, 'Failed to update user profile.');
+  if (!newUser) throw HttpError(403, 'Failed to update user profile');
 
-  res
-    .status(200)
-    .json({ message: 'Profile updated.', user: { _id, email, ...profileData, avatarUrl } });
+  res.status(200).json({
+    message: 'Profile updated',
+    result: { user: { ...req.user, ...filterValues(profileData), avatarUrl } },
+  });
 });
 
 module.exports = updateProfile;

@@ -81,7 +81,7 @@ const ContactCard = ({ triggerForm }) => {
               CONTACT_FIELDS.includes(key) &&
               activeContact[key] && (
                 <li key={key}>
-                  <span>{`${key}`}</span>
+                  <span>{`${key}`}:</span>
                   <span>{`${activeContact[key]}`}</span>
                 </li>
               )

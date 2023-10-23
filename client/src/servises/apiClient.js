@@ -1,5 +1,5 @@
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 import { store } from 'store/store';
 import { authenticate } from 'store/auth/authSlice';
@@ -23,11 +23,11 @@ apiClient.interceptors.response.use(
   response => {
     const { message, result } = response.data;
 
-    !result?.contacts && message && toast(message);
+    !result?.contacts && message && toast.success(message);
 
     !message &&
       result?.user?.verificationCode === 'google' &&
-      toast(`Logged in: ${result.user.email}`);
+      toast.success(`Logged in: ${result.user.email}`);
 
     return response;
   },
@@ -54,7 +54,7 @@ apiClient.interceptors.response.use(
         return Promise.reject(error);
       }
     }
-    toast(error.response.data.message);
+    toast.error(error.response.data.message);
     return Promise.reject(error);
   }
 );

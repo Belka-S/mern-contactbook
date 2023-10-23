@@ -9,3 +9,14 @@ export const USER_FIELDS = [
   'userAbout',
   'userCreatedAt',
 ];
+
+export const USER_CREDENTIALS = [
+  'name',
+  'email',
+  'whatsApp',
+  'telegram',
+  'location',
+  'socialLink',
+  'birthday',
+  'about',
+];

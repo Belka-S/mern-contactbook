@@ -1,11 +1,15 @@
+import { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
+import { useAuth } from 'utils/hooks';
+import { deleteThunk } from 'store/auth/authOperations';
+import { USER_FIELDS } from 'utils/constants';
 import { Avatar, Div } from './ProfileCard.styled';
 
-import { useAuth } from 'utils/hooks';
-import { USER_FIELDS } from 'utils/constants';
-
 const ProfileCard = () => {
+  const dispatch = useDispatch();
   const user = useAuth();
   const { userName, userAvatarUrl } = useAuth();
 
@@ -15,29 +19,37 @@ const ProfileCard = () => {
     .reduce((acc, el) => acc + el.at(0).toUpperCase(), '')
     .substring(0, 3);
 
+  const handleDeleteProfile = () => {
+    const del = window.confirm('Are you sure you want to delete?');
+    del && dispatch(deleteThunk());
+  };
+
   return (
     <Div>
       <Avatar style={{ backgroundImage: `url(${userAvatarUrl})` }}>
         {!userAvatarUrl && abbreviation}
       </Avatar>
 
-      {USER_FIELDS.map(el => (
-        <GridWrap key={el} cg="20px" gtc="1fr 4fr">
-          {user[el] && (
-            <>
-              <span>{el.replace('user', '')}</span>
-              <span>
-                {el.includes('Created') ? user[el].substring(0, 10) : user[el]}
-              </span>
-            </>
-          )}
-        </GridWrap>
-      ))}
+      <GridWrap cg="20px" rg="0" gtc="1fr 4fr">
+        {USER_FIELDS.map(
+          el =>
+            user[el] && (
+              <Fragment key={el}>
+                <span>{el.replace('user', '')}:</span>
+                <span>
+                  {el.includes('Created')
+                    ? user[el].substring(0, 10)
+                    : user[el]}
+                </span>
+              </Fragment>
+            )
+        )}
+      </GridWrap>
 
       <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
         <Button>Edit</Button>
         <div></div>
-        <Button>Delete</Button>
+        <Button onClick={handleDeleteProfile}>Delete</Button>
       </GridWrap>
     </Div>
   );

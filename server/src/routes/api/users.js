@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.use(authenticate);
 
-router.patch('/avatar', upload.single('avatar'), ctrl.users.updateAvatar);
+router.patch('/profile', upload.single('avatar'), ctrl.users.updateProfile);
 router.delete('/delete', ctrl.users.deleteProfile);
 
 module.exports = router;

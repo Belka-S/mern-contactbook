@@ -1,7 +1,9 @@
 const updateAvatar = require('./updateAvatar');
-const verifyEmail = require('./verifyEmail');
+const updateProfile = require('./updateProfile');
+const deleteProfile = require('./deleteProfile');
 
 module.exports = {
   updateAvatar,
-  verifyEmail,
+  updateProfile,
+  deleteProfile,
 };

@@ -8,10 +8,10 @@ const removeById = ctrlWrapper(async (req, res) => {
   const { id } = req.params;
   if (restrictedAccess.contactId.includes(id)) throw HttpError(403);
 
-  const deletedContact = await Contact.findByIdAndDelete(id);
-  if (!deletedContact) throw HttpError(403);
+  const delContact = await Contact.findByIdAndDelete(id);
+  if (!delContact) throw HttpError(403);
 
-  res.status(200).json({ message: 'Deleted', result: { contact: deletedContact } });
+  res.status(200).json({ message: 'Deleted', result: { contact: delContact } });
 });
 
 module.exports = removeById;

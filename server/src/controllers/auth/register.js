@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
-const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
-
+// const gravatar = require('gravatar');
 const { User } = require('../../models');
 const { HttpError, randomNumber, sendMail, createMsg } = require('../../utils');
 const { ctrlWrapper } = require('../../decorators');
@@ -18,7 +17,6 @@ const register = ctrlWrapper(async (req, res) => {
     throw HttpError(409, 'Email already exists');
   }
   const hashPassword = await bcrypt.hash(password, 10);
-  const avatarUrl = gravatar.url(email);
   const verificationCode = randomNumber(6);
   const msg = createMsg('verifyEmail.ejs', { email, verificationCode });
   await sendMail.nodemailer(msg);
@@ -26,8 +24,7 @@ const register = ctrlWrapper(async (req, res) => {
   const user = await User.create({
     ...req.body,
     password: hashPassword,
-    avatarUrl,
-    verificationCode,
+    verificationCode, // avatarUrl: gravatar.url(email),
   });
   if (!user) throw HttpError(403, 'Failed to sign up');
 

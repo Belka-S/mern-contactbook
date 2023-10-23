@@ -20,12 +20,26 @@ export const ToastContainer = styled(Toast).attrs({
   .toast {
     color: ${themes.colors.black};
   }
-  .body {
-    & svg {
-      fill: ${themes.colors.accent};
+
+  & .Toastify__toast--info {
+    .body {
+      & svg {
+        fill: ${themes.colors.accent};
+      }
+    }
+    .progress {
+      background-color: ${themes.colors.accent};
     }
   }
-  .progress {
-    background-color: ${themes.colors.accent};
+
+  & .Toastify__toast--error {
+    .body {
+      & svg {
+        fill: ${themes.colors.error};
+      }
+    }
+    .progress {
+      background-color: ${themes.colors.error};
+    }
   }
 `;

@@ -4,12 +4,12 @@ import { BsTelephone, BsEnvelope, BsWhatsapp, BsGithub } from 'react-icons/bs';
 import { LiaTelegram, LiaViber, LiaLinkedinIn } from 'react-icons/lia';
 import { PiMapPinFill } from 'react-icons/pi';
 
-import { Div, List } from './ContactCard.styled';
+import Button from 'components/shared/Button/Button';
 import { useContacts } from 'utils/hooks';
 import { CONTACT_FIELDS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import GridWrap from 'components/shared/GridWrap/GridWrap';
-import Button from 'components/shared/Button/Button';
+import { Div, List } from './ContactCard.styled';
 
 const ContactCard = ({ triggerForm }) => {
   const dispatch = useDispatch();

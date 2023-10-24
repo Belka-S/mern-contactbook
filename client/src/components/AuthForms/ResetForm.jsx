@@ -7,9 +7,8 @@ import SignBtn from './AuthBtns/SignBtn';
 import IconBtn from './IconBtn/IconBtn';
 import { resetThunk } from 'store/auth/authOperations';
 import { resetSchema } from 'utils/validation';
-import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMsg, Label, Tittle } from 'components/AuthForms/AuthForms.styled';
-import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
+import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
 const initialValues = { newPass: '', confirmPass: '' };
 

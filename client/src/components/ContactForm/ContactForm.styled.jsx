@@ -5,14 +5,6 @@ import { ErrorMessage } from 'formik';
 
 import { themes } from 'styles/themes';
 
-export const ErrorMsg = styled(ErrorMessage)`
-  margin-left: 22%;
-  padding-bottom: 5px;
-  font-size: 12px;
-  font-family: 'Roboto', sans-serif;
-  color: ${themes.colors.error};
-`;
-
 export const Form = styled(FormikForm)`
   position: relative;
   font-size: 12px;
@@ -58,7 +50,7 @@ export const Form = styled(FormikForm)`
     }
 
     &:first-of-type {
-      margin: 0 0 10px 22%;
+      margin: 10px 0 10px 22%;
     }
   }
 
@@ -87,8 +79,6 @@ export const Label = styled.label`
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-column-gap: 20px;
-  /* grid-template-areas: 'key value value value value'; */
-  /* grid-area: key; */
   text-align: right;
   align-items: center;
 
@@ -116,6 +106,7 @@ export const Field = styled(FormikField)`
 
   border: 1px solid transparent;
   outline: transparent;
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
   transition: border-color 250ms;
 
@@ -137,4 +128,12 @@ export const Field = styled(FormikField)`
   &:focus {
     border-color: ${themes.colors.hovered};
   }
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  margin-left: 22%;
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: ${themes.colors.error};
 `;

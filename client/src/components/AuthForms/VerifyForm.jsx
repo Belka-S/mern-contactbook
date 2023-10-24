@@ -6,9 +6,8 @@ import SignBtn from './AuthBtns/SignBtn';
 import { useAuth } from 'utils/hooks';
 import { verifySchema } from 'utils/validation';
 import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
-import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
-import { Label, Tittle, ErrorMsg } from 'components/AuthForms/AuthForms.styled';
-import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
+import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
 const VerifyForm = () => {
   const dispatch = useDispatch();

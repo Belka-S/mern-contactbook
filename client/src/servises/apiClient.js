@@ -27,6 +27,7 @@ apiClient.interceptors.response.use(
 
     !message &&
       result?.user?.verificationCode === 'google' &&
+      store.getState().auth.user.verificationCode !== 'google' &&
       toast.info(`Logged in: ${result.user.email}`);
 
     return response;

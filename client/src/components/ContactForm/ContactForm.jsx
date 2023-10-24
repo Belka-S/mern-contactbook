@@ -5,13 +5,12 @@ import { Formik } from 'formik';
 
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
-import { Form, Field, Label } from 'components/ContactForm/ContactForm.styled';
-import { ErrorMsg } from 'components/ContactForm/ContactForm.styled';
 import { CONTACT_FIELDS, FORM_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 import { updateContactThunk } from 'store/contacts/contactsOperations';
 import { contactSchema } from 'utils/validation';
+import { Form, Field, Label, ErrorMsg } from './ContactForm.styled';
 
 const initialValues = {};
 

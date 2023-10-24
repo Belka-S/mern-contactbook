@@ -9,9 +9,8 @@ import IconBtn from './IconBtn/IconBtn';
 import GoogleBtn from './AuthBtns/GoogleBtn';
 import { registerThunk } from 'store/auth/authOperations';
 import { signupSchema } from 'utils/validation';
-import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMsg, Label, Tittle } from 'components/AuthForms/AuthForms.styled';
-import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
+import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
 const initialValues = { name: '', email: '', password: '' };
 

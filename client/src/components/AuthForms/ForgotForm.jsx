@@ -6,9 +6,8 @@ import { useDispatch } from 'react-redux';
 import SignBtn from './AuthBtns/SignBtn';
 import { forgotThunk } from 'store/auth/authOperations';
 import { forgotSchema } from 'utils/validation';
-import { Form, Field, FieldWrap } from 'components/AuthForms/AuthForms.styled';
-import { ErrorMsg, Label, Tittle } from 'components/AuthForms/AuthForms.styled';
-import { SuccessIcon, ErrorIcon } from 'components/AuthForms/AuthForms.styled';
+import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
+import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
 const ForgotForm = ({ setIsForgot, email }) => {
   const dispatch = useDispatch();

@@ -16,6 +16,8 @@ export const useAuth = () => {
   const userAbout = useSelector(selectors.selectUserAbout);
   const userCreatedAt = useSelector(selectors.selectUserCreatedAt);
 
+  const user = useSelector(selectors.selectUser);
+
   const isLoggedIn = useSelector(selectors.selectIsLoggedIn);
   const isRefreshing = useSelector(selectors.selectIsRefreshing);
   const isLoading = useSelector(selectors.selectAuthIsLoading);
@@ -35,6 +37,8 @@ export const useAuth = () => {
     userBirthday,
     userAbout,
     userCreatedAt,
+
+    user,
 
     isLoggedIn,
     isRefreshing,

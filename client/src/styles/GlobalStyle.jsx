@@ -19,10 +19,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.02em;
   line-height: 1.3;
   color:#343434;
   background-color: #e0e2e8;
+  /* letter-spacing: 0.02em; */
 }
 
 // -------------------- Reset -------------------- //

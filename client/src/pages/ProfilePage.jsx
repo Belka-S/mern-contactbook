@@ -13,7 +13,7 @@ const ProfilePage = () => {
     <GridWrap h={gridHeight} gtc="2fr 3fr">
       <h1>Profile</h1>
       {!isProfileForm && <ProfileCard setIsProfileForm={setIsProfileForm} />}
-      {isProfileForm && <ProfileForm />}
+      {isProfileForm && <ProfileForm setIsProfileForm={setIsProfileForm} />}
     </GridWrap>
   );
 };

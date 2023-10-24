@@ -1,51 +1,37 @@
-import { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
-import { useAuth } from 'utils/hooks';
+import { useAuth, useAbbreviation } from 'utils/hooks';
 import { deleteThunk } from 'store/auth/authOperations';
-import { USER_FIELDS } from 'utils/constants';
-import { Avatar, Div } from './ProfileCard.styled';
+import { USER_CREDENTIALS } from 'utils/constants';
+import { Div, Wrapper, Avatar } from './ProfileCard.styled';
 
 const ProfileCard = ({ setIsProfileForm }) => {
   const dispatch = useDispatch();
-  const user = useAuth();
   const { userName, userAvatarUrl } = useAuth();
-
-  const abbreviation = userName
-    .replace('-', ' ')
-    .split(/\s+/)
-    .reduce((acc, el) => acc + el.at(0).toUpperCase(), '')
-    .substring(0, 3);
+  const abbreviation = useAbbreviation(userName);
+  const { user } = useAuth();
 
   const handleDeleteProfile = () => {
-    const del = window.confirm('Are you sure you want to delete?');
+    const del = window.confirm('Do you want to delete your profile and data?');
     del && dispatch(deleteThunk());
   };
 
   return (
     <Div>
-      <Avatar style={{ backgroundImage: `url(${userAvatarUrl})` }}>
-        {!userAvatarUrl && abbreviation}
-      </Avatar>
+      <Avatar url={userAvatarUrl} abbr={userAvatarUrl ? '' : abbreviation} />
 
-      <GridWrap cg="20px" rg="0" gtc="1fr 4fr">
-        {USER_FIELDS.map(
-          el =>
-            user[el] && (
-              <Fragment key={el}>
-                <span>{el.replace('user', '')}:</span>
-                <span>
-                  {el.includes('Created')
-                    ? user[el].substring(0, 10)
-                    : user[el]}
-                </span>
-              </Fragment>
-            )
-        )}
-      </GridWrap>
+      {USER_CREDENTIALS.map(
+        el =>
+          user[el] && (
+            <Wrapper key={el}>
+              <span>{el}:</span>
+              <span>{user[el]}</span>
+            </Wrapper>
+          )
+      )}
 
       <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
         <Button onClick={() => setIsProfileForm(true)}>Edit</Button>

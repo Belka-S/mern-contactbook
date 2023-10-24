@@ -6,6 +6,8 @@ const required = [true, 'Required field!'];
 const length = lgth => [lgth, `Must be at least ${lgth} characters long!`];
 const emailRegex = [regExp.email, 'Invalid email!'];
 
+const roleList = ['admin', 'user'];
+
 const userSchema = new Schema(
   {
     name: { type: String, minlength: length(4), required },
@@ -23,6 +25,7 @@ const userSchema = new Schema(
     telegram: { type: String, default: '' },
     birthday: { type: String, default: '' },
     about: { type: String, default: '' },
+    role: { type: String, enum: roleList, default: 'user' },
   },
   { versionKey: false, timestamps: true },
 );

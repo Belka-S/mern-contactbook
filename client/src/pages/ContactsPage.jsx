@@ -12,11 +12,11 @@ import ContactForm from 'components/ContactForm/ContactForm';
 const ContactsPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isContactForm, setIsContactForm] = useState(false);
-  const { userId } = useAuth();
+  const { user } = useAuth();
   const { activeContact, isLoading } = useContacts();
 
   const title =
-    !isLoading && userId === activeContact?.owner
+    !isLoading && user._id === activeContact?.owner
       ? `${activeContact?.firstName} ${activeContact?.lastName}`
       : '';
 

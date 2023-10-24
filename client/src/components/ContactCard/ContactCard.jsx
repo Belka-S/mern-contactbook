@@ -6,7 +6,7 @@ import { PiMapPinFill } from 'react-icons/pi';
 
 import Button from 'components/shared/Button/Button';
 import { useContacts } from 'utils/hooks';
-import { CONTACT_FIELDS } from 'utils/constants';
+import { CONTACT_CREDENTIALS } from 'utils/constants';
 import { deleteContactThunk } from 'store/contacts/contactsOperations';
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import { Div, List } from './ContactCard.styled';
@@ -78,7 +78,7 @@ const ContactCard = ({ triggerForm }) => {
         {activeContact &&
           Object.keys(activeContact).map(
             key =>
-              CONTACT_FIELDS.includes(key) &&
+              CONTACT_CREDENTIALS.includes(key) &&
               activeContact[key] && (
                 <li key={key}>
                   <span>{`${key}`}:</span>

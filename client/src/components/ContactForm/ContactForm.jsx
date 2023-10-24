@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
-import { CONTACT_FIELDS, FORM_FIELDS } from 'utils/constants';
+import { CONTACT_CREDENTIALS, CONTACT_FIELDS } from 'utils/constants';
 import { useContacts } from 'utils/hooks';
 import { addContactThunk } from 'store/contacts/contactsOperations';
 import { updateContactThunk } from 'store/contacts/contactsOperations';
@@ -22,7 +22,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
   const spanEl = document.querySelector('span');
   const getWidth = el => el.getBoundingClientRect().width + 8;
   const getInitialValues = bool => {
-    FORM_FIELDS.forEach(
+    CONTACT_FIELDS.forEach(
       key => (initialValues[key] = bool === 'edit' ? activeContact[key] : '')
     );
     return initialValues;
@@ -75,7 +75,7 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
         <Field id="first" type="text" name="firstName" placeholder="Name" />
         <Field id="last" type="text" name="lastName" placeholder="Surname" />
 
-        {CONTACT_FIELDS.map(key => (
+        {CONTACT_CREDENTIALS.map(key => (
           <div className="wrapper" key={key}>
             <Label>
               {key}:

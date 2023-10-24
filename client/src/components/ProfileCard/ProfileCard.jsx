@@ -10,9 +10,8 @@ import { Div, Wrapper, Avatar } from './ProfileCard.styled';
 
 const ProfileCard = ({ setIsProfileForm }) => {
   const dispatch = useDispatch();
-  const { userName, userAvatarUrl } = useAuth();
-  const abbreviation = useAbbreviation(userName);
   const { user } = useAuth();
+  const abbreviation = useAbbreviation(user.name);
 
   const handleDeleteProfile = () => {
     const del = window.confirm('Do you want to delete your profile and data?');
@@ -21,7 +20,7 @@ const ProfileCard = ({ setIsProfileForm }) => {
 
   return (
     <Div>
-      <Avatar url={userAvatarUrl} abbr={userAvatarUrl ? '' : abbreviation} />
+      <Avatar url={user.avatarUrl} abbr={user.avatarUrl ? '' : abbreviation} />
 
       {USER_CREDENTIALS.map(
         el =>

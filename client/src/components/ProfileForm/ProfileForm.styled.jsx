@@ -49,6 +49,7 @@ export const Field = styled(FormikField)`
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 500;
+  color: ${themes.colors.black};
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,

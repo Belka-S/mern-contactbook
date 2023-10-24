@@ -10,14 +10,12 @@ import { Form, Field, Label, ErrorMsg, Avatar } from './ProfileForm.styled';
 
 const ProfileForm = ({ setIsProfileForm }) => {
   // const dispatch = useDispatch();
-
-  const { user, userName, userAvatarUrl } = useAuth();
-  const abbreviation = useAbbreviation(userName);
+  const { user } = useAuth();
+  const abbreviation = useAbbreviation(user.name);
 
   const getInitialValues = () => {
     const initialValues = {};
     USER_CREDENTIALS.forEach(key => {
-      console.log(user[key]);
       return (initialValues[key] = user[key]);
     });
 
@@ -40,8 +38,8 @@ const ProfileForm = ({ setIsProfileForm }) => {
         <Avatar
           type="file"
           name="avatar"
-          url={userAvatarUrl}
-          abbr={userAvatarUrl ? '' : abbreviation}
+          url={user.avatarUrl}
+          abbr={user.avatarUrl ? '' : abbreviation}
         />
 
         {USER_CREDENTIALS.map(key => (

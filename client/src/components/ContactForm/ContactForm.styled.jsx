@@ -100,7 +100,6 @@ export const Label = styled.label`
 
 export const Field = styled(FormikField)`
   padding-block: 3px;
-  /* grid-area: value; */
   text-align: left;
   background-color: transparent;
 
@@ -108,6 +107,7 @@ export const Field = styled(FormikField)`
   outline: transparent;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
+  color: ${themes.colors.black};
   transition: border-color 250ms;
 
   &:-webkit-autofill,

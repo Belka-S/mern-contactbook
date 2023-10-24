@@ -12,7 +12,7 @@ import Button from 'components/shared/Button/Button';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, userEmail } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
   const handleLogOut = () => {
     dispatch(logoutThunk());
@@ -30,7 +30,7 @@ const Header = () => {
         </nav>
         {isLoggedIn && (
           <Div>
-            <p>{userEmail}</p>
+            <p>{user.email}</p>
             <Button onClick={handleLogOut}>Log out</Button>
           </Div>
         )}

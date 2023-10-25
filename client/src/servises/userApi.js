@@ -39,8 +39,8 @@ export const refreshUser = async persistedToken => {
   return data;
 };
 
-export const updateUser = async credentials => {
-  const { data } = await apiClient.patch('/users/update', credentials);
+export const updateUser = async formData => {
+  const { data } = await apiClient.patch('/users/update', formData);
   return data;
 };
 

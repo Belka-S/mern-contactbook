@@ -71,7 +71,7 @@ export const ErrorMsg = styled(ErrorMessage)`
   color: ${themes.colors.error};
 `;
 
-export const Avatar = styled(FormikField)`
+export const Avatar = styled.input`
   position: relative;
   width: 200px;
   height: 200px;

@@ -31,37 +31,37 @@ const TELEGRAM_PHONE = {
 
 const HTTP_LINK = {
   name: 'HTTP_LINK',
-  msg: 'http(s)://...',
+  msg: 'http(s)://.../...',
   pattern:
-    /^(http(s?):\/\/)?(www\.)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+    /^(http(s)?:\/\/)?(([_.-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 const LINKEDIN = {
   name: 'LINKEDIN',
-  msg: 'http(s)://linkedin.com',
+  msg: 'http(s)://linkedin.com/...',
   pattern:
     /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 const GITHUB = {
   name: 'GITHUB',
-  msg: 'http(s)://...github',
+  msg: 'http(s)://www.github.com/...',
   pattern:
     /^(http(s?):\/\/)?(www\.)?github\.com+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 const DATE = {
   name: 'DATE',
-  msg: 'dd-mm-yyyy',
+  msg: 'dd.mm.yyyy',
   pattern:
-    /^([0-2^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)((19|20)\d{2}$)/,
+    /^([0-2^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)((19|20)\d{2}$)/,
 };
 
 const ADDRESS = {
   name: 'ADDRESS',
   msg: 'only letters, numbers, commas, dashes, spases',
   pattern:
-    /^[a-zA-Zа-яА-Я0-9]+(([ -]|(, )[a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+    /^[a-zA-Zа-яА-Я0-9]+(([ -]|(, )[a-zA-Zа-яА-Я0-9])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
 export {

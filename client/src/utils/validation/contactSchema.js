@@ -6,12 +6,12 @@ const pattern = regExp => [regExp.pattern, regExp.msg];
 
 export const contactSchema = Yup.object().shape({
   firstName: Yup.string()
-    .matches(...pattern(regExp.NAME))
-    .required('Required'),
+    .required('Required')
+    .matches(...pattern(regExp.NAME)),
   lastName: Yup.string().matches(...pattern(regExp.NAME)),
   phone: Yup.string()
-    .matches(...pattern(regExp.PHONE))
-    .required('Required'),
+    .required('Required')
+    .matches(...pattern(regExp.PHONE)),
   email: Yup.string().matches(...pattern(regExp.EMAIL)),
   whatsapp: Yup.string().matches(...pattern(regExp.PHONE)),
   viber: Yup.string().matches(...pattern(regExp.PHONE)),

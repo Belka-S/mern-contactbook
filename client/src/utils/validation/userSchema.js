@@ -6,11 +6,11 @@ const pattern = regExp => [regExp.pattern, regExp.msg];
 
 const name = Yup.string()
   .min(4, 'is too short')
-  .matches(...pattern(regExp.NAME))
-  .required('is required');
+  .required('is required')
+  .matches(...pattern(regExp.NAME));
 const email = Yup.string()
-  .matches(...pattern(regExp.EMAIL))
-  .required('is required');
+  .required('is required')
+  .matches(...pattern(regExp.EMAIL));
 const password = Yup.string().min(6, 'is too short').required('is required');
 const code = Yup.number().required('is required').typeError('must be a number');
 

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import SignBtn from './AuthBtns/SignBtn';
 import { useAuth } from 'utils/hooks';
 import { verifySchema } from 'utils/validation';
-import { refreshThunk, verifyThunk } from 'store/auth/authOperations';
+import { refreshUserThunk, verifyEmailThunk } from 'store/auth/authOperations';
 import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
 import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
@@ -22,10 +22,10 @@ const VerifyForm = () => {
   const isDisabled = ({ errors }) => Object.keys(errors).length;
 
   const onSubmit = (values, actions) => {
-    dispatch(verifyThunk(values))
+    dispatch(verifyEmailThunk(values))
       .unwrap() // .then(pld =>  console.log(pld))
       .catch(err => console.log(err))
-      .then(() => dispatch(refreshThunk()));
+      .then(() => dispatch(refreshUserThunk()));
 
     actions.resetForm();
   };

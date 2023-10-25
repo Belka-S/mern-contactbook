@@ -1,13 +1,15 @@
 import * as Yup from 'yup';
 
-import { NAME, EMAIL } from 'utils/constants';
+import { regExp } from 'utils/constants';
+
+const pattern = regExp => [regExp.pattern, regExp.msg];
 
 const name = Yup.string()
   .min(4, 'is too short')
-  .matches(NAME.regExp, NAME.msg)
+  .matches(...pattern(regExp.NAME))
   .required('is required');
 const email = Yup.string()
-  .matches(EMAIL.regExp, EMAIL.msg)
+  .matches(...pattern(regExp.EMAIL))
   .required('is required');
 const password = Yup.string().min(6, 'is too short').required('is required');
 const code = Yup.number().required('is required').typeError('must be a number');

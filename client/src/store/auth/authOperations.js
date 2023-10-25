@@ -34,7 +34,7 @@ export const logoutThunk = createAsyncThunk(
   }
 );
 
-export const verifyThunk = createAsyncThunk(
+export const verifyEmailThunk = createAsyncThunk(
   'auth/verify',
   async (credentials, thunkAPI) => {
     try {
@@ -45,7 +45,7 @@ export const verifyThunk = createAsyncThunk(
   }
 );
 
-export const forgotThunk = createAsyncThunk(
+export const forgotPassThunk = createAsyncThunk(
   'auth/forgot',
   async (credentials, thunkAPI) => {
     try {
@@ -56,7 +56,7 @@ export const forgotThunk = createAsyncThunk(
   }
 );
 
-export const resetThunk = createAsyncThunk(
+export const resetPassThunk = createAsyncThunk(
   'auth/reset',
   async (credentials, thunkAPI) => {
     try {
@@ -67,7 +67,7 @@ export const resetThunk = createAsyncThunk(
   }
 );
 
-export const refreshThunk = createAsyncThunk(
+export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.user.accessToken;
@@ -79,8 +79,19 @@ export const refreshThunk = createAsyncThunk(
   }
 );
 
-export const deleteThunk = createAsyncThunk(
-  'user/delete',
+export const updateUserThunk = createAsyncThunk(
+  'users/update',
+  async (credentials, thunkAPI) => {
+    try {
+      return await API.updateUser(credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteUserThunk = createAsyncThunk(
+  'users/delete',
   async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.accessToken;
     try {

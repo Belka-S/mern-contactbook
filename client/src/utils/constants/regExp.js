@@ -1,48 +1,78 @@
-export const NAME = {
+const NAME = {
+  name: 'NAME',
   msg: 'only letters, numbers, underscores, dashes, spases',
-  regExp: /^[a-zA-Zа-яА-Я0-9]+(([_ -][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+  pattern: /^[a-zA-Zа-яА-Я0-9]+(([_ -][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
-export const EMAIL = {
+const EMAIL = {
+  name: 'EMAIL',
   msg: 'test@test.com, test@test.ua',
-  regExp: /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+  pattern: /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
 };
 
-export const PHONE = {
+const PHONE = {
+  name: 'PHONE',
   msg: 'only digits, spaces, dashes, parentheses, can start with +',
-  regExp: /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+  pattern: /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
 };
 
-export const TELEGRAM = {
+const TELEGRAM = {
+  name: 'TELEGRAM',
   msg: 'only letters and numbers,  more than five, start with @',
-  regExp: /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$/,
+  pattern: /.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$/,
 };
 
-export const TELEGRAM_PHONE = {
+const TELEGRAM_PHONE = {
+  name: 'TELEGRAM_PHONE',
   msg: 'only letters, digits, spaces, dashes, parentheses, can start with +, @',
-  regExp:
+  pattern:
     /(.*\B@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*$)|(^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$)/,
 };
 
-export const LINKEDIN = {
-  msg: 'https://linkedin.com',
-  regExp:
+const HTTP_LINK = {
+  name: 'HTTP_LINK',
+  msg: 'http(s)://...',
+  pattern:
+    /^(http(s?):\/\/)?(www\.)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+};
+
+const LINKEDIN = {
+  name: 'LINKEDIN',
+  msg: 'http(s)://linkedin.com',
+  pattern:
     /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
-export const GITHUB = {
-  msg: 'https://...github',
-  regExp:
+const GITHUB = {
+  name: 'GITHUB',
+  msg: 'http(s)://...github',
+  pattern:
     /^(http(s?):\/\/)?(www\.)?github\.com+\/(([_-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
 };
 
-export const DATE = {
+const DATE = {
+  name: 'DATE',
   msg: 'dd-mm-yyyy',
-  regExp:
+  pattern:
     /^([0-2^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)((19|20)\d{2}$)/,
 };
 
-export const ADDRESS = {
+const ADDRESS = {
+  name: 'ADDRESS',
   msg: 'only letters, numbers, commas, dashes, spases',
-  regExp: /^[a-zA-Zа-яА-Я0-9]+(([ -]|(, )[a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+  pattern:
+    /^[a-zA-Zа-яА-Я0-9]+(([ -]|(, )[a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я0-9]*)*$/,
+};
+
+export {
+  NAME,
+  EMAIL,
+  PHONE,
+  TELEGRAM,
+  TELEGRAM_PHONE,
+  HTTP_LINK,
+  LINKEDIN,
+  GITHUB,
+  DATE,
+  ADDRESS,
 };

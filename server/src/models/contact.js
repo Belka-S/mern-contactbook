@@ -3,23 +3,23 @@ const { Schema, model } = require('mongoose');
 const { mongooseError, regExp } = require('../utils');
 
 const required = [true, 'Required field!'];
-const regex = field => [regExp[field], `Invalid ${field}!`];
+const regex = field => [regExp[field].pattern, `Invalid ${field.toLowerCase()}!`];
 
 const groupList = ['work', 'sport', 'private'];
 
 const contactSchema = new Schema(
   {
-    firstName: { type: String, match: regex('name'), required },
-    lastName: { type: String, match: regex('name'), default: '' },
-    phone: { type: String, match: regex('phone'), default: '' },
-    email: { type: String, match: regex('email'), default: '' },
-    whatsapp: { type: String, match: regex('phone'), default: '' },
-    viber: { type: String, match: regex('phone'), default: '' },
-    telegram: { type: String, match: regex('telegram'), default: '' },
-    linkedin: { type: String, match: regex('linkedin'), default: '' },
-    github: { type: String, match: regex('github'), default: '' },
-    address: { type: String, match: regex('address'), default: '' },
-    birthday: { type: String, match: regex('date'), default: '' },
+    firstName: { type: String, match: regex(regExp.NAME.name), required },
+    lastName: { type: String, match: regex(regExp.NAME.name), default: '' },
+    phone: { type: String, match: regex(regExp.PHONE.name), default: '' },
+    email: { type: String, match: regex(regExp.EMAIL.name), default: '' },
+    whatsapp: { type: String, match: regex(regExp.PHONE.name), default: '' },
+    viber: { type: String, match: regex(regExp.PHONE.name), default: '' },
+    telegram: { type: String, match: regex(regExp.TELEGRAM.name), default: '' },
+    linkedin: { type: String, match: regex(regExp.LINKEDIN.name), default: '' },
+    github: { type: String, match: regex(regExp.GITHUB.name), default: '' },
+    address: { type: String, match: regex(regExp.ADDRESS.name), default: '' },
+    birthday: { type: String, match: regex(regExp.DATE.name), default: '' },
     notes: { type: String, default: '' },
     group: { type: String, enum: groupList, default: 'private' },
     favorite: { type: Boolean, default: false },

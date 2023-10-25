@@ -3,7 +3,7 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { loadWebFonts } from 'styles/webFonts';
-import { refreshThunk } from 'store/auth/authOperations';
+import { refreshUserThunk } from 'store/auth/authOperations';
 import { useAuth } from 'utils/hooks/useAuth';
 
 import Toast from 'components/shared/Toast/Toast';
@@ -29,7 +29,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(refreshThunk());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
 
   return (

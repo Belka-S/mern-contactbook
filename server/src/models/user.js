@@ -4,14 +4,14 @@ const { mongooseError, regExp } = require('../utils');
 
 const required = [true, 'Required field!'];
 const length = lgth => [lgth, `Must be at least ${lgth} characters long!`];
-const emailRegex = [regExp.email, 'Invalid email!'];
+const regex = field => [regExp[field].pattern, `Invalid ${field.toLowerCase()}!`];
 
 const roleList = ['admin', 'user'];
 
 const userSchema = new Schema(
   {
     name: { type: String, minlength: length(4), required },
-    email: { type: String, unique: true, match: emailRegex, required },
+    email: { type: String, unique: true, match: regex(regExp.EMAIL.name), required },
     password: { type: String, minlength: length(6), required },
     accessToken: { type: String, default: null },
     refreshToken: { type: String, default: null },
@@ -19,10 +19,10 @@ const userSchema = new Schema(
     verificationCode: { type: String, default: null },
     avatarUrl: { type: String, default: '' },
     avatarId: { type: String, default: null },
-    location: { type: String, default: '' },
-    socialLink: { type: String, default: '' },
     whatsApp: { type: String, default: '' },
     telegram: { type: String, default: '' },
+    location: { type: String, default: '' },
+    socialLink: { type: String, default: '' },
     birthday: { type: String, default: '' },
     about: { type: String, default: '' },
     role: { type: String, enum: roleList, default: 'user' },

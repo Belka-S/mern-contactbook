@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
 import IconBtn from './IconBtn/IconBtn';
-import { resetThunk } from 'store/auth/authOperations';
+import { resetPassThunk } from 'store/auth/authOperations';
 import { resetSchema } from 'utils/validation';
 import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
 import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
@@ -29,7 +29,7 @@ const ResetForm = ({ id, pwdToken }) => {
   };
 
   const onSubmit = (values, actions) => {
-    dispatch(resetThunk({ ...values, id, pwdToken }))
+    dispatch(resetPassThunk({ ...values, id, pwdToken }))
       .unwrap() // .then(pld => console.log(pld))
       .catch(err => console.log(err));
 

@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import { forgotThunk } from 'store/auth/authOperations';
+import { forgotPassThunk } from 'store/auth/authOperations';
 import { forgotSchema } from 'utils/validation';
 import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
 import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
@@ -21,7 +21,7 @@ const ForgotForm = ({ setIsForgot, email }) => {
   const isDisabled = ({ errors }) => Object.keys(errors).length;
 
   const onSubmit = (values, actions) => {
-    dispatch(forgotThunk(values))
+    dispatch(forgotPassThunk(values))
       .unwrap() // .then(pld => console.log(pld))
       .catch(err => console.log(err));
 

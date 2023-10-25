@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
 import { useAuth, useAbbreviation } from 'utils/hooks';
-import { deleteThunk } from 'store/auth/authOperations';
+import { deleteUserThunk } from 'store/auth/authOperations';
 import { USER_CREDENTIALS } from 'utils/constants';
 import { Div, Wrapper, Avatar } from './ProfileCard.styled';
 
@@ -15,7 +15,7 @@ const ProfileCard = ({ setIsProfileForm }) => {
 
   const handleDeleteProfile = () => {
     const del = window.confirm('Do you want to delete your profile and data?');
-    del && dispatch(deleteThunk());
+    del && dispatch(deleteUserThunk());
   };
 
   return (

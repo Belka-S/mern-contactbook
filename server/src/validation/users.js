@@ -6,14 +6,27 @@ const { validateBody } = require('../decorators');
 const registerSchema = validateBody(
   Joi.object({
     name: Joi.string().min(4).required(),
-    email: Joi.string().pattern(regExp.email).required().error(joiError.email),
+    email: Joi.string().pattern(regExp.EMAIL.pattern).required().error(joiError.email),
     password: Joi.string().min(6).required().error(joiError.password),
+  }),
+);
+
+const updateSchema = validateBody(
+  Joi.object({
+    name: Joi.string().min(4).required(),
+    email: Joi.string().pattern(regExp.EMAIL.pattern).required().error(joiError.email),
+    whatsApp: Joi.string().pattern(regExp.PHONE.pattern),
+    telegram: Joi.string().pattern(regExp.TELEGRAM.pattern),
+    location: Joi.string().pattern(regExp.ADDRESS.pattern),
+    socialLink: Joi.string().pattern(regExp.HTTP_LINK.pattern),
+    birthday: Joi.string().pattern(regExp.DATE.pattern),
+    about: Joi.string(),
   }),
 );
 
 const loginSchema = validateBody(
   Joi.object({
-    email: Joi.string().email(regExp.email).required().error(joiError.email),
+    email: Joi.string().email(regExp.EMAIL.pattern).required().error(joiError.email),
     password: Joi.string().min(6).required().error(joiError.password),
   }),
 );
@@ -26,7 +39,7 @@ const verifySchema = validateBody(
 
 const forgotSchema = validateBody(
   Joi.object({
-    email: Joi.string().email(regExp.email).required().error(joiError.email),
+    email: Joi.string().email(regExp.EMAIL.pattern).required().error(joiError.email),
   }),
 );
 
@@ -44,4 +57,11 @@ const resetSchema = validateBody(
   }),
 );
 
-module.exports = { registerSchema, loginSchema, verifySchema, forgotSchema, resetSchema };
+module.exports = {
+  registerSchema,
+  loginSchema,
+  updateSchema,
+  verifySchema,
+  forgotSchema,
+  resetSchema,
+};

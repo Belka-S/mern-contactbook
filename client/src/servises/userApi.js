@@ -35,7 +35,12 @@ export const resetPass = async credentials => {
 
 export const refreshUser = async persistedToken => {
   token.set(persistedToken);
-  const { data } = await apiClient.get('/auth/user');
+  const { data } = await apiClient.get('/auth/refresh'); // users/refresh ????
+  return data;
+};
+
+export const updateUser = async credentials => {
+  const { data } = await apiClient.patch('/users/update', credentials);
   return data;
 };
 

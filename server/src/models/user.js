@@ -17,6 +17,7 @@ const userSchema = new Schema(
     refreshToken: { type: String, default: null },
     verifiedEmail: { type: Boolean, default: false, required },
     verificationCode: { type: String, default: null },
+
     avatarUrl: { type: String, default: '' },
     avatarId: { type: String, default: null },
     whatsApp: { type: String, default: '' },

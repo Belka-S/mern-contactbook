@@ -1,9 +1,11 @@
 const { User } = require('../../models/user');
 const { ctrlWrapper } = require('../../decorators');
-const { cloudinary, HttpError } = require('../../utils');
+const { cloudinary, HttpError, restrictedAccess } = require('../../utils');
 
 const updateProfile = ctrlWrapper(async (req, res) => {
   const { _id } = req.user;
+  if (restrictedAccess.userId.includes(_id)) throw HttpError(403);
+
   // Update avatar
   if (req.file) {
     const { avatarId } = req.user;

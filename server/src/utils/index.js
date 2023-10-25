@@ -9,6 +9,7 @@ const createMsg = require('./createMsg');
 const renderEjsTemplate = require('./renderEjsTemplate');
 const restrictedAccess = require('./restrictedAccess');
 const randomNumber = require('./randomNumber');
+const cloudinary = require('./cloudinary');
 
 module.exports = {
   logFile,
@@ -22,4 +23,5 @@ module.exports = {
   filterValues,
   restrictedAccess,
   randomNumber,
+  cloudinary,
 };

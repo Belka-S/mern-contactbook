@@ -1,14 +1,11 @@
 const { User } = require('../../models/user');
 const { Contact } = require('../../models/contact');
 const { ctrlWrapper } = require('../../decorators');
-const { cloudinary, HttpError } = require('../../utils');
-const { restrictedAccess } = require('../../utils');
+const { cloudinary, HttpError, restrictedAccess } = require('../../utils');
 
 const deleteProfile = ctrlWrapper(async (req, res) => {
   const { _id, avatarId } = req.user;
   if (restrictedAccess.userId.includes(_id)) throw HttpError(403);
-  console.log('_id: ', _id);
-  console.log('userId: ', restrictedAccess.userId);
 
   const { deletedCount } = await Contact.deleteMany({ owner: _id });
   if (avatarId) await cloudinary.destroy(avatarId);

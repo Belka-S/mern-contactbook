@@ -21,8 +21,9 @@ const contactSchema = new Schema(
     address: { type: String, match: regex(regExp.ADDRESS.name), default: '' },
     birthday: { type: String, match: regex(regExp.DATE.name), default: '' },
     notes: { type: String, default: '' },
-    group: { type: String, enum: groupList, default: 'private' },
+
     favorite: { type: Boolean, default: false },
+    group: { type: String, enum: groupList, default: 'private' },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { versionKey: false, timestamps: true },

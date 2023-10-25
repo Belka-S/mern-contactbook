@@ -15,12 +15,12 @@ const updateSchema = validateBody(
   Joi.object({
     name: Joi.string().min(4).required(),
     email: Joi.string().pattern(regExp.EMAIL.pattern).required().error(joiError.email),
-    whatsApp: Joi.string().pattern(regExp.PHONE.pattern),
-    telegram: Joi.string().pattern(regExp.TELEGRAM.pattern),
-    location: Joi.string().pattern(regExp.ADDRESS.pattern),
-    socialLink: Joi.string().pattern(regExp.HTTP_LINK.pattern),
-    birthday: Joi.string().pattern(regExp.DATE.pattern),
-    about: Joi.string(),
+    whatsApp: Joi.string().pattern(regExp.PHONE.pattern).allow(''),
+    telegram: Joi.string().pattern(regExp.TELEGRAM.pattern).allow(''),
+    location: Joi.string().pattern(regExp.ADDRESS.pattern).allow(''),
+    socialLink: Joi.string().pattern(regExp.HTTP_LINK.pattern).allow(''),
+    birthday: Joi.string().pattern(regExp.DATE.pattern).allow(''),
+    about: Joi.string().allow(''),
   }),
 );
 

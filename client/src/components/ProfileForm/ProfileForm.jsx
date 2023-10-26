@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 
@@ -14,6 +15,7 @@ const ProfileForm = ({ setIsProfileForm }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const abbreviation = useAbbreviation(user.name);
+  const [avatarUrl, setAvatarUrl] = useState(user.avatarUrl);
 
   const getInitialValues = () => {
     const initialValues = { avatar: '' };
@@ -50,12 +52,16 @@ const ProfileForm = ({ setIsProfileForm }) => {
             type="file"
             name="avatar"
             accept="image/*"
-            url={user.avatarUrl}
-            abbr={user.avatarUrl ? '' : abbreviation}
+            url={avatarUrl}
+            abbr={avatarUrl ? '' : abbreviation}
             onChange={e => {
-              formik.setFieldValue('avatar', e.target.files[0]);
+              const avatar = e.target.files[0];
+              const imageUrl = URL.createObjectURL(avatar);
+              setAvatarUrl(imageUrl);
+              formik.setFieldValue('avatar', avatar);
             }}
           />
+
           {USER_CREDENTIALS.map(key => (
             <div className="wrapper" key={key}>
               <Label>

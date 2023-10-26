@@ -16,7 +16,6 @@ export const themes = Object.freeze({
     placeholder: '#5c5858',
 
     backdrop: 'rgba(23, 24, 32, 0.5)',
-    backdrop1: 'rgba(103, 103, 103, 0.5)',
   },
   fontSizes: {
     micro: '10px',

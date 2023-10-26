@@ -9,7 +9,7 @@ export const selectAuthError = state => state.auth.error;
 // Contacts
 export const selectContacts = state => state.contacts.items;
 
-export const selectError = state => state.contacts.error;
-export const selectIsLoading = state => state.contacts.isLoading;
 export const selectActiveContact = state => state.contacts.activeItem;
 export const selectFilterValue = state => state.contacts.filter;
+export const selectIsLoading = state => state.contacts.isLoading;
+export const selectError = state => state.contacts.error;

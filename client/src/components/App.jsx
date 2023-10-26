@@ -22,7 +22,7 @@ const ProfilePage = lazy(() => import('pages/ProfilePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoading } = useAuth();
 
   useEffect(() => {
     loadWebFonts();
@@ -53,7 +53,7 @@ export const App = () => {
         </Routes>
       )}
 
-      {isRefreshing && <OvalLoader />}
+      {(isRefreshing || isLoading) && <OvalLoader />}
 
       <Toast />
     </>

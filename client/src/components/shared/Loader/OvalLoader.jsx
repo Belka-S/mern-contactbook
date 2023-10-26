@@ -3,8 +3,8 @@ import { themes } from 'styles/themes';
 
 const OvalLoader = () => (
   <Oval
-    height={60}
-    width={60}
+    height={40}
+    width={40}
     color={themes.colors.error}
     wrapperStyle={{
       position: 'fixed',
@@ -16,8 +16,8 @@ const OvalLoader = () => (
     visible={true}
     ariaLabel="oval-loading"
     secondaryColor={themes.colors.error}
-    strokeWidth={8}
-    strokeWidthSecondary={8}
+    strokeWidth={6}
+    strokeWidthSecondary={6}
   />
 );
 

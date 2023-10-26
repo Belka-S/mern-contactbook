@@ -22,6 +22,7 @@ const handleLoginSucsess = (state, action) => {
 
   state.isLoggedIn = Boolean(user.accessToken);
   state.isRefreshing = false;
+  state.isLoading = false;
   state.error = false;
 };
 

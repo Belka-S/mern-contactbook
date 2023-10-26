@@ -23,12 +23,12 @@ apiClient.interceptors.response.use(
   response => {
     const { message, result } = response.data;
 
-    !result?.contacts && message && toast.info(message);
+    !result?.contacts && message && toast.success(message);
 
     !message &&
       result?.user?.verificationCode === 'google' &&
       store.getState().auth.user.verificationCode !== 'google' &&
-      toast.info(`Logged in: ${result.user.email}`);
+      toast.success(`Logged in: ${result.user.email}`);
 
     return response;
   },

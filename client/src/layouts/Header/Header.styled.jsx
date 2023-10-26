@@ -13,7 +13,7 @@ export const StyledHeader = styled.header`
   margin-bottom: 16px;
   z-index: 10;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${themes.colors.border};
   background-color: ${themes.colors.background};
 `;
 

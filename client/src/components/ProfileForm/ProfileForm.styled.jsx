@@ -1,9 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form as FormikForm } from 'formik';
 import { Field as FormikField } from 'formik';
 import { ErrorMessage } from 'formik';
 
 import { themes } from 'styles/themes';
+
+const HoverFocusStyles = css`
+  &:hover,
+  &:focus {
+    border-color: ${themes.colors.hovered};
+  }
+`;
 
 export const Form = styled(FormikForm)`
   position: relative;
@@ -38,6 +45,8 @@ export const Label = styled.label`
 `;
 
 export const Field = styled(FormikField)`
+  ${HoverFocusStyles}
+
   text-align: left;
   background-color: transparent;
   padding: 5px 0;
@@ -56,11 +65,6 @@ export const Field = styled(FormikField)`
   &:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   }
-
-  &:hover,
-  &:focus {
-    border-color: ${themes.colors.hovered};
-  }
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -72,6 +76,8 @@ export const ErrorMsg = styled(ErrorMessage)`
 `;
 
 export const Avatar = styled.input`
+  ${HoverFocusStyles}
+
   position: relative;
   width: 200px;
   height: 200px;

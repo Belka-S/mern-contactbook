@@ -32,6 +32,17 @@ export const ToastContainer = styled(Toast).attrs({
     }
   }
 
+  & .Toastify__toast--success {
+    .body {
+      & svg {
+        fill: ${themes.colors.success};
+      }
+    }
+    .progress {
+      background-color: ${themes.colors.success};
+    }
+  }
+
   & .Toastify__toast--error {
     .body {
       & svg {

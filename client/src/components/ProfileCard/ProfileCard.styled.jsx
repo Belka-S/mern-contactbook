@@ -23,7 +23,6 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 4fr;
   grid-column-gap: 20px;
   text-align: right;
-  align-items: center;
 
   font-size: 20px;
   font-weight: 500;
@@ -59,7 +58,6 @@ export const Avatar = styled.div`
   font-size: 72px;
   font-weight: 700;
 
-  border: 1px solid ${themes.colors.border};
   border-radius: 50%;
   background-color: ${themes.colors.white};
   background-image: ${({ url }) => `url(${url})`};
@@ -74,8 +72,8 @@ export const Avatar = styled.div`
     align-items: center;
 
     ${({ abbr }) => `content:"${abbr}"`};
-    width: 198px;
-    height: 198px;
+    width: 200px;
+    height: 200px;
     color: ${themes.colors.placeholder};
   }
 `;

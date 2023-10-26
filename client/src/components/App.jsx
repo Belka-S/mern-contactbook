@@ -34,7 +34,7 @@ export const App = () => {
 
   return (
     <>
-      {!isRefreshing && (
+      {!(isRefreshing || isLoading) && (
         <Routes>
           <Route element={<PublicRoutes />}>
             <Route path="/" element={<HomePage />} />

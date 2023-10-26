@@ -8,19 +8,34 @@ import Button from 'components/shared/Button/Button';
 import { useAuth, useAbbreviation } from 'utils/hooks';
 import { updateUserThunk } from 'store/auth/authOperations';
 import { USER_CREDENTIALS } from 'utils/constants';
-import { profileSchema } from 'utils/validation';
-import { Form, Field, Label, ErrorMsg, Avatar } from './ProfileForm.styled';
+import { profileSchema, avatarSchema } from 'utils/validation';
+import { Form, Field, Label, ErrorMsg } from './ProfileForm.styled';
+import { Avatar, AvatarMsg } from './ProfileForm.styled';
+import Container from 'components/shared/Container/Container';
 
 const ProfileForm = ({ setIsProfileForm }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const abbreviation = useAbbreviation(user.name);
   const [avatarUrl, setAvatarUrl] = useState(user.avatarUrl);
+  const [avatarError, setAvatarError] = useState('');
+  const abbreviation = useAbbreviation(user.name);
 
   const getInitialValues = () => {
     const initialValues = { avatar: '' };
     USER_CREDENTIALS.forEach(key => (initialValues[key] = user[key]));
     return initialValues;
+  };
+
+  const setAvatar = async (e, setFieldValue) => {
+    const avatar = e.target.files[0];
+    try {
+      await avatarSchema.validate({ avatar });
+      const imageUrl = URL.createObjectURL(avatar);
+      setAvatarUrl(imageUrl);
+      setFieldValue('avatar', avatar);
+    } catch (error) {
+      setAvatarError(error.message);
+    }
   };
 
   const onSubmit = (values, actions) => {
@@ -46,37 +61,37 @@ const ProfileForm = ({ setIsProfileForm }) => {
       validationSchema={profileSchema}
       onSubmit={onSubmit}
     >
-      {formik => (
-        <Form>
-          <Avatar
-            type="file"
-            name="avatar"
-            accept="image/*"
-            url={avatarUrl}
-            abbr={avatarUrl ? '' : abbreviation}
-            onChange={e => {
-              const avatar = e.target.files[0];
-              const imageUrl = URL.createObjectURL(avatar);
-              setAvatarUrl(imageUrl);
-              formik.setFieldValue('avatar', avatar);
-            }}
-          />
+      {({ setFieldValue }) => {
+        return (
+          <Form>
+            <Container m="0" p="12px 0 20px 3vw" d="flex" ai="end">
+              <Avatar
+                type="file"
+                name="avatar"
+                // accept="image/*"
+                url={avatarUrl}
+                abbr={avatarUrl ? '' : abbreviation}
+                onChange={e => setAvatar(e, setFieldValue)}
+              />
+              {avatarError && <AvatarMsg>{avatarError}</AvatarMsg>}
+            </Container>
 
-          {USER_CREDENTIALS.map(key => (
-            <div className="wrapper" key={key}>
-              <Label>
-                {key}:
-                <Field type="text" name={key} />
-              </Label>
-              <ErrorMsg name={key} component="div" />
-            </div>
-          ))}
-          <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
-            <Button type="submit">Submit</Button>
-            <Button onClick={() => setIsProfileForm(false)}>Cancel</Button>
-          </GridWrap>
-        </Form>
-      )}
+            {USER_CREDENTIALS.map(key => (
+              <div className="wrapper" key={key}>
+                <Label>
+                  {key}:
+                  <Field type="text" name={key} />
+                </Label>
+                <ErrorMsg name={key} component="div" />
+              </div>
+            ))}
+            <GridWrap mm="40px" cg="3vw" gtc="1fr 1fr 1fr">
+              <Button type="submit">Submit</Button>
+              <Button onClick={() => setIsProfileForm(false)}>Cancel</Button>
+            </GridWrap>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

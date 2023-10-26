@@ -81,7 +81,6 @@ export const Avatar = styled.input`
   position: relative;
   width: 200px;
   height: 200px;
-  margin: 12px 0 20px 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,6 +93,7 @@ export const Avatar = styled.input`
   background-color: ${themes.colors.white};
   background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
+  background-position: center;
   cursor: pointer;
   color: transparent;
 
@@ -115,4 +115,10 @@ export const Avatar = styled.input`
   &::file-selector-button {
     display: none;
   }
+`;
+
+export const AvatarMsg = styled.span`
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: ${themes.colors.error};
 `;

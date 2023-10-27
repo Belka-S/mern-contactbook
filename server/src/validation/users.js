@@ -13,8 +13,8 @@ const registerSchema = validateBody(
 
 const updateSchema = validateBody(
   Joi.object({
-    name: Joi.string().min(4).required(),
-    email: Joi.string().pattern(regExp.EMAIL.pattern).required().error(joiError.email),
+    name: Joi.string().min(4),
+    email: Joi.string().pattern(regExp.EMAIL.pattern).error(joiError.email),
     whatsApp: Joi.string().pattern(regExp.PHONE.pattern).allow(''),
     telegram: Joi.string().pattern(regExp.TELEGRAM.pattern).allow(''),
     location: Joi.string().pattern(regExp.ADDRESS.pattern).allow(''),

@@ -56,7 +56,7 @@ const AvatarInput = ({ setFieldValue }) => {
         name="avatar"
         accept="image/*"
         ref={inputRef}
-        validation={isValid()}
+        validation={isValid().toString()}
         url={avatarUrl}
         abbr={avatarUrl ? '' : abbreviation}
         onChange={e => setAvatar(e, setFieldValue)}
@@ -64,12 +64,12 @@ const AvatarInput = ({ setFieldValue }) => {
         onMouseOut={() => setMouseOver(false)}
       />
 
-      <ExclamationIcon validation={isValid(mouseOver)} />
-      <CheckedIcon validation={isValid(mouseOver)} />
+      <ExclamationIcon validation={isValid(mouseOver).toString()} />
+      <CheckedIcon validation={isValid(mouseOver).toString()} />
 
       <PlusIcon
         className="plus"
-        validation={isValid(mouseOver)}
+        validation={isValid(mouseOver).toString()}
         onClick={handleSetAvatarClick}
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}

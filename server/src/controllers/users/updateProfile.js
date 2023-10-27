@@ -3,8 +3,18 @@ const { ctrlWrapper } = require('../../decorators');
 const { cloudinary, HttpError, restrictedAccess } = require('../../utils');
 
 const updateProfile = ctrlWrapper(async (req, res) => {
+  const { name, email } = req.body;
   const { _id } = req.user;
-  if (restrictedAccess.userId.includes(_id)) throw HttpError(403);
+
+  if (await User.findOne({ name })) {
+    throw HttpError(409, 'Name already exists');
+  }
+  if (await User.findOne({ email })) {
+    throw HttpError(409, 'Email already exists');
+  }
+  if (restrictedAccess.userId.includes(_id)) {
+    throw HttpError(403, 'Log in to access');
+  }
 
   // Update avatar
   if (req.file) {

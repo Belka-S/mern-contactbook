@@ -11,35 +11,28 @@ import { USER_CREDENTIALS } from 'utils/constants';
 import { profileSchema } from 'utils/validation';
 import { Form, Field, Label, ErrorMsg } from './ProfileForm.styled';
 
+const initialValues = { avatar: '' };
+
 const ProfileForm = ({ setIsProfileForm }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-  const getInitialValues = () => {
-    const initialValues = { avatar: '' };
-    USER_CREDENTIALS.forEach(key => (initialValues[key] = user[key]));
-    return initialValues;
-  };
+  USER_CREDENTIALS.forEach(key => (initialValues[key] = user[key]));
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = values => {
     const formData = new FormData();
-
     Object.keys(values).forEach(key => {
-      if (key === 'avatar') {
-        if (!values[key]) return;
-        formData.append(key, values[key]);
-      } else {
-        formData.append(key, values[key].trim());
-      }
+      const data = key === 'avatar' ? values[key] : values[key].trim();
+      values[key] !== initialValues[key] && formData.append(key, data);
     });
-    dispatch(updateUserThunk(formData));
+    const isEmpty = formData.entries().next().done;
+    !isEmpty && dispatch(updateUserThunk(formData));
     setIsProfileForm(false);
-    actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={getInitialValues()}
+      initialValues={initialValues}
       validationSchema={profileSchema}
       onSubmit={onSubmit}
     >

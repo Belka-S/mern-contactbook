@@ -3,12 +3,14 @@ import { BsPlus, BsCheck, BsExclamation } from 'react-icons/bs';
 
 import { themes } from 'styles/themes';
 
+// Avatar messages
 export const AvatarMsg = styled.span`
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
   color: ${themes.colors.error};
 `;
 
+// Avatar
 export const Avatar = styled.input`
   position: relative;
   width: 200px;
@@ -72,6 +74,18 @@ export const Avatar = styled.input`
   }
 `;
 
+// Avatar icons
+const setNoValueColor = (validation, color) =>
+  validation === true || validation === 'noValue'
+    ? themes.colors[color]
+    : 'transparent';
+
+const setSuccessColor = (validation, color) =>
+  validation === 'success' ? themes.colors[color] : 'transparent';
+
+const setErrorColor = validation =>
+  validation === 'error' ? themes.colors.error : 'transparent';
+
 const IconStyles = css`
   width: 28px;
   height: 28px;
@@ -88,20 +102,9 @@ const IconStyles = css`
 export const PlusIcon = styled(BsPlus)`
   ${IconStyles};
 
-  background-color: ${({ validation }) =>
-    validation === true || validation === 'noValue'
-      ? themes.colors.white
-      : 'transparent'};
-
-  border-color: ${({ validation }) =>
-    validation === true || validation === 'noValue'
-      ? themes.colors.border
-      : 'transparent'};
-
-  fill: ${({ validation }) =>
-    validation === true || validation === 'noValue'
-      ? themes.colors.placeholder
-      : 'transparent'};
+  background-color: ${({ validation }) => setNoValueColor(validation, 'white')};
+  border-color: ${({ validation }) => setNoValueColor(validation, 'border')};
+  fill: ${({ validation }) => setNoValueColor(validation, 'placeholder')};
 
   &:hover,
   &:focus {
@@ -113,22 +116,14 @@ export const PlusIcon = styled(BsPlus)`
 export const CheckedIcon = styled(BsCheck)`
   ${IconStyles};
 
-  background-color: ${({ validation }) =>
-    validation === 'success' ? themes.colors.white : 'transparent'};
-
-  border-color: ${({ validation }) =>
-    validation === 'success' ? themes.colors.success : 'transparent'};
-
-  fill: ${({ validation }) =>
-    validation === 'success' ? themes.colors.success : 'transparent'};
+  background-color: ${({ validation }) => setSuccessColor(validation, 'white')};
+  border-color: ${({ validation }) => setSuccessColor(validation, 'success')};
+  fill: ${({ validation }) => setSuccessColor(validation, 'success')};
 `;
 
 export const ExclamationIcon = styled(BsExclamation)`
   ${IconStyles};
 
-  border-color: ${({ validation }) =>
-    validation === 'error' ? themes.colors.error : 'transparent'};
-
-  fill: ${({ validation }) =>
-    validation === 'error' ? themes.colors.error : 'transparent'};
+  border-color: ${({ validation }) => setErrorColor(validation)};
+  fill: ${({ validation }) => setErrorColor(validation)};
 `;

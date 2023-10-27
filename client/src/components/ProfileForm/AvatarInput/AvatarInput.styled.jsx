@@ -3,6 +3,12 @@ import { BsPlus, BsCheck, BsExclamation } from 'react-icons/bs';
 
 import { themes } from 'styles/themes';
 
+export const AvatarMsg = styled.span`
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: ${themes.colors.error};
+`;
+
 export const Avatar = styled.input`
   position: relative;
   width: 200px;
@@ -59,17 +65,11 @@ export const Avatar = styled.input`
   &:focus {
     outline-color: ${themes.colors.hovered};
 
-    & + svg {
+    & ~ .plus {
       border-color: ${themes.colors.hovered};
       fill: ${themes.colors.hovered};
     }
   }
-`;
-
-export const AvatarMsg = styled.span`
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  color: ${themes.colors.error};
 `;
 
 const IconStyles = css`
@@ -82,11 +82,26 @@ const IconStyles = css`
   border-radius: 50%;
   background-color: ${themes.colors.white};
   cursor: pointer;
-  transition: border-color 250ms, fill 250ms;
+  transition: border-color 250ms, fill 250ms, background-color 250ms;
 `;
 
 export const PlusIcon = styled(BsPlus)`
   ${IconStyles};
+
+  background-color: ${({ validation }) =>
+    validation === true || validation === 'noValue'
+      ? themes.colors.white
+      : 'transparent'};
+
+  border-color: ${({ validation }) =>
+    validation === true || validation === 'noValue'
+      ? themes.colors.border
+      : 'transparent'};
+
+  fill: ${({ validation }) =>
+    validation === true || validation === 'noValue'
+      ? themes.colors.placeholder
+      : 'transparent'};
 
   &:hover,
   &:focus {
@@ -98,13 +113,22 @@ export const PlusIcon = styled(BsPlus)`
 export const CheckedIcon = styled(BsCheck)`
   ${IconStyles};
 
-  border-color: ${themes.colors.success};
-  fill: ${themes.colors.success};
+  background-color: ${({ validation }) =>
+    validation === 'success' ? themes.colors.white : 'transparent'};
+
+  border-color: ${({ validation }) =>
+    validation === 'success' ? themes.colors.success : 'transparent'};
+
+  fill: ${({ validation }) =>
+    validation === 'success' ? themes.colors.success : 'transparent'};
 `;
 
 export const ExclamationIcon = styled(BsExclamation)`
   ${IconStyles};
 
-  border-color: ${themes.colors.error};
-  fill: ${themes.colors.error};
+  border-color: ${({ validation }) =>
+    validation === 'error' ? themes.colors.error : 'transparent'};
+
+  fill: ${({ validation }) =>
+    validation === 'error' ? themes.colors.error : 'transparent'};
 `;

@@ -7,14 +7,14 @@ import { Avatar, AvatarMsg, PlusIcon } from './AvatarInput.styled';
 import { CheckedIcon, ExclamationIcon } from './AvatarInput.styled';
 
 const AvatarInput = ({ setFieldValue }) => {
-  const fileInputRef = useRef(null);
+  const inputRef = useRef(null);
   const { user } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState(user.avatarUrl);
   const [avatarError, setAvatarError] = useState('');
   const [mouseOver, setMouseOver] = useState(false);
   const abbreviation = useAbbreviation(user.name);
 
-  const handleAddImageClick = () => fileInputRef.current.click();
+  const handleSetAvatarClick = () => inputRef.current.click();
 
   const setAvatar = async (e, setFieldValue) => {
     const avatar = e.target.files[0];
@@ -25,7 +25,6 @@ const AvatarInput = ({ setFieldValue }) => {
       setAvatarUrl(imageUrl);
       setFieldValue('avatar', avatar);
     } catch (error) {
-      console.log('error: ', error.message);
       if (!error.message.includes('URL')) {
         setAvatarError(error.message);
       }
@@ -34,18 +33,29 @@ const AvatarInput = ({ setFieldValue }) => {
     e.target.blur();
   };
 
-  const isValid = () => {
+  const isValid = bool => {
     const noValue = !(avatarUrl.includes('blob') || avatarError) && 'noValue';
     const isError = avatarError ? 'error' : 'success';
-    return noValue || isError;
+    return bool || noValue || isError;
   };
+
+  const onMouseOver = e => {
+    setMouseOver(true);
+    e.relatedTarget.focus();
+  };
+
+  const onMouseOut = e => {
+    setMouseOver(false);
+    e.relatedTarget.blur();
+  };
+
   return (
     <Container m="0" p="12px 0 20px 3vw" d="flex" ai="end">
       <Avatar
         type="file"
         name="avatar"
         accept="image/*"
-        ref={fileInputRef}
+        ref={inputRef}
         validation={isValid()}
         url={avatarUrl}
         abbr={avatarUrl ? '' : abbreviation}
@@ -54,21 +64,17 @@ const AvatarInput = ({ setFieldValue }) => {
         onMouseOut={() => setMouseOver(false)}
       />
 
-      {(isValid() === 'noValue' || mouseOver) && (
-        <PlusIcon
-          onClick={handleAddImageClick}
-          onMouseOver={e => {
-            setMouseOver(true);
-            e.relatedTarget.focus();
-          }}
-          onMouseOut={e => {
-            setMouseOver(false);
-            e.relatedTarget.blur();
-          }}
-        />
-      )}
-      {isValid() === 'success' && !mouseOver && <CheckedIcon />}
-      {isValid() === 'error' && !mouseOver && <ExclamationIcon />}
+      <ExclamationIcon validation={isValid(mouseOver)} />
+      <CheckedIcon validation={isValid(mouseOver)} />
+
+      <PlusIcon
+        className="plus"
+        validation={isValid(mouseOver)}
+        onClick={handleSetAvatarClick}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
+      />
+
       {avatarError && <AvatarMsg>{avatarError}</AvatarMsg>}
     </Container>
   );

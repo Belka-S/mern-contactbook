@@ -6,7 +6,7 @@ const { cloudinary, HttpError, restrictedAccess } = require('../../utils');
 const deleteProfile = ctrlWrapper(async (req, res) => {
   const { _id, avatarId } = req.user;
   if (restrictedAccess.userId.includes(_id)) {
-    throw HttpError(403, 'Log in to access');
+    throw HttpError(403, 'Register to access');
   }
   const { deletedCount } = await Contact.deleteMany({ owner: _id });
   if (avatarId) await cloudinary.destroy(avatarId);

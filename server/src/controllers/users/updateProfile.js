@@ -13,7 +13,7 @@ const updateProfile = ctrlWrapper(async (req, res) => {
     throw HttpError(409, 'Email already exists');
   }
   if (restrictedAccess.userId.includes(_id)) {
-    throw HttpError(403, 'Log in to access');
+    throw HttpError(403, 'Register to access');
   }
 
   // Update avatar

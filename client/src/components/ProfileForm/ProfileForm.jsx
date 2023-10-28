@@ -27,7 +27,6 @@ const ProfileForm = ({ setIsProfileForm }) => {
     });
     const isEmpty = formData.entries().next().done;
     !isEmpty && dispatch(updateUserThunk(formData));
-    // setIsProfileForm(false);
   };
 
   return (

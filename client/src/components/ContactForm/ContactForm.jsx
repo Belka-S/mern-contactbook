@@ -44,23 +44,25 @@ const ContactForm = ({ triggerForm, isContactForm }) => {
     setWidth(prevState => ({ ...prevState, [name]: getWidth(spanEl) }));
   };
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = values => {
     const { firstName } = values;
+    const contact = values;
+
+    Object.keys(contact).forEach(key => {
+      contact[key] = contact[key].trim();
+    });
     const isInContacts = contacts.some(
       el => el.firstName.toLowerCase() === firstName.toLowerCase()
     );
     if (isInContacts && isContactForm === 'add') {
       return alert(`${firstName} is already in contacts!`);
     }
-
     dispatch(
       isContactForm === 'add'
-        ? addContactThunk(values)
-        : updateContactThunk({ id: activeContact._id, contact: values })
+        ? addContactThunk(contact)
+        : updateContactThunk({ id: activeContact._id, contact })
     );
-    // .unwrap().then(pld => console.log(pld)).catch(err => console.log(err));
     triggerForm(false);
-    actions.resetForm();
   };
 
   return (

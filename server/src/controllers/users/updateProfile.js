@@ -1,6 +1,7 @@
 const { User } = require('../../models/user');
 const { ctrlWrapper } = require('../../decorators');
-const { cloudinary, HttpError, restrictedAccess } = require('../../utils');
+const { HttpError, cloudinary, restrictedAccess } = require('../../utils');
+const { randomNumber, sendMail, createMsg } = require('../../utils');
 
 const updateProfile = ctrlWrapper(async (req, res) => {
   const { name, email } = req.body;
@@ -27,11 +28,26 @@ const updateProfile = ctrlWrapper(async (req, res) => {
     const newUser = await User.findByIdAndUpdate(_id, avatar);
     if (!newUser) throw HttpError(403, 'Failed to update avatar');
   }
+
+  // Update email
+  const candidate = req.body;
+
+  if (candidate.email) {
+    const verificationCode = randomNumber(6);
+    const msg = createMsg('verifyEmail.ejs', { email, verificationCode });
+    await sendMail.nodemailer(msg);
+    candidate.verificationCode = `${verificationCode} ${email}`;
+    delete candidate.email;
+  }
+
   // Update user data
-  const newUser = await User.findByIdAndUpdate(_id, req.body, { new: true });
+  const newUser = await User.findByIdAndUpdate(_id, candidate, { new: true });
   if (!newUser) throw HttpError(403, 'Failed to update user profile');
 
-  res.status(200).json({ message: 'Profile updated', result: { user: newUser } });
+  res.status(200).json({
+    message: 'Profile updated',
+    result: { user: { ...newUser._doc, verificationCode: email } },
+  });
 });
 
 module.exports = updateProfile;

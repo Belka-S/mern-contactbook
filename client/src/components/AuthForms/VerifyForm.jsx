@@ -1,17 +1,16 @@
+import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import SignBtn from './AuthBtns/SignBtn';
-import { useAuth } from 'utils/hooks';
 import { verifySchema } from 'utils/validation';
 import { refreshUserThunk, verifyEmailThunk } from 'store/auth/authOperations';
 import { Form, Field, ErrorMsg, Label } from './AuthForms.styled';
 import { FieldWrap, Tittle, SuccessIcon, ErrorIcon } from './AuthForms.styled';
 
-const VerifyForm = () => {
+const VerifyForm = ({ userEmail }) => {
   const dispatch = useDispatch();
-  const { userEmail } = useAuth();
 
   const isValid = ({ values, errors }) => {
     const noValue = !Object.values(values)[0] && 'noValue';
@@ -68,3 +67,5 @@ const VerifyForm = () => {
 };
 
 export default VerifyForm;
+
+VerifyForm.propTypes = { userEmail: PropTypes.string.isRequired };

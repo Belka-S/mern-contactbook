@@ -90,8 +90,8 @@ const IconStyles = css`
   width: 28px;
   height: 28px;
   position: absolute;
-  bottom: 40px;
-  left: 205px;
+  bottom: 20px;
+  left: 160px;
   border: 1px solid ${themes.colors.border};
   border-radius: 50%;
   background-color: ${themes.colors.white};

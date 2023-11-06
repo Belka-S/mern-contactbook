@@ -50,7 +50,7 @@ const AvatarInput = ({ setFieldValue }) => {
   };
 
   return (
-    <Container m="0" p="12px 0 20px 3vw" d="flex" ai="end">
+    <Container m="12px 0 20px 3vw" p="0" d="flex" ai="end">
       <Avatar
         type="file"
         name="avatar"

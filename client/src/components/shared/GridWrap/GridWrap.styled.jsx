@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const GridDiv = styled.div`
   margin: ${({ m }) => m};
   padding: ${({ p }) => p};
   /* max-width: 1280px; */

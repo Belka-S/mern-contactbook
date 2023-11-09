@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Div } from './Container.styled';
+import { FlexDiv } from './Container.styled';
 
 const Container = ({
   w,
@@ -18,12 +18,23 @@ const Container = ({
   mt,
   children,
 }) => (
-  <Div w={w} h={h} m={m} p={p} d={d} fd={fd} ai={ai} jc={jc} ta={ta} mt={mt}>
+  <FlexDiv
+    w={w}
+    h={h}
+    m={m}
+    p={p}
+    d={d}
+    fd={fd}
+    ai={ai}
+    jc={jc}
+    ta={ta}
+    mt={mt}
+  >
     {t1 && <h1>{t1}</h1>}
     {t2 && <h2>{t2}</h2>}
     {t3 && <h3>{t3}</h3>}
     {children}
-  </Div>
+  </FlexDiv>
 );
 
 Container.propTypes = {

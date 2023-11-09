@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const FlexDiv = styled.div`
   margin: ${({ m = '0 auto' }) => m};
   padding: ${({ p = '0 10px' }) => p};
   width: ${({ w = '100%' }) => w};
@@ -54,6 +54,7 @@ export const Div = styled.div`
 
   h1 {
     font-size: 26px;
+    font-weight: 900;
 
     @media screen and (width >= 768px) {
       font-size: 30px;

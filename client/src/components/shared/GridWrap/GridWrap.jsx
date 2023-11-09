@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-import { Div } from './GridWrap.styled';
+import { GridDiv } from './GridWrap.styled';
 
 const GridWrap = ({ h, m, p, rg, cg, mm, gtc, children }) => {
   return (
-    <Div id="grid" h={h} m={m} p={p} rg={rg} cg={cg} mm={mm} gtc={gtc}>
+    <GridDiv id="grid" h={h} m={m} p={p} rg={rg} cg={cg} mm={mm} gtc={gtc}>
       {children}
-    </Div>
+    </GridDiv>
   );
 };
 

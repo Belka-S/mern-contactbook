@@ -6,6 +6,12 @@ import ContactCardImg from 'assets/images/contact-card.png';
 import UserProfileImg from 'assets/images/user-profile.png';
 
 const Slider = () => {
+  const NextArrow = ({ className, style, onClick }) => (
+    <GrNext className={className} style={{ ...style }} onClick={onClick} />
+  );
+  const PrevArrow = ({ className, style, onClick }) => (
+    <GrPrevious className={className} style={{ ...style }} onClick={onClick} />
+  );
   const settings = {
     dots: true,
     infinite: true,
@@ -13,8 +19,8 @@ const Slider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     className: 'wrapper',
-    nextArrow: <GrNext />,
-    prevArrow: <GrPrevious />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (

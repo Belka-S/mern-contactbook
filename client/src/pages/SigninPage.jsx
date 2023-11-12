@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Container from 'components/shared/Container/Container';
 import SigninForm from 'components/AuthForms/SigninForm';
 import ForgotForm from 'components/AuthForms/ForgotForm';
-import Modal from 'layouts/Modal/Modal';
+import Modal from 'components/shared/Modal/Modal';
 import VerifyForm from 'components/AuthForms/VerifyForm';
 import { useAuth } from 'utils/hooks';
 

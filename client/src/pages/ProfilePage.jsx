@@ -3,7 +3,7 @@ import { useState } from 'react';
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import ProfileCard from 'components/ProfileCard/ProfileCard';
 import ProfileForm from 'components/ProfileForm/ProfileForm';
-import Modal from 'layouts/Modal/Modal';
+import Modal from 'components/shared/Modal/Modal';
 import VerifyForm from 'components/AuthForms/VerifyForm';
 import { useAuth } from 'utils/hooks';
 

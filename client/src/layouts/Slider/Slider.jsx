@@ -5,12 +5,22 @@ import ContactListImg from 'assets/images/contact-list.png';
 import ContactCardImg from 'assets/images/contact-card.png';
 import UserProfileImg from 'assets/images/user-profile.png';
 
+const btnStyle = { width: '40px', height: '40px', padding: '8px' };
+
 const Slider = () => {
   const NextArrow = ({ className, style, onClick }) => (
-    <GrNext className={className} style={{ ...style }} onClick={onClick} />
+    <GrNext
+      className={className}
+      style={{ ...style, ...btnStyle }}
+      onClick={onClick}
+    />
   );
   const PrevArrow = ({ className, style, onClick }) => (
-    <GrPrevious className={className} style={{ ...style }} onClick={onClick} />
+    <GrPrevious
+      className={className}
+      style={{ ...style, ...btnStyle }}
+      onClick={onClick}
+    />
   );
   const settings = {
     dots: true,
@@ -26,16 +36,16 @@ const Slider = () => {
   return (
     <SlickSlider {...settings}>
       <div>
-        <h3>Contacts List</h3>
         <img src={ContactListImg} alt="contact list" />
+        <h3>Quickly find a contact in the List</h3>
       </div>
       <div>
-        <h3>Contact Card</h3>
         <img src={ContactCardImg} alt="contact card" />
+        <h3>Easy to contact with the Card</h3>
       </div>
       <div>
-        <h3>User Profile</h3>
         <img src={UserProfileImg} alt="user profile" />
+        <h3>Keep personal data in your Profile</h3>
       </div>
     </SlickSlider>
   );

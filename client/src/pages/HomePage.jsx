@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Container from 'components/shared/Container/Container';
 import GridWrap from 'components/shared/GridWrap/GridWrap';
 import Button from 'components/shared/Button/Button';
-import Slider from 'components/shared/Slider/Slider';
+import Slider from 'layouts/Slider/Slider';
 import { loginThunk } from 'store/auth/authOperations';
 
 const HomePage = () => {
@@ -22,8 +22,8 @@ const HomePage = () => {
 
   return (
     <Container d="flex">
-      <Container w="350px" d="flex" fd="column" jc="center" ta="center">
-        <h1>Contact Book</h1>
+      <Container w="fit-content" d="flex" fd="column" jc="center" ta="center">
+        <h1 style={{ color: '#206bdd' }}>Contact Book</h1>
         <GridWrap gtc="1fr 1fr" cg="20px">
           <Button onClick={handleDemo}>Try demo</Button>
           <Button onClick={handleSignin}>Log in</Button>

@@ -68,7 +68,7 @@ const ForgotForm = ({ setIsForgot, email }) => {
 
 export default ForgotForm;
 
-ForgotForm.propTepes = {
+ForgotForm.propTypes = {
   setIsForgot: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
 };

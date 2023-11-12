@@ -12,7 +12,7 @@ const Button = ({ onClick, type = 'button', disabled, children }) => {
 
 export default Button;
 
-Button.propTepes = {
+Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,

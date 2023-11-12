@@ -12,7 +12,7 @@ const SignBtn = ({ onClick, disabled, children }) => {
 
 export default SignBtn;
 
-SignButton.propTepes = {
+SignButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([

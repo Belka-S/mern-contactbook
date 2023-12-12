@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import SignBtn from './AuthBtns/SignBtn';
 import IconBtn from './IconBtn/IconBtn';
@@ -14,6 +15,7 @@ const initialValues = { newPass: '', confirmPass: '' };
 
 const ResetForm = ({ id, pwdToken }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState('password');
 
   const isValid = ({ values, errors, key }) => {
@@ -30,7 +32,8 @@ const ResetForm = ({ id, pwdToken }) => {
 
   const onSubmit = (values, actions) => {
     dispatch(resetPassThunk({ ...values, id, pwdToken }))
-      .unwrap() // .then(pld => console.log(pld))
+      .unwrap()
+      .then(() => navigate('/signin', { replace: true }))
       .catch(err => console.log(err));
 
     actions.resetForm();
